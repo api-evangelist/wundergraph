@@ -1,12 +1,12 @@
 # WunderGraph (wundergraph)
-Full Lifecycle API Management for (Federated) GraphQL. 
+Full Lifecycle API Management for (Federated) GraphQL. Schema Registry, composition checks, analytics, metrics, tracing and routing. Deploy 100% on-prem or use our Managed Service. Apache 2.0 licensed, no vendor-lock.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/wundergraph/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
+- **Type:** Contract 
+- **Position:** Consuming 
 - **Access:** 3rd-Party 
 
 ## Tags:
