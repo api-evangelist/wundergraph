@@ -41,78 +41,78 @@ common:
     name: WunderGraph Features - WunderGraph
     type: Features
     data:
-      - name: API Gateway
-      - name: MCP Gateway
-      - name: Schema Registry
-      - name: Composition Checks
+      - name: Advanced Request Tracing
+      - name: Advanced Request Tracing
       - name: Analytics
-      - name: Metrics
-      - name: Tracing
-      - name: Routing
-      - name: On-premise
-      - name: Managed Service
-      - name: MCP Gateway
-      - name: Schema Registry
-      - name: GraphQL Router / Gateway
-      - name: GraphQL Federation v1 & v2
-      - name: GraphQL Subscriptions for Federation
-      - name: Event Driven Federated Subscriptions (EDFS)
-      - name: Authentication & Authorization
-      - name: Graph Access Control
-      - name: Persisted Operations
-      - name: AWS Lambda Router
-      - name: Cache Warmer
       - name: Analytics, Metrics & Tracing
-      - name: Schema Usage Reporting
-      - name: OpenTelemetry & Distributed Tracing
-      - name: Advanced Request Tracing
-      - name: Breaking Change Detection
-      - name: Schema Change Notifications
-      - name: Schema Contracts
-      - name: Pull-Request-based Schema Workflows
-      - name: Compositions
-      - name: Feature Flags
-      - name: OIDC
-      - name: RBAC
-      - name: Audit Log
-      - name: Pricing
-      - name: Customers
-      - name: Blog
-      - name: Learn
-      - name: Jobs
-      - name: Discord
-      - name: Talk to Sales
-      - name: Login
-      - name: WunderGraph Features
-      - name: Build
-      - name: MCP Gateway
-      - name: Schema Registry
-      - name: GraphQL Router / Gateway
-      - name: GraphQL Federation v1 & v2
-      - name: GraphQL Subscriptions for Federation
-      - name: Event Driven Federated Subscriptions (EDFS)
-      - name: Authentication & Authorization
-      - name: Graph Access Control
-      - name: Persisted Operations
-      - name: AWS Lambda Router
-      - name: Scale
-      - name: Cache Warmer
+      - name: Analytics, Metrics & Tracing
       - name: Analyze
-      - name: Analytics, Metrics & Tracing
-      - name: Schema Usage Reporting
-      - name: OpenTelemetry & Distributed Tracing
-      - name: Advanced Request Tracing
-      - name: Iterate
+      - name: API Gateway
+      - name: Audit Log
+      - name: Audit Log
+      - name: Authentication & Authorization
+      - name: Authentication & Authorization
+      - name: AWS Lambda Router
+      - name: AWS Lambda Router
+      - name: Blog
       - name: Breaking Change Detection
+      - name: Breaking Change Detection
+      - name: Build
+      - name: Cache Warmer
+      - name: Cache Warmer
+      - name: Composition Checks
+      - name: Compositions
+      - name: Compositions
+      - name: Customers
+      - name: Discord
+      - name: Event Driven Federated Subscriptions (Edfs)
+      - name: Event Driven Federated Subscriptions (Edfs)
+      - name: Feature Flags
+      - name: Feature Flags
+      - name: Graph Access Control
+      - name: Graph Access Control
+      - name: Graphql Federation V1 & V2
+      - name: Graphql Federation V1 & V2
+      - name: Graphql Router / Gateway
+      - name: Graphql Router / Gateway
+      - name: Graphql Subscriptions for Federation
+      - name: Graphql Subscriptions for Federation
+      - name: Iterate
+      - name: Jobs
+      - name: Learn
+      - name: Login
+      - name: Manage, Govern & Integrate
+      - name: Managed Service
+      - name: Mcp Gateway
+      - name: Mcp Gateway
+      - name: Mcp Gateway
+      - name: Metrics
+      - name: Oidc
+      - name: Oidc
+      - name: On-Premise
+      - name: Opentelemetry & Distributed Tracing
+      - name: Opentelemetry & Distributed Tracing
+      - name: Persisted Operations
+      - name: Persisted Operations
+      - name: Pricing
+      - name: Pull-Request-Based Schema Workflows
+      - name: Pull-Request-Based Schema Workflows
+      - name: Rbac
+      - name: Rbac
+      - name: Routing
+      - name: Scale
+      - name: Schema Change Notifications
       - name: Schema Change Notifications
       - name: Schema Contracts
-      - name: Pull-Request-based Schema Workflows
-      - name: Compositions
-      - name: Feature Flags
-      - name: Manage, Govern & Integrate
-      - name: OIDC
-      - name: RBAC
-      - name: Audit Log
+      - name: Schema Contracts
+      - name: Schema Registry
+      - name: Schema Registry
+      - name: Schema Registry
+      - name: Schema Usage Reporting
+      - name: Schema Usage Reporting
+      - name: Talk to Sales
+      - name: Tracing
+      - name: Wundergraph Features
   - url: https://wundergraph.com/pricing
     name: Pricing - WunderGraph
     type: Pricing
