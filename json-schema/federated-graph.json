@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/federated-graph.json",
+  "title": "WunderGraph Cosmo Federated Graph",
+  "description": "A Federated Graph represents the composed supergraph made up of multiple subgraphs selected by label matchers in the WunderGraph Cosmo platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the federated graph."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the federated graph."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace the graph belongs to."
+    },
+    "routingUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL where the router is hosted."
+    },
+    "labelMatchers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Label matchers used to select subgraphs for composition (e.g., team=backend)."
+    },
+    "compositionStatus": {
+      "type": "string",
+      "enum": ["SUCCESS", "FAILURE", "PENDING"],
+      "description": "The current composition status of the graph."
+    },
+    "lastComposedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the graph was last successfully composed."
+    },
+    "subgraphsCount": {
+      "type": "integer",
+      "description": "Number of subgraphs composing the federated graph."
+    },
+    "readme": {
+      "type": "string",
+      "description": "Readme description of the graph."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the federated graph was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the federated graph was last updated."
+    }
+  }
+}

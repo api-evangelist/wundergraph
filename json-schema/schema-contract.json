@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/schema-contract.json",
+  "title": "WunderGraph Cosmo Schema Contract",
+  "description": "A Schema Contract provides a filtered version of a composed federated graph to different consumers based on tag exclusions.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the contract."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the contract."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace the contract belongs to."
+    },
+    "sourceGraphName": {
+      "type": "string",
+      "description": "The source federated graph."
+    },
+    "routingUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The routing URL for the contract graph."
+    },
+    "excludeTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags excluded from the contract schema."
+    },
+    "compositionStatus": {
+      "type": "string",
+      "enum": ["SUCCESS", "FAILURE", "PENDING"],
+      "description": "The current composition status of the contract."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the contract was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the contract was last updated."
+    }
+  }
+}

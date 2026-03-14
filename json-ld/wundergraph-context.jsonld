@@ -1,0 +1,142 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "cosmo": "https://cosmo-docs.wundergraph.com/",
+    "Namespace": {
+      "@id": "cosmo:cli/namespace",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "createdAt": "https://schema.org/dateCreated"
+      }
+    },
+    "FederatedGraph": {
+      "@id": "cosmo:cli/federated-graph",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "namespace": {
+          "@id": "cosmo:cli/namespace",
+          "@type": "@id"
+        },
+        "routingUrl": "https://schema.org/url",
+        "labelMatchers": "https://schema.org/keywords",
+        "compositionStatus": "https://schema.org/status",
+        "lastComposedAt": "https://schema.org/dateModified",
+        "subgraphsCount": "https://schema.org/numberOfItems",
+        "readme": "https://schema.org/description",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "Subgraph": {
+      "@id": "cosmo:cli/subgraph",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "namespace": {
+          "@id": "cosmo:cli/namespace",
+          "@type": "@id"
+        },
+        "routingUrl": "https://schema.org/url",
+        "labels": "https://schema.org/keywords",
+        "subscriptionUrl": "https://schema.org/url",
+        "subscriptionProtocol": "https://schema.org/encodingFormat",
+        "lastPublishedAt": "https://schema.org/datePublished",
+        "readme": "https://schema.org/description",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "Monograph": {
+      "@id": "cosmo:cli/monograph",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "namespace": {
+          "@id": "cosmo:cli/namespace",
+          "@type": "@id"
+        },
+        "routingUrl": "https://schema.org/url",
+        "graphUrl": "https://schema.org/url",
+        "compositionStatus": "https://schema.org/status",
+        "readme": "https://schema.org/description",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "SchemaContract": {
+      "@id": "cosmo:cli/contract",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "namespace": {
+          "@id": "cosmo:cli/namespace",
+          "@type": "@id"
+        },
+        "sourceGraphName": {
+          "@id": "cosmo:cli/federated-graph",
+          "@type": "@id"
+        },
+        "routingUrl": "https://schema.org/url",
+        "excludeTags": "https://schema.org/keywords",
+        "compositionStatus": "https://schema.org/status",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "FeatureFlag": {
+      "@id": "cosmo:cli/feature-flag",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "namespace": {
+          "@id": "cosmo:cli/namespace",
+          "@type": "@id"
+        },
+        "isEnabled": "https://schema.org/status",
+        "featureSubgraphNames": "https://schema.org/hasPart",
+        "labels": "https://schema.org/keywords",
+        "createdAt": "https://schema.org/dateCreated",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "RouterToken": {
+      "@id": "cosmo:cli/router/token",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "createdAt": "https://schema.org/dateCreated",
+        "lastUsedAt": "https://schema.org/dateModified"
+      }
+    },
+    "APIKey": {
+      "@id": "cosmo:cli/auth",
+      "@context": {
+        "name": "https://schema.org/name",
+        "createdAt": "https://schema.org/dateCreated",
+        "expiresAt": "https://schema.org/expires",
+        "lastUsedAt": "https://schema.org/dateModified",
+        "createdBy": "https://schema.org/creator"
+      }
+    },
+    "ChangelogEntry": {
+      "@id": "cosmo:cli/federated-graph/changelog",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "schemaVersionId": "https://schema.org/version",
+        "createdAt": "https://schema.org/dateCreated",
+        "changeType": "https://schema.org/category",
+        "path": "https://schema.org/urlTemplate",
+        "changeMessage": "https://schema.org/description"
+      }
+    },
+    "OperationResponse": {
+      "@id": "https://schema.org/ActionStatusType",
+      "@context": {
+        "success": "https://schema.org/actionStatus",
+        "message": "https://schema.org/description"
+      }
+    }
+  }
+}

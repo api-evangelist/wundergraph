@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/operation-response.json",
+  "title": "WunderGraph Cosmo Operation Response",
+  "description": "A standard response object indicating the success or failure of a platform API operation.",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "Whether the operation was successful."
+    },
+    "message": {
+      "type": "string",
+      "description": "A human-readable response message."
+    }
+  }
+}

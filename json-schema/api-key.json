@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/api-key.json",
+  "title": "WunderGraph Cosmo API Key",
+  "description": "An API Key authenticates CLI and programmatic access to the WunderGraph Cosmo Platform API.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the API key."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the key was created."
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the key expires."
+    },
+    "lastUsedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the key was last used."
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Who created the key."
+    }
+  }
+}

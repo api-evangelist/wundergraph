@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/feature-flag.json",
+  "title": "WunderGraph Cosmo Feature Flag",
+  "description": "A Feature Flag enables gradual rollout of feature subgraphs to federated graphs in the WunderGraph Cosmo platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the feature flag."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the feature flag."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace the feature flag belongs to."
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "description": "Whether the feature flag is currently enabled."
+    },
+    "featureSubgraphNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated feature subgraph names."
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Labels to match federated graphs."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the feature flag was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the feature flag was last updated."
+    }
+  }
+}

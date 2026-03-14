@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/subgraph.json",
+  "title": "WunderGraph Cosmo Subgraph",
+  "description": "A Subgraph is an isolated GraphQL schema that can be independently deployed and managed, composing into federated graphs via label matching.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the subgraph."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the subgraph."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace the subgraph belongs to."
+    },
+    "routingUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL where the subgraph service is hosted."
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Labels attached to the subgraph for matching to federated graphs."
+    },
+    "subscriptionUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for WebSocket-based GraphQL subscriptions if different from the routing URL."
+    },
+    "subscriptionProtocol": {
+      "type": "string",
+      "enum": ["ws", "sse", "sse_post"],
+      "description": "The subscription transport protocol."
+    },
+    "lastPublishedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the schema was last published."
+    },
+    "readme": {
+      "type": "string",
+      "description": "Readme description of the subgraph."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the subgraph was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the subgraph was last updated."
+    }
+  }
+}

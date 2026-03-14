@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/namespace.json",
+  "title": "WunderGraph Cosmo Namespace",
+  "description": "A Namespace provides logical isolation for federated graphs, subgraphs, and other resources within the WunderGraph Cosmo platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the namespace."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the namespace."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the namespace was created."
+    }
+  }
+}

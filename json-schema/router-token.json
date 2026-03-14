@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/router-token.json",
+  "title": "WunderGraph Cosmo Router Token",
+  "description": "A Router Token authenticates a Cosmo Router instance with the WunderGraph Cosmo control plane.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the router token."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the router token."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the token was created."
+    },
+    "lastUsedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the token was last used."
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wundergraph/blob/main/json-schema/monograph.json",
+  "title": "WunderGraph Cosmo Monograph",
+  "description": "A Monograph is a non-federated graph limited to a single subgraph, with GraphQL Federation disabled.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the monograph."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the monograph."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace the monograph belongs to."
+    },
+    "routingUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL where the router is hosted."
+    },
+    "graphUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the GraphQL service."
+    },
+    "compositionStatus": {
+      "type": "string",
+      "enum": ["SUCCESS", "FAILURE", "PENDING"],
+      "description": "The current composition status of the monograph."
+    },
+    "readme": {
+      "type": "string",
+      "description": "Readme description of the monograph."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the monograph was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the monograph was last updated."
+    }
+  }
+}
