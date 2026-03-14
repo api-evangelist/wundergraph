@@ -1,0 +1,1838 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform API
+  description: >-
+    The WunderGraph Cosmo Platform API provides programmatic access to manage
+    federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and
+    Cosmo Studio, enabling management of federated graphs, subgraphs,
+    namespaces, schema contracts, feature flags, router configurations, and API
+    keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the
+    open-source alternative to Apollo GraphOS for full lifecycle GraphQL
+    federation management including schema registry, composition checks,
+    analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://cosmo-cp.wundergraph.com
+    description: WunderGraph Cosmo Cloud Control Plane
+paths:
+  /v1/namespaces:
+    get:
+      operationId: listNamespaces
+      summary: List namespaces
+      description: >-
+        Lists all namespaces within the organization. Namespaces provide
+        logical isolation for federated graphs, subgraphs, and other resources.
+      tags:
+        - Namespaces
+      security:
+        - apiKey: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  namespaces:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Namespace'
+    post:
+      operationId: createNamespace
+      summary: Create a namespace
+      description: >-
+        Creates a new namespace within the organization for organizing
+        federated graphs and subgraphs.
+      tags:
+        - Namespaces
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the namespace to create.
+      responses:
+        '200':
+          description: Namespace created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/namespaces/{name}:
+    delete:
+      operationId: deleteNamespace
+      summary: Delete a namespace
+      description: >-
+        Deletes a namespace and all associated resources including federated
+        graphs and subgraphs.
+      tags:
+        - Namespaces
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the namespace to delete.
+      responses:
+        '200':
+          description: Namespace deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/namespaces/{name}/rename:
+    post:
+      operationId: renameNamespace
+      summary: Rename a namespace
+      description: Renames an existing namespace.
+      tags:
+        - Namespaces
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The current name of the namespace.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - newName
+              properties:
+                newName:
+                  type: string
+                  description: The new name for the namespace.
+      responses:
+        '200':
+          description: Namespace renamed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/federated-graphs:
+    get:
+      operationId: listFederatedGraphs
+      summary: List federated graphs
+      description: >-
+        Lists all federated graphs in the organization, optionally filtered by
+        namespace. Federated graphs represent the composed supergraph made up of
+        multiple subgraphs.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: Filter by namespace name.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of results to return.
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: Number of results to skip.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  graphs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FederatedGraph'
+    post:
+      operationId: createFederatedGraph
+      summary: Create a federated graph
+      description: >-
+        Creates a new federated graph. A federated graph is composed from one or
+        more subgraphs selected by label matchers.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - routingUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the federated graph.
+                namespace:
+                  type: string
+                  description: The namespace for the graph. Defaults to "default".
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The URL where the router is hosted.
+                labelMatchers:
+                  type: array
+                  items:
+                    type: string
+                  description: >-
+                    Label matchers to select subgraphs for composition
+                    (e.g., "team=backend").
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                  description: URL of the admission webhook for schema validation.
+                readme:
+                  type: string
+                  description: A readme description for the federated graph.
+      responses:
+        '200':
+          description: Federated graph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/federated-graphs/{name}:
+    get:
+      operationId: getFederatedGraph
+      summary: Get a federated graph
+      description: Retrieves details of a specific federated graph by name.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FederatedGraph'
+    put:
+      operationId: updateFederatedGraph
+      summary: Update a federated graph
+      description: >-
+        Updates the configuration of an existing federated graph, including its
+        routing URL, label matchers, or admission webhook.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                namespace:
+                  type: string
+                  description: The namespace of the graph.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The new routing URL.
+                labelMatchers:
+                  type: array
+                  items:
+                    type: string
+                  description: Updated label matchers for subgraph selection.
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                  description: Updated admission webhook URL.
+                readme:
+                  type: string
+                  description: Updated readme content.
+      responses:
+        '200':
+          description: Federated graph updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+    delete:
+      operationId: deleteFederatedGraph
+      summary: Delete a federated graph
+      description: >-
+        Deletes a federated graph and its associated configuration from the
+        control plane.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph to delete.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the graph.
+      responses:
+        '200':
+          description: Federated graph deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/federated-graphs/{name}/fetch:
+    get:
+      operationId: fetchFederatedGraphSDL
+      summary: Fetch federated graph SDL
+      description: >-
+        Downloads the latest valid Schema Definition Language (SDL) of a
+        federated graph and all its subgraphs from the control plane.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sdl:
+                    type: string
+                    description: The composed GraphQL SDL of the federated graph.
+                  subgraphs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        sdl:
+                          type: string
+  /v1/federated-graphs/{name}/changelog:
+    get:
+      operationId: getFederatedGraphChangelog
+      summary: Get federated graph changelog
+      description: >-
+        Retrieves the composition changelog for a federated graph showing schema
+        changes over time.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  changelog:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChangelogEntry'
+  /v1/federated-graphs/{name}/move:
+    post:
+      operationId: moveFederatedGraph
+      summary: Move a federated graph to another namespace
+      description: Moves a federated graph from one namespace to another.
+      tags:
+        - Federated Graphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph to move.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - newNamespace
+              properties:
+                namespace:
+                  type: string
+                  description: The current namespace of the graph.
+                newNamespace:
+                  type: string
+                  description: The target namespace to move the graph to.
+      responses:
+        '200':
+          description: Federated graph moved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/subgraphs:
+    get:
+      operationId: listSubgraphs
+      summary: List subgraphs
+      description: >-
+        Lists all subgraphs in the organization, optionally filtered by
+        namespace. Subgraphs are isolated GraphQL schemas that compose into
+        federated graphs.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: Filter by namespace name.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of results to return.
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: Number of results to skip.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subgraphs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subgraph'
+    post:
+      operationId: createSubgraph
+      summary: Create a subgraph
+      description: >-
+        Creates a new subgraph within the Cosmo platform. Subgraphs are
+        isolated GraphQL schemas that can be independently deployed and
+        managed, providing modularity and scalability to your GraphQL APIs.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - routingUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the subgraph.
+                namespace:
+                  type: string
+                  description: The namespace for the subgraph.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: >-
+                    The URL where the subgraph service is hosted for routing
+                    requests.
+                labels:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                  description: >-
+                    Labels for matching subgraphs to federated graphs
+                    (e.g., team=backend).
+                subscriptionUrl:
+                  type: string
+                  format: uri
+                  description: >-
+                    URL for WebSocket-based GraphQL subscriptions if different
+                    from the routing URL.
+                subscriptionProtocol:
+                  type: string
+                  enum:
+                    - ws
+                    - sse
+                    - sse_post
+                  description: The subscription transport protocol.
+                readme:
+                  type: string
+                  description: A readme description for the subgraph.
+      responses:
+        '200':
+          description: Subgraph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/subgraphs/{name}:
+    get:
+      operationId: getSubgraph
+      summary: Get a subgraph
+      description: Retrieves details of a specific subgraph by name.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the subgraph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subgraph'
+    put:
+      operationId: updateSubgraph
+      summary: Update a subgraph
+      description: >-
+        Updates the configuration of an existing subgraph, such as its routing
+        URL, labels, or subscription settings.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                namespace:
+                  type: string
+                  description: The namespace of the subgraph.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The updated routing URL.
+                labels:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                  description: Updated labels for the subgraph.
+                subscriptionUrl:
+                  type: string
+                  format: uri
+                  description: Updated subscription URL.
+                subscriptionProtocol:
+                  type: string
+                  enum:
+                    - ws
+                    - sse
+                    - sse_post
+                  description: Updated subscription protocol.
+                readme:
+                  type: string
+                  description: Updated readme content.
+      responses:
+        '200':
+          description: Subgraph updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+    delete:
+      operationId: deleteSubgraph
+      summary: Delete a subgraph
+      description: >-
+        Deletes a subgraph from the platform. This will trigger recomposition
+        of any federated graphs that included this subgraph.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph to delete.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the subgraph.
+      responses:
+        '200':
+          description: Subgraph deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/subgraphs/{name}/publish:
+    post:
+      operationId: publishSubgraph
+      summary: Publish a subgraph schema
+      description: >-
+        Publishes a new schema for the specified subgraph. This triggers
+        composition checks and updates the federated graphs that include
+        this subgraph.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph to publish.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - schema
+              properties:
+                namespace:
+                  type: string
+                  description: The namespace of the subgraph.
+                schema:
+                  type: string
+                  description: The GraphQL schema SDL content for the subgraph.
+      responses:
+        '200':
+          description: Schema published successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  compositionErrors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        federatedGraphName:
+                          type: string
+                  hasChanged:
+                    type: boolean
+                    description: Whether the schema has changed from the previous version.
+  /v1/subgraphs/{name}/check:
+    post:
+      operationId: checkSubgraph
+      summary: Check a subgraph schema
+      description: >-
+        Checks a subgraph schema for breaking changes and composition errors
+        across all connected federated graphs without publishing. Used for
+        CI/CD validation.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph to check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - schema
+              properties:
+                namespace:
+                  type: string
+                  description: The namespace of the subgraph.
+                schema:
+                  type: string
+                  description: The GraphQL schema SDL to validate.
+      responses:
+        '200':
+          description: Check completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  breakingChanges:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        changeType:
+                          type: string
+                        message:
+                          type: string
+                        path:
+                          type: string
+                  compositionErrors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        federatedGraphName:
+                          type: string
+                  nonBreakingChanges:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        changeType:
+                          type: string
+                        message:
+                          type: string
+                        path:
+                          type: string
+  /v1/subgraphs/{name}/fetch:
+    get:
+      operationId: fetchSubgraphSDL
+      summary: Fetch subgraph SDL
+      description: >-
+        Downloads the latest valid Schema Definition Language (SDL) of a
+        specific subgraph.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the subgraph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sdl:
+                    type: string
+                    description: The GraphQL SDL of the subgraph.
+  /v1/subgraphs/{name}/move:
+    post:
+      operationId: moveSubgraph
+      summary: Move a subgraph to another namespace
+      description: Moves a subgraph from one namespace to another.
+      tags:
+        - Subgraphs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the subgraph to move.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - newNamespace
+              properties:
+                namespace:
+                  type: string
+                  description: The current namespace of the subgraph.
+                newNamespace:
+                  type: string
+                  description: The target namespace.
+      responses:
+        '200':
+          description: Subgraph moved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/monographs:
+    get:
+      operationId: listMonographs
+      summary: List monographs
+      description: >-
+        Lists all monographs in the organization. A monograph is a graph with
+        GraphQL Federation disabled, limited to a single subgraph.
+      tags:
+        - Monographs
+      security:
+        - apiKey: []
+      parameters:
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: Filter by namespace name.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  monographs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Monograph'
+    post:
+      operationId: createMonograph
+      summary: Create a monograph
+      description: >-
+        Creates a new monograph (non-federated, single subgraph graph) in the
+        Cosmo platform.
+      tags:
+        - Monographs
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - routingUrl
+                - graphUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the monograph.
+                namespace:
+                  type: string
+                  description: The namespace for the monograph.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The URL where the router is hosted.
+                graphUrl:
+                  type: string
+                  format: uri
+                  description: The URL of the GraphQL service.
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                  description: URL of the admission webhook.
+                readme:
+                  type: string
+                  description: A readme description for the monograph.
+      responses:
+        '200':
+          description: Monograph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/monographs/{name}:
+    put:
+      operationId: updateMonograph
+      summary: Update a monograph
+      description: Updates the configuration of an existing monograph.
+      tags:
+        - Monographs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the monograph to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                namespace:
+                  type: string
+                routingUrl:
+                  type: string
+                  format: uri
+                graphUrl:
+                  type: string
+                  format: uri
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                readme:
+                  type: string
+      responses:
+        '200':
+          description: Monograph updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+    delete:
+      operationId: deleteMonograph
+      summary: Delete a monograph
+      description: Deletes a monograph from the platform.
+      tags:
+        - Monographs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the monograph to delete.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the monograph.
+      responses:
+        '200':
+          description: Monograph deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/monographs/{name}/publish:
+    post:
+      operationId: publishMonograph
+      summary: Publish a monograph schema
+      description: Publishes a new schema for the specified monograph.
+      tags:
+        - Monographs
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the monograph to publish.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - schema
+              properties:
+                namespace:
+                  type: string
+                schema:
+                  type: string
+                  description: The GraphQL schema SDL content.
+      responses:
+        '200':
+          description: Schema published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/schema-contracts:
+    get:
+      operationId: listSchemaContracts
+      summary: List schema contracts
+      description: >-
+        Lists all schema contracts. Schema contracts let you provide filtered
+        versions of your composed graph to different consumers.
+      tags:
+        - Schema Contracts
+      security:
+        - apiKey: []
+      parameters:
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: Filter by namespace name.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contracts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SchemaContract'
+    post:
+      operationId: createSchemaContract
+      summary: Create a schema contract
+      description: >-
+        Creates a new schema contract that provides a filtered view of a
+        federated graph based on tag exclusions.
+      tags:
+        - Schema Contracts
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - sourceGraphName
+                - routingUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the contract.
+                namespace:
+                  type: string
+                  description: The namespace for the contract.
+                sourceGraphName:
+                  type: string
+                  description: The source federated graph to create a contract from.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The routing URL for the contract graph.
+                excludeTags:
+                  type: array
+                  items:
+                    type: string
+                  description: Tags to exclude from the contract schema.
+                readme:
+                  type: string
+                  description: A readme description for the contract.
+      responses:
+        '200':
+          description: Contract created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/feature-subgraphs:
+    post:
+      operationId: createFeatureSubgraph
+      summary: Create a feature subgraph
+      description: >-
+        Creates a feature subgraph based on an existing subgraph for gradual
+        and experimental feature rollout using feature flags.
+      tags:
+        - Feature Subgraphs
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - baseSubgraphName
+              properties:
+                name:
+                  type: string
+                  description: The name of the feature subgraph.
+                namespace:
+                  type: string
+                  description: The namespace for the feature subgraph.
+                baseSubgraphName:
+                  type: string
+                  description: The name of the base subgraph this feature is based on.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The routing URL for the feature subgraph.
+      responses:
+        '200':
+          description: Feature subgraph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/feature-flags:
+    get:
+      operationId: listFeatureFlags
+      summary: List feature flags
+      description: >-
+        Lists all feature flags in the organization for managing gradual
+        rollout of graph changes.
+      tags:
+        - Feature Flags
+      security:
+        - apiKey: []
+      parameters:
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: Filter by namespace name.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  featureFlags:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FeatureFlag'
+    post:
+      operationId: createFeatureFlag
+      summary: Create a feature flag
+      description: >-
+        Creates a new feature flag for enabling gradual rollout of feature
+        subgraphs to federated graphs.
+      tags:
+        - Feature Flags
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - featureSubgraphNames
+              properties:
+                name:
+                  type: string
+                  description: The name of the feature flag.
+                namespace:
+                  type: string
+                  description: The namespace for the feature flag.
+                featureSubgraphNames:
+                  type: array
+                  items:
+                    type: string
+                  description: List of feature subgraph names to associate with this flag.
+                isEnabled:
+                  type: boolean
+                  description: Whether the feature flag is enabled.
+                labels:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                  description: Labels to match federated graphs.
+      responses:
+        '200':
+          description: Feature flag created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/router/compose:
+    post:
+      operationId: composeRouterConfig
+      summary: Compose router configuration
+      description: >-
+        Generates a router execution configuration for a federated graph. The
+        router configuration is used by the Cosmo Router to serve the composed
+        federated graph.
+      tags:
+        - Router
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - federatedGraphName
+              properties:
+                federatedGraphName:
+                  type: string
+                  description: The name of the federated graph to compose.
+                namespace:
+                  type: string
+                  description: The namespace of the graph.
+      responses:
+        '200':
+          description: Router configuration generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    description: The composed router execution configuration.
+  /v1/router/tokens:
+    get:
+      operationId: listRouterTokens
+      summary: List router tokens
+      description: >-
+        Lists all router tokens for a federated graph. Router tokens are used
+        to authenticate Cosmo Router instances with the control plane.
+      tags:
+        - Router
+      security:
+        - apiKey: []
+      parameters:
+        - name: federatedGraphName
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tokens:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RouterToken'
+    post:
+      operationId: createRouterToken
+      summary: Create a router token
+      description: >-
+        Creates a new router token for authenticating a Cosmo Router instance
+        with the control plane.
+      tags:
+        - Router
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - federatedGraphName
+                - tokenName
+              properties:
+                federatedGraphName:
+                  type: string
+                  description: The name of the federated graph.
+                namespace:
+                  type: string
+                  description: The namespace of the graph.
+                tokenName:
+                  type: string
+                  description: A name for the router token.
+      responses:
+        '200':
+          description: Token created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: The generated router token value.
+  /v1/api-keys:
+    get:
+      operationId: listAPIKeys
+      summary: List API keys
+      description: >-
+        Lists all API keys for the organization. API keys authenticate CLI and
+        programmatic access to the Cosmo Platform API.
+      tags:
+        - API Keys
+      security:
+        - apiKey: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiKeys:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APIKey'
+    post:
+      operationId: createAPIKey
+      summary: Create an API key
+      description: >-
+        Creates a new API key for authenticating with the Cosmo Platform API.
+        Keys can be scoped with specific permissions.
+      tags:
+        - API Keys
+      security:
+        - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: A descriptive name for the API key.
+                expires:
+                  type: string
+                  format: date-time
+                  description: Expiration date for the API key.
+      responses:
+        '200':
+          description: API key created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiKey:
+                    type: string
+                    description: The generated API key value.
+  /v1/api-keys/{name}:
+    delete:
+      operationId: deleteAPIKey
+      summary: Delete an API key
+      description: Deletes an API key by name.
+      tags:
+        - API Keys
+      security:
+        - apiKey: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the API key to delete.
+      responses:
+        '200':
+          description: API key deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/analytics:
+    get:
+      operationId: getAnalytics
+      summary: Get graph analytics
+      description: >-
+        Retrieves analytics data for a federated graph including request
+        metrics, latency, and error rates.
+      tags:
+        - Analytics
+      security:
+        - apiKey: []
+      parameters:
+        - name: federatedGraphName
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          schema:
+            type: string
+          description: The namespace of the graph.
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: Start of the analytics time range.
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: End of the analytics time range.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestSeries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                        totalRequests:
+                          type: integer
+                        erroredRequests:
+                          type: integer
+                  latencyMetrics:
+                    type: object
+                    properties:
+                      p50:
+                        type: number
+                      p95:
+                        type: number
+                      p99:
+                        type: number
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        API key for authenticating with the Cosmo Platform API. Obtain via
+        Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.
+  schemas:
+    Namespace:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the namespace.
+        name:
+          type: string
+          description: The name of the namespace.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the namespace was created.
+    FederatedGraph:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the federated graph.
+        name:
+          type: string
+          description: The name of the federated graph.
+        namespace:
+          type: string
+          description: The namespace the graph belongs to.
+        routingUrl:
+          type: string
+          format: uri
+          description: The URL where the router is hosted.
+        labelMatchers:
+          type: array
+          items:
+            type: string
+          description: Label matchers used to select subgraphs.
+        compositionStatus:
+          type: string
+          enum:
+            - SUCCESS
+            - FAILURE
+            - PENDING
+          description: The current composition status of the graph.
+        lastComposedAt:
+          type: string
+          format: date-time
+          description: When the graph was last successfully composed.
+        subgraphsCount:
+          type: integer
+          description: Number of subgraphs composing the federated graph.
+        readme:
+          type: string
+          description: Readme description of the graph.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Subgraph:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the subgraph.
+        name:
+          type: string
+          description: The name of the subgraph.
+        namespace:
+          type: string
+          description: The namespace the subgraph belongs to.
+        routingUrl:
+          type: string
+          format: uri
+          description: The URL where the subgraph service is hosted.
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+          description: Labels attached to the subgraph.
+        subscriptionUrl:
+          type: string
+          format: uri
+          description: URL for GraphQL subscriptions.
+        subscriptionProtocol:
+          type: string
+          enum:
+            - ws
+            - sse
+            - sse_post
+          description: The subscription transport protocol.
+        lastPublishedAt:
+          type: string
+          format: date-time
+          description: When the schema was last published.
+        readme:
+          type: string
+          description: Readme description of the subgraph.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Monograph:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the monograph.
+        name:
+          type: string
+          description: The name of the monograph.
+        namespace:
+          type: string
+          description: The namespace the monograph belongs to.
+        routingUrl:
+          type: string
+          format: uri
+          description: The URL where the router is hosted.
+        graphUrl:
+          type: string
+          format: uri
+          description: The URL of the GraphQL service.
+        compositionStatus:
+          type: string
+          enum:
+            - SUCCESS
+            - FAILURE
+            - PENDING
+        readme:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    SchemaContract:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the contract.
+        name:
+          type: string
+          description: The name of the contract.
+        namespace:
+          type: string
+          description: The namespace the contract belongs to.
+        sourceGraphName:
+          type: string
+          description: The source federated graph.
+        routingUrl:
+          type: string
+          format: uri
+          description: The routing URL for the contract graph.
+        excludeTags:
+          type: array
+          items:
+            type: string
+          description: Tags excluded from the contract schema.
+        compositionStatus:
+          type: string
+          enum:
+            - SUCCESS
+            - FAILURE
+            - PENDING
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    FeatureFlag:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the feature flag.
+        name:
+          type: string
+          description: The name of the feature flag.
+        namespace:
+          type: string
+          description: The namespace the feature flag belongs to.
+        isEnabled:
+          type: boolean
+          description: Whether the feature flag is currently enabled.
+        featureSubgraphNames:
+          type: array
+          items:
+            type: string
+          description: Associated feature subgraph names.
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    RouterToken:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the router token.
+        name:
+          type: string
+          description: The name of the router token.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the token was created.
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: When the token was last used.
+    APIKey:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the API key.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the key was created.
+        expiresAt:
+          type: string
+          format: date-time
+          description: When the key expires.
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: When the key was last used.
+        createdBy:
+          type: string
+          description: Who created the key.
+    ChangelogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the changelog entry.
+        schemaVersionId:
+          type: string
+          description: The schema version associated with this change.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the change occurred.
+        changeType:
+          type: string
+          description: The type of schema change.
+        path:
+          type: string
+          description: The schema path that changed.
+        changeMessage:
+          type: string
+          description: Description of the change.
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
+tags:
+  - name: Namespaces
+    description: Manage namespaces for organizing graphs and subgraphs.
+  - name: Federated Graphs
+    description: >-
+      Manage federated graphs composed from multiple subgraphs using label
+      matchers.
+  - name: Subgraphs
+    description: >-
+      Manage subgraphs - isolated GraphQL schemas that compose into federated
+      graphs.
+  - name: Monographs
+    description: >-
+      Manage monographs - non-federated graphs limited to a single subgraph.
+  - name: Schema Contracts
+    description: >-
+      Manage schema contracts for providing filtered graph views to different
+      consumers.
+  - name: Feature Subgraphs
+    description: Manage feature subgraphs for experimental feature development.
+  - name: Feature Flags
+    description: Manage feature flags for gradual rollout of graph changes.
+  - name: Router
+    description: Manage router configuration and authentication tokens.
+  - name: API Keys
+    description: Manage API keys for platform authentication.
+  - name: Analytics
+    description: Access graph analytics, metrics, and performance data.
