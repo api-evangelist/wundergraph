@@ -1809,30 +1809,30 @@ components:
           type: string
           description: A human-readable response message.
 tags:
-  - name: Namespaces
-    description: Manage namespaces for organizing graphs and subgraphs.
+  - name: Analytics
+    description: Access graph analytics, metrics, and performance data.
+  - name: API Keys
+    description: Manage API keys for platform authentication.
+  - name: Feature Flags
+    description: Manage feature flags for gradual rollout of graph changes.
+  - name: Feature Subgraphs
+    description: Manage feature subgraphs for experimental feature development.
   - name: Federated Graphs
     description: >-
       Manage federated graphs composed from multiple subgraphs using label
       matchers.
-  - name: Subgraphs
-    description: >-
-      Manage subgraphs - isolated GraphQL schemas that compose into federated
-      graphs.
   - name: Monographs
     description: >-
       Manage monographs - non-federated graphs limited to a single subgraph.
+  - name: Namespaces
+    description: Manage namespaces for organizing graphs and subgraphs.
+  - name: Router
+    description: Manage router configuration and authentication tokens.
   - name: Schema Contracts
     description: >-
       Manage schema contracts for providing filtered graph views to different
       consumers.
-  - name: Feature Subgraphs
-    description: Manage feature subgraphs for experimental feature development.
-  - name: Feature Flags
-    description: Manage feature flags for gradual rollout of graph changes.
-  - name: Router
-    description: Manage router configuration and authentication tokens.
-  - name: API Keys
-    description: Manage API keys for platform authentication.
-  - name: Analytics
-    description: Access graph analytics, metrics, and performance data.
+  - name: Subgraphs
+    description: >-
+      Manage subgraphs - isolated GraphQL schemas that compose into federated
+      graphs.

@@ -5,12 +5,12 @@ apis:
   - aid: wundergraph:cosmo-platform
     name: WunderGraph Cosmo Platform API
     tags:
+      - Analytics
+      - Composition
       - Federation
       - GraphQL
       - Management
       - Schema Registry
-      - Composition
-      - Analytics
     humanURL: https://cosmo-docs.wundergraph.com/
     properties:
       - url: https://cosmo-docs.wundergraph.com/
