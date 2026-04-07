@@ -24,7 +24,7 @@ paths:
   /v1/namespaces:
     get:
       operationId: listNamespaces
-      summary: List namespaces
+      summary: WunderGraph List namespaces
       description: >-
         Lists all namespaces within the organization. Namespaces provide
         logical isolation for federated graphs, subgraphs, and other resources.
@@ -46,7 +46,7 @@ paths:
                       $ref: '#/components/schemas/Namespace'
     post:
       operationId: createNamespace
-      summary: Create a namespace
+      summary: WunderGraph Create a namespace
       description: >-
         Creates a new namespace within the organization for organizing
         federated graphs and subgraphs.
@@ -76,7 +76,7 @@ paths:
   /v1/namespaces/{name}:
     delete:
       operationId: deleteNamespace
-      summary: Delete a namespace
+      summary: WunderGraph Delete a namespace
       description: >-
         Deletes a namespace and all associated resources including federated
         graphs and subgraphs.
@@ -101,7 +101,7 @@ paths:
   /v1/namespaces/{name}/rename:
     post:
       operationId: renameNamespace
-      summary: Rename a namespace
+      summary: WunderGraph Rename a namespace
       description: Renames an existing namespace.
       tags:
         - Namespaces
@@ -136,7 +136,7 @@ paths:
   /v1/federated-graphs:
     get:
       operationId: listFederatedGraphs
-      summary: List federated graphs
+      summary: WunderGraph List federated graphs
       description: >-
         Lists all federated graphs in the organization, optionally filtered by
         namespace. Federated graphs represent the composed supergraph made up of
@@ -175,7 +175,7 @@ paths:
                       $ref: '#/components/schemas/FederatedGraph'
     post:
       operationId: createFederatedGraph
-      summary: Create a federated graph
+      summary: WunderGraph Create a federated graph
       description: >-
         Creates a new federated graph. A federated graph is composed from one or
         more subgraphs selected by label matchers.
@@ -227,7 +227,7 @@ paths:
   /v1/federated-graphs/{name}:
     get:
       operationId: getFederatedGraph
-      summary: Get a federated graph
+      summary: WunderGraph Get a federated graph
       description: Retrieves details of a specific federated graph by name.
       tags:
         - Federated Graphs
@@ -254,7 +254,7 @@ paths:
                 $ref: '#/components/schemas/FederatedGraph'
     put:
       operationId: updateFederatedGraph
-      summary: Update a federated graph
+      summary: WunderGraph Update a federated graph
       description: >-
         Updates the configuration of an existing federated graph, including its
         routing URL, label matchers, or admission webhook.
@@ -304,7 +304,7 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
     delete:
       operationId: deleteFederatedGraph
-      summary: Delete a federated graph
+      summary: WunderGraph Delete a federated graph
       description: >-
         Deletes a federated graph and its associated configuration from the
         control plane.
@@ -334,7 +334,7 @@ paths:
   /v1/federated-graphs/{name}/fetch:
     get:
       operationId: fetchFederatedGraphSDL
-      summary: Fetch federated graph SDL
+      summary: WunderGraph Fetch federated graph SDL
       description: >-
         Downloads the latest valid Schema Definition Language (SDL) of a
         federated graph and all its subgraphs from the control plane.
@@ -377,7 +377,7 @@ paths:
   /v1/federated-graphs/{name}/changelog:
     get:
       operationId: getFederatedGraphChangelog
-      summary: Get federated graph changelog
+      summary: WunderGraph Get federated graph changelog
       description: >-
         Retrieves the composition changelog for a federated graph showing schema
         changes over time.
@@ -412,7 +412,7 @@ paths:
   /v1/federated-graphs/{name}/move:
     post:
       operationId: moveFederatedGraph
-      summary: Move a federated graph to another namespace
+      summary: WunderGraph Move a federated graph to another namespace
       description: Moves a federated graph from one namespace to another.
       tags:
         - Federated Graphs
@@ -450,7 +450,7 @@ paths:
   /v1/subgraphs:
     get:
       operationId: listSubgraphs
-      summary: List subgraphs
+      summary: WunderGraph List subgraphs
       description: >-
         Lists all subgraphs in the organization, optionally filtered by
         namespace. Subgraphs are isolated GraphQL schemas that compose into
@@ -489,7 +489,7 @@ paths:
                       $ref: '#/components/schemas/Subgraph'
     post:
       operationId: createSubgraph
-      summary: Create a subgraph
+      summary: WunderGraph Create a subgraph
       description: >-
         Creates a new subgraph within the Cosmo platform. Subgraphs are
         isolated GraphQL schemas that can be independently deployed and
@@ -558,7 +558,7 @@ paths:
   /v1/subgraphs/{name}:
     get:
       operationId: getSubgraph
-      summary: Get a subgraph
+      summary: WunderGraph Get a subgraph
       description: Retrieves details of a specific subgraph by name.
       tags:
         - Subgraphs
@@ -585,7 +585,7 @@ paths:
                 $ref: '#/components/schemas/Subgraph'
     put:
       operationId: updateSubgraph
-      summary: Update a subgraph
+      summary: WunderGraph Update a subgraph
       description: >-
         Updates the configuration of an existing subgraph, such as its routing
         URL, labels, or subscription settings.
@@ -647,7 +647,7 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
     delete:
       operationId: deleteSubgraph
-      summary: Delete a subgraph
+      summary: WunderGraph Delete a subgraph
       description: >-
         Deletes a subgraph from the platform. This will trigger recomposition
         of any federated graphs that included this subgraph.
@@ -677,7 +677,7 @@ paths:
   /v1/subgraphs/{name}/publish:
     post:
       operationId: publishSubgraph
-      summary: Publish a subgraph schema
+      summary: WunderGraph Publish a subgraph schema
       description: >-
         Publishes a new schema for the specified subgraph. This triggers
         composition checks and updates the federated graphs that include
@@ -731,7 +731,7 @@ paths:
   /v1/subgraphs/{name}/check:
     post:
       operationId: checkSubgraph
-      summary: Check a subgraph schema
+      summary: WunderGraph Check a subgraph schema
       description: >-
         Checks a subgraph schema for breaking changes and composition errors
         across all connected federated graphs without publishing. Used for
@@ -804,7 +804,7 @@ paths:
   /v1/subgraphs/{name}/fetch:
     get:
       operationId: fetchSubgraphSDL
-      summary: Fetch subgraph SDL
+      summary: WunderGraph Fetch subgraph SDL
       description: >-
         Downloads the latest valid Schema Definition Language (SDL) of a
         specific subgraph.
@@ -838,7 +838,7 @@ paths:
   /v1/subgraphs/{name}/move:
     post:
       operationId: moveSubgraph
-      summary: Move a subgraph to another namespace
+      summary: WunderGraph Move a subgraph to another namespace
       description: Moves a subgraph from one namespace to another.
       tags:
         - Subgraphs
@@ -876,7 +876,7 @@ paths:
   /v1/monographs:
     get:
       operationId: listMonographs
-      summary: List monographs
+      summary: WunderGraph List monographs
       description: >-
         Lists all monographs in the organization. A monograph is a graph with
         GraphQL Federation disabled, limited to a single subgraph.
@@ -904,7 +904,7 @@ paths:
                       $ref: '#/components/schemas/Monograph'
     post:
       operationId: createMonograph
-      summary: Create a monograph
+      summary: WunderGraph Create a monograph
       description: >-
         Creates a new monograph (non-federated, single subgraph graph) in the
         Cosmo platform.
@@ -954,7 +954,7 @@ paths:
   /v1/monographs/{name}:
     put:
       operationId: updateMonograph
-      summary: Update a monograph
+      summary: WunderGraph Update a monograph
       description: Updates the configuration of an existing monograph.
       tags:
         - Monographs
@@ -996,7 +996,7 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
     delete:
       operationId: deleteMonograph
-      summary: Delete a monograph
+      summary: WunderGraph Delete a monograph
       description: Deletes a monograph from the platform.
       tags:
         - Monographs
@@ -1024,7 +1024,7 @@ paths:
   /v1/monographs/{name}/publish:
     post:
       operationId: publishMonograph
-      summary: Publish a monograph schema
+      summary: WunderGraph Publish a monograph schema
       description: Publishes a new schema for the specified monograph.
       tags:
         - Monographs
@@ -1061,7 +1061,7 @@ paths:
   /v1/schema-contracts:
     get:
       operationId: listSchemaContracts
-      summary: List schema contracts
+      summary: WunderGraph List schema contracts
       description: >-
         Lists all schema contracts. Schema contracts let you provide filtered
         versions of your composed graph to different consumers.
@@ -1089,7 +1089,7 @@ paths:
                       $ref: '#/components/schemas/SchemaContract'
     post:
       operationId: createSchemaContract
-      summary: Create a schema contract
+      summary: WunderGraph Create a schema contract
       description: >-
         Creates a new schema contract that provides a filtered view of a
         federated graph based on tag exclusions.
@@ -1139,7 +1139,7 @@ paths:
   /v1/feature-subgraphs:
     post:
       operationId: createFeatureSubgraph
-      summary: Create a feature subgraph
+      summary: WunderGraph Create a feature subgraph
       description: >-
         Creates a feature subgraph based on an existing subgraph for gradual
         and experimental feature rollout using feature flags.
@@ -1180,7 +1180,7 @@ paths:
   /v1/feature-flags:
     get:
       operationId: listFeatureFlags
-      summary: List feature flags
+      summary: WunderGraph List feature flags
       description: >-
         Lists all feature flags in the organization for managing gradual
         rollout of graph changes.
@@ -1208,7 +1208,7 @@ paths:
                       $ref: '#/components/schemas/FeatureFlag'
     post:
       operationId: createFeatureFlag
-      summary: Create a feature flag
+      summary: WunderGraph Create a feature flag
       description: >-
         Creates a new feature flag for enabling gradual rollout of feature
         subgraphs to federated graphs.
@@ -1260,7 +1260,7 @@ paths:
   /v1/router/compose:
     post:
       operationId: composeRouterConfig
-      summary: Compose router configuration
+      summary: WunderGraph Compose router configuration
       description: >-
         Generates a router execution configuration for a federated graph. The
         router configuration is used by the Cosmo Router to serve the composed
@@ -1298,7 +1298,7 @@ paths:
   /v1/router/tokens:
     get:
       operationId: listRouterTokens
-      summary: List router tokens
+      summary: WunderGraph List router tokens
       description: >-
         Lists all router tokens for a federated graph. Router tokens are used
         to authenticate Cosmo Router instances with the control plane.
@@ -1332,7 +1332,7 @@ paths:
                       $ref: '#/components/schemas/RouterToken'
     post:
       operationId: createRouterToken
-      summary: Create a router token
+      summary: WunderGraph Create a router token
       description: >-
         Creates a new router token for authenticating a Cosmo Router instance
         with the control plane.
@@ -1373,7 +1373,7 @@ paths:
   /v1/api-keys:
     get:
       operationId: listAPIKeys
-      summary: List API keys
+      summary: WunderGraph List API keys
       description: >-
         Lists all API keys for the organization. API keys authenticate CLI and
         programmatic access to the Cosmo Platform API.
@@ -1395,7 +1395,7 @@ paths:
                       $ref: '#/components/schemas/APIKey'
     post:
       operationId: createAPIKey
-      summary: Create an API key
+      summary: WunderGraph Create an API key
       description: >-
         Creates a new API key for authenticating with the Cosmo Platform API.
         Keys can be scoped with specific permissions.
@@ -1433,7 +1433,7 @@ paths:
   /v1/api-keys/{name}:
     delete:
       operationId: deleteAPIKey
-      summary: Delete an API key
+      summary: WunderGraph Delete an API key
       description: Deletes an API key by name.
       tags:
         - API Keys
@@ -1456,7 +1456,7 @@ paths:
   /v1/analytics:
     get:
       operationId: getAnalytics
-      summary: Get graph analytics
+      summary: WunderGraph Get graph analytics
       description: >-
         Retrieves analytics data for a federated graph including request
         metrics, latency, and error rates.
