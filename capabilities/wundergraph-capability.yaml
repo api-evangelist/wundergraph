@@ -1,0 +1,1674 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WunderGraph Cosmo Platform API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at
+    scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces,
+    schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON
+    support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including
+    schema registry, composition checks, analytics, metrics, tracing, and routing.
+  tags:
+  - Wundergraph
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: wundergraph
+    baseUri: https://cosmo-cp.wundergraph.com
+    description: WunderGraph Cosmo Platform API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: Authorization
+      value: '{{WUNDERGRAPH_TOKEN}}'
+    resources:
+    - name: v1-namespaces
+      path: /v1/namespaces
+      operations:
+      - name: listnamespaces
+        method: GET
+        description: WunderGraph List namespaces
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createnamespace
+        method: POST
+        description: WunderGraph Create a namespace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-namespaces-name
+      path: /v1/namespaces/{name}
+      operations:
+      - name: deletenamespace
+        method: DELETE
+        description: WunderGraph Delete a namespace
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the namespace to delete.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-namespaces-name-rename
+      path: /v1/namespaces/{name}/rename
+      operations:
+      - name: renamenamespace
+        method: POST
+        description: WunderGraph Rename a namespace
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The current name of the namespace.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-federated-graphs
+      path: /v1/federated-graphs
+      operations:
+      - name: listfederatedgraphs
+        method: GET
+        description: WunderGraph List federated graphs
+        inputParameters:
+        - name: namespace
+          in: query
+          type: string
+          description: Filter by namespace name.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Number of results to skip.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createfederatedgraph
+        method: POST
+        description: WunderGraph Create a federated graph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-federated-graphs-name
+      path: /v1/federated-graphs/{name}
+      operations:
+      - name: getfederatedgraph
+        method: GET
+        description: WunderGraph Get a federated graph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatefederatedgraph
+        method: PUT
+        description: WunderGraph Update a federated graph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the federated graph to update.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletefederatedgraph
+        method: DELETE
+        description: WunderGraph Delete a federated graph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the federated graph to delete.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-federated-graphs-name-fetch
+      path: /v1/federated-graphs/{name}/fetch
+      operations:
+      - name: fetchfederatedgraphsdl
+        method: GET
+        description: WunderGraph Fetch federated graph SDL
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-federated-graphs-name-changelog
+      path: /v1/federated-graphs/{name}/changelog
+      operations:
+      - name: getfederatedgraphchangelog
+        method: GET
+        description: WunderGraph Get federated graph changelog
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-federated-graphs-name-move
+      path: /v1/federated-graphs/{name}/move
+      operations:
+      - name: movefederatedgraph
+        method: POST
+        description: WunderGraph Move a federated graph to another namespace
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the federated graph to move.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-subgraphs
+      path: /v1/subgraphs
+      operations:
+      - name: listsubgraphs
+        method: GET
+        description: WunderGraph List subgraphs
+        inputParameters:
+        - name: namespace
+          in: query
+          type: string
+          description: Filter by namespace name.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Number of results to skip.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsubgraph
+        method: POST
+        description: WunderGraph Create a subgraph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-subgraphs-name
+      path: /v1/subgraphs/{name}
+      operations:
+      - name: getsubgraph
+        method: GET
+        description: WunderGraph Get a subgraph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the subgraph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesubgraph
+        method: PUT
+        description: WunderGraph Update a subgraph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph to update.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletesubgraph
+        method: DELETE
+        description: WunderGraph Delete a subgraph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph to delete.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the subgraph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-subgraphs-name-publish
+      path: /v1/subgraphs/{name}/publish
+      operations:
+      - name: publishsubgraph
+        method: POST
+        description: WunderGraph Publish a subgraph schema
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph to publish.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-subgraphs-name-check
+      path: /v1/subgraphs/{name}/check
+      operations:
+      - name: checksubgraph
+        method: POST
+        description: WunderGraph Check a subgraph schema
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph to check.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-subgraphs-name-fetch
+      path: /v1/subgraphs/{name}/fetch
+      operations:
+      - name: fetchsubgraphsdl
+        method: GET
+        description: WunderGraph Fetch subgraph SDL
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the subgraph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-subgraphs-name-move
+      path: /v1/subgraphs/{name}/move
+      operations:
+      - name: movesubgraph
+        method: POST
+        description: WunderGraph Move a subgraph to another namespace
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the subgraph to move.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-monographs
+      path: /v1/monographs
+      operations:
+      - name: listmonographs
+        method: GET
+        description: WunderGraph List monographs
+        inputParameters:
+        - name: namespace
+          in: query
+          type: string
+          description: Filter by namespace name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmonograph
+        method: POST
+        description: WunderGraph Create a monograph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-monographs-name
+      path: /v1/monographs/{name}
+      operations:
+      - name: updatemonograph
+        method: PUT
+        description: WunderGraph Update a monograph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the monograph to update.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemonograph
+        method: DELETE
+        description: WunderGraph Delete a monograph
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the monograph to delete.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the monograph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-monographs-name-publish
+      path: /v1/monographs/{name}/publish
+      operations:
+      - name: publishmonograph
+        method: POST
+        description: WunderGraph Publish a monograph schema
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the monograph to publish.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-schema-contracts
+      path: /v1/schema-contracts
+      operations:
+      - name: listschemacontracts
+        method: GET
+        description: WunderGraph List schema contracts
+        inputParameters:
+        - name: namespace
+          in: query
+          type: string
+          description: Filter by namespace name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createschemacontract
+        method: POST
+        description: WunderGraph Create a schema contract
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-feature-subgraphs
+      path: /v1/feature-subgraphs
+      operations:
+      - name: createfeaturesubgraph
+        method: POST
+        description: WunderGraph Create a feature subgraph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-feature-flags
+      path: /v1/feature-flags
+      operations:
+      - name: listfeatureflags
+        method: GET
+        description: WunderGraph List feature flags
+        inputParameters:
+        - name: namespace
+          in: query
+          type: string
+          description: Filter by namespace name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createfeatureflag
+        method: POST
+        description: WunderGraph Create a feature flag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-router-compose
+      path: /v1/router/compose
+      operations:
+      - name: composerouterconfig
+        method: POST
+        description: WunderGraph Compose router configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-router-tokens
+      path: /v1/router/tokens
+      operations:
+      - name: listroutertokens
+        method: GET
+        description: WunderGraph List router tokens
+        inputParameters:
+        - name: federatedGraphName
+          in: query
+          type: string
+          required: true
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createroutertoken
+        method: POST
+        description: WunderGraph Create a router token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-api-keys
+      path: /v1/api-keys
+      operations:
+      - name: listapikeys
+        method: GET
+        description: WunderGraph List API keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapikey
+        method: POST
+        description: WunderGraph Create an API key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-api-keys-name
+      path: /v1/api-keys/{name}
+      operations:
+      - name: deleteapikey
+        method: DELETE
+        description: WunderGraph Delete an API key
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the API key to delete.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-analytics
+      path: /v1/analytics
+      operations:
+      - name: getanalytics
+        method: GET
+        description: WunderGraph Get graph analytics
+        inputParameters:
+        - name: federatedGraphName
+          in: query
+          type: string
+          required: true
+          description: The name of the federated graph.
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+        - name: startDate
+          in: query
+          type: string
+          description: Start of the analytics time range.
+        - name: endDate
+          in: query
+          type: string
+          description: End of the analytics time range.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: wundergraph-rest
+    description: REST adapter for WunderGraph Cosmo Platform API.
+    resources:
+    - path: /v1/namespaces
+      name: listnamespaces
+      operations:
+      - method: GET
+        name: listnamespaces
+        description: WunderGraph List namespaces
+        call: wundergraph.listnamespaces
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/namespaces
+      name: createnamespace
+      operations:
+      - method: POST
+        name: createnamespace
+        description: WunderGraph Create a namespace
+        call: wundergraph.createnamespace
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/namespaces/{name}
+      name: deletenamespace
+      operations:
+      - method: DELETE
+        name: deletenamespace
+        description: WunderGraph Delete a namespace
+        call: wundergraph.deletenamespace
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/namespaces/{name}/rename
+      name: renamenamespace
+      operations:
+      - method: POST
+        name: renamenamespace
+        description: WunderGraph Rename a namespace
+        call: wundergraph.renamenamespace
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs
+      name: listfederatedgraphs
+      operations:
+      - method: GET
+        name: listfederatedgraphs
+        description: WunderGraph List federated graphs
+        call: wundergraph.listfederatedgraphs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs
+      name: createfederatedgraph
+      operations:
+      - method: POST
+        name: createfederatedgraph
+        description: WunderGraph Create a federated graph
+        call: wundergraph.createfederatedgraph
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs/{name}
+      name: getfederatedgraph
+      operations:
+      - method: GET
+        name: getfederatedgraph
+        description: WunderGraph Get a federated graph
+        call: wundergraph.getfederatedgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs/{name}
+      name: updatefederatedgraph
+      operations:
+      - method: PUT
+        name: updatefederatedgraph
+        description: WunderGraph Update a federated graph
+        call: wundergraph.updatefederatedgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs/{name}
+      name: deletefederatedgraph
+      operations:
+      - method: DELETE
+        name: deletefederatedgraph
+        description: WunderGraph Delete a federated graph
+        call: wundergraph.deletefederatedgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs/{name}/fetch
+      name: fetchfederatedgraphsdl
+      operations:
+      - method: GET
+        name: fetchfederatedgraphsdl
+        description: WunderGraph Fetch federated graph SDL
+        call: wundergraph.fetchfederatedgraphsdl
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs/{name}/changelog
+      name: getfederatedgraphchangelog
+      operations:
+      - method: GET
+        name: getfederatedgraphchangelog
+        description: WunderGraph Get federated graph changelog
+        call: wundergraph.getfederatedgraphchangelog
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/federated-graphs/{name}/move
+      name: movefederatedgraph
+      operations:
+      - method: POST
+        name: movefederatedgraph
+        description: WunderGraph Move a federated graph to another namespace
+        call: wundergraph.movefederatedgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs
+      name: listsubgraphs
+      operations:
+      - method: GET
+        name: listsubgraphs
+        description: WunderGraph List subgraphs
+        call: wundergraph.listsubgraphs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs
+      name: createsubgraph
+      operations:
+      - method: POST
+        name: createsubgraph
+        description: WunderGraph Create a subgraph
+        call: wundergraph.createsubgraph
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}
+      name: getsubgraph
+      operations:
+      - method: GET
+        name: getsubgraph
+        description: WunderGraph Get a subgraph
+        call: wundergraph.getsubgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}
+      name: updatesubgraph
+      operations:
+      - method: PUT
+        name: updatesubgraph
+        description: WunderGraph Update a subgraph
+        call: wundergraph.updatesubgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}
+      name: deletesubgraph
+      operations:
+      - method: DELETE
+        name: deletesubgraph
+        description: WunderGraph Delete a subgraph
+        call: wundergraph.deletesubgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}/publish
+      name: publishsubgraph
+      operations:
+      - method: POST
+        name: publishsubgraph
+        description: WunderGraph Publish a subgraph schema
+        call: wundergraph.publishsubgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}/check
+      name: checksubgraph
+      operations:
+      - method: POST
+        name: checksubgraph
+        description: WunderGraph Check a subgraph schema
+        call: wundergraph.checksubgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}/fetch
+      name: fetchsubgraphsdl
+      operations:
+      - method: GET
+        name: fetchsubgraphsdl
+        description: WunderGraph Fetch subgraph SDL
+        call: wundergraph.fetchsubgraphsdl
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subgraphs/{name}/move
+      name: movesubgraph
+      operations:
+      - method: POST
+        name: movesubgraph
+        description: WunderGraph Move a subgraph to another namespace
+        call: wundergraph.movesubgraph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monographs
+      name: listmonographs
+      operations:
+      - method: GET
+        name: listmonographs
+        description: WunderGraph List monographs
+        call: wundergraph.listmonographs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monographs
+      name: createmonograph
+      operations:
+      - method: POST
+        name: createmonograph
+        description: WunderGraph Create a monograph
+        call: wundergraph.createmonograph
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monographs/{name}
+      name: updatemonograph
+      operations:
+      - method: PUT
+        name: updatemonograph
+        description: WunderGraph Update a monograph
+        call: wundergraph.updatemonograph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monographs/{name}
+      name: deletemonograph
+      operations:
+      - method: DELETE
+        name: deletemonograph
+        description: WunderGraph Delete a monograph
+        call: wundergraph.deletemonograph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monographs/{name}/publish
+      name: publishmonograph
+      operations:
+      - method: POST
+        name: publishmonograph
+        description: WunderGraph Publish a monograph schema
+        call: wundergraph.publishmonograph
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/schema-contracts
+      name: listschemacontracts
+      operations:
+      - method: GET
+        name: listschemacontracts
+        description: WunderGraph List schema contracts
+        call: wundergraph.listschemacontracts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/schema-contracts
+      name: createschemacontract
+      operations:
+      - method: POST
+        name: createschemacontract
+        description: WunderGraph Create a schema contract
+        call: wundergraph.createschemacontract
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/feature-subgraphs
+      name: createfeaturesubgraph
+      operations:
+      - method: POST
+        name: createfeaturesubgraph
+        description: WunderGraph Create a feature subgraph
+        call: wundergraph.createfeaturesubgraph
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/feature-flags
+      name: listfeatureflags
+      operations:
+      - method: GET
+        name: listfeatureflags
+        description: WunderGraph List feature flags
+        call: wundergraph.listfeatureflags
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/feature-flags
+      name: createfeatureflag
+      operations:
+      - method: POST
+        name: createfeatureflag
+        description: WunderGraph Create a feature flag
+        call: wundergraph.createfeatureflag
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/router/compose
+      name: composerouterconfig
+      operations:
+      - method: POST
+        name: composerouterconfig
+        description: WunderGraph Compose router configuration
+        call: wundergraph.composerouterconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/router/tokens
+      name: listroutertokens
+      operations:
+      - method: GET
+        name: listroutertokens
+        description: WunderGraph List router tokens
+        call: wundergraph.listroutertokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/router/tokens
+      name: createroutertoken
+      operations:
+      - method: POST
+        name: createroutertoken
+        description: WunderGraph Create a router token
+        call: wundergraph.createroutertoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-keys
+      name: listapikeys
+      operations:
+      - method: GET
+        name: listapikeys
+        description: WunderGraph List API keys
+        call: wundergraph.listapikeys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-keys
+      name: createapikey
+      operations:
+      - method: POST
+        name: createapikey
+        description: WunderGraph Create an API key
+        call: wundergraph.createapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-keys/{name}
+      name: deleteapikey
+      operations:
+      - method: DELETE
+        name: deleteapikey
+        description: WunderGraph Delete an API key
+        call: wundergraph.deleteapikey
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics
+      name: getanalytics
+      operations:
+      - method: GET
+        name: getanalytics
+        description: WunderGraph Get graph analytics
+        call: wundergraph.getanalytics
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: wundergraph-mcp
+    transport: http
+    description: MCP adapter for WunderGraph Cosmo Platform API for AI agent use.
+    tools:
+    - name: listnamespaces
+      description: WunderGraph List namespaces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listnamespaces
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createnamespace
+      description: WunderGraph Create a namespace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createnamespace
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletenamespace
+      description: WunderGraph Delete a namespace
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wundergraph.deletenamespace
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the namespace to delete.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: renamenamespace
+      description: WunderGraph Rename a namespace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.renamenamespace
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The current name of the namespace.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfederatedgraphs
+      description: WunderGraph List federated graphs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listfederatedgraphs
+      with:
+        namespace: tools.namespace
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: namespace
+        type: string
+        description: Filter by namespace name.
+      - name: limit
+        type: integer
+        description: Maximum number of results to return.
+      - name: offset
+        type: integer
+        description: Number of results to skip.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createfederatedgraph
+      description: WunderGraph Create a federated graph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createfederatedgraph
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getfederatedgraph
+      description: WunderGraph Get a federated graph
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.getfederatedgraph
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the federated graph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the graph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatefederatedgraph
+      description: WunderGraph Update a federated graph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wundergraph.updatefederatedgraph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the federated graph to update.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletefederatedgraph
+      description: WunderGraph Delete a federated graph
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wundergraph.deletefederatedgraph
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the federated graph to delete.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the graph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetchfederatedgraphsdl
+      description: WunderGraph Fetch federated graph SDL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.fetchfederatedgraphsdl
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the federated graph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the graph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getfederatedgraphchangelog
+      description: WunderGraph Get federated graph changelog
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.getfederatedgraphchangelog
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the federated graph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the graph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: movefederatedgraph
+      description: WunderGraph Move a federated graph to another namespace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.movefederatedgraph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the federated graph to move.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsubgraphs
+      description: WunderGraph List subgraphs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listsubgraphs
+      with:
+        namespace: tools.namespace
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: namespace
+        type: string
+        description: Filter by namespace name.
+      - name: limit
+        type: integer
+        description: Maximum number of results to return.
+      - name: offset
+        type: integer
+        description: Number of results to skip.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createsubgraph
+      description: WunderGraph Create a subgraph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createsubgraph
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getsubgraph
+      description: WunderGraph Get a subgraph
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.getsubgraph
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the subgraph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatesubgraph
+      description: WunderGraph Update a subgraph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wundergraph.updatesubgraph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph to update.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletesubgraph
+      description: WunderGraph Delete a subgraph
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wundergraph.deletesubgraph
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph to delete.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the subgraph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publishsubgraph
+      description: WunderGraph Publish a subgraph schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.publishsubgraph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph to publish.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: checksubgraph
+      description: WunderGraph Check a subgraph schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.checksubgraph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph to check.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetchsubgraphsdl
+      description: WunderGraph Fetch subgraph SDL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.fetchsubgraphsdl
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the subgraph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: movesubgraph
+      description: WunderGraph Move a subgraph to another namespace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.movesubgraph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the subgraph to move.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmonographs
+      description: WunderGraph List monographs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listmonographs
+      with:
+        namespace: tools.namespace
+      inputParameters:
+      - name: namespace
+        type: string
+        description: Filter by namespace name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmonograph
+      description: WunderGraph Create a monograph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createmonograph
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatemonograph
+      description: WunderGraph Update a monograph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wundergraph.updatemonograph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the monograph to update.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemonograph
+      description: WunderGraph Delete a monograph
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wundergraph.deletemonograph
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the monograph to delete.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the monograph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publishmonograph
+      description: WunderGraph Publish a monograph schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.publishmonograph
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the monograph to publish.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listschemacontracts
+      description: WunderGraph List schema contracts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listschemacontracts
+      with:
+        namespace: tools.namespace
+      inputParameters:
+      - name: namespace
+        type: string
+        description: Filter by namespace name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createschemacontract
+      description: WunderGraph Create a schema contract
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createschemacontract
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createfeaturesubgraph
+      description: WunderGraph Create a feature subgraph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createfeaturesubgraph
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfeatureflags
+      description: WunderGraph List feature flags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listfeatureflags
+      with:
+        namespace: tools.namespace
+      inputParameters:
+      - name: namespace
+        type: string
+        description: Filter by namespace name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createfeatureflag
+      description: WunderGraph Create a feature flag
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createfeatureflag
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: composerouterconfig
+      description: WunderGraph Compose router configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.composerouterconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listroutertokens
+      description: WunderGraph List router tokens
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listroutertokens
+      with:
+        federatedGraphName: tools.federatedGraphName
+        namespace: tools.namespace
+      inputParameters:
+      - name: federatedGraphName
+        type: string
+        description: The name of the federated graph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the graph.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createroutertoken
+      description: WunderGraph Create a router token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createroutertoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapikeys
+      description: WunderGraph List API keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.listapikeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapikey
+      description: WunderGraph Create an API key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wundergraph.createapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapikey
+      description: WunderGraph Delete an API key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wundergraph.deleteapikey
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: The name of the API key to delete.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getanalytics
+      description: WunderGraph Get graph analytics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wundergraph.getanalytics
+      with:
+        federatedGraphName: tools.federatedGraphName
+        namespace: tools.namespace
+        startDate: tools.startDate
+        endDate: tools.endDate
+      inputParameters:
+      - name: federatedGraphName
+        type: string
+        description: The name of the federated graph.
+        required: true
+      - name: namespace
+        type: string
+        description: The namespace of the graph.
+      - name: startDate
+        type: string
+        description: Start of the analytics time range.
+      - name: endDate
+        type: string
+        description: End of the analytics time range.
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    WUNDERGRAPH_TOKEN: WUNDERGRAPH_TOKEN
