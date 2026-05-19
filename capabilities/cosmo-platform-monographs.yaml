@@ -1,0 +1,255 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WunderGraph Cosmo Platform API — Monographs
+  description: 'WunderGraph Cosmo Platform API — Monographs. 5 operations. Lead operation: WunderGraph List monographs. Self-contained
+    Naftiko capability covering one Wundergraph business surface.'
+  tags:
+  - Wundergraph
+  - Monographs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WUNDERGRAPH_API_KEY: WUNDERGRAPH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cosmo-platform-monographs
+    baseUri: https://cosmo-cp.wundergraph.com
+    description: WunderGraph Cosmo Platform API — Monographs business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-monographs
+      path: /v1/monographs
+      operations:
+      - name: listmonographs
+        method: GET
+        description: WunderGraph List monographs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: namespace
+          in: query
+          type: string
+          description: Filter by namespace name.
+      - name: createmonograph
+        method: POST
+        description: WunderGraph Create a monograph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-monographs-name
+      path: /v1/monographs/{name}
+      operations:
+      - name: updatemonograph
+        method: PUT
+        description: WunderGraph Update a monograph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the monograph to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemonograph
+        method: DELETE
+        description: WunderGraph Delete a monograph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the monograph to delete.
+          required: true
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the monograph.
+    - name: v1-monographs-name-publish
+      path: /v1/monographs/{name}/publish
+      operations:
+      - name: publishmonograph
+        method: POST
+        description: WunderGraph Publish a monograph schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the monograph to publish.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.WUNDERGRAPH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cosmo-platform-monographs-rest
+    port: 8080
+    description: REST adapter for WunderGraph Cosmo Platform API — Monographs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/monographs
+      name: v1-monographs
+      description: REST surface for v1-monographs.
+      operations:
+      - method: GET
+        name: listmonographs
+        description: WunderGraph List monographs
+        call: cosmo-platform-monographs.listmonographs
+        with:
+          namespace: rest.namespace
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmonograph
+        description: WunderGraph Create a monograph
+        call: cosmo-platform-monographs.createmonograph
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/monographs/{name}
+      name: v1-monographs-name
+      description: REST surface for v1-monographs-name.
+      operations:
+      - method: PUT
+        name: updatemonograph
+        description: WunderGraph Update a monograph
+        call: cosmo-platform-monographs.updatemonograph
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemonograph
+        description: WunderGraph Delete a monograph
+        call: cosmo-platform-monographs.deletemonograph
+        with:
+          name: rest.name
+          namespace: rest.namespace
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/monographs/{name}/publish
+      name: v1-monographs-name-publish
+      description: REST surface for v1-monographs-name-publish.
+      operations:
+      - method: POST
+        name: publishmonograph
+        description: WunderGraph Publish a monograph schema
+        call: cosmo-platform-monographs.publishmonograph
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cosmo-platform-monographs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WunderGraph Cosmo Platform API — Monographs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wundergraph-list-monographs
+      description: WunderGraph List monographs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cosmo-platform-monographs.listmonographs
+      with:
+        namespace: tools.namespace
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wundergraph-create-monograph
+      description: WunderGraph Create a monograph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cosmo-platform-monographs.createmonograph
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wundergraph-update-monograph
+      description: WunderGraph Update a monograph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cosmo-platform-monographs.updatemonograph
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wundergraph-delete-monograph
+      description: WunderGraph Delete a monograph
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cosmo-platform-monographs.deletemonograph
+      with:
+        name: tools.name
+        namespace: tools.namespace
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wundergraph-publish-monograph-schema
+      description: WunderGraph Publish a monograph schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cosmo-platform-monographs.publishmonograph
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

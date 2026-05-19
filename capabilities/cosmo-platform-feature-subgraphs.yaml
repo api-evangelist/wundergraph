@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WunderGraph Cosmo Platform API — Feature Subgraphs
+  description: 'WunderGraph Cosmo Platform API — Feature Subgraphs. 1 operations. Lead operation: WunderGraph Create a feature
+    subgraph. Self-contained Naftiko capability covering one Wundergraph business surface.'
+  tags:
+  - Wundergraph
+  - Feature Subgraphs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WUNDERGRAPH_API_KEY: WUNDERGRAPH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cosmo-platform-feature-subgraphs
+    baseUri: https://cosmo-cp.wundergraph.com
+    description: WunderGraph Cosmo Platform API — Feature Subgraphs business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-feature-subgraphs
+      path: /v1/feature-subgraphs
+      operations:
+      - name: createfeaturesubgraph
+        method: POST
+        description: WunderGraph Create a feature subgraph
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.WUNDERGRAPH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cosmo-platform-feature-subgraphs-rest
+    port: 8080
+    description: REST adapter for WunderGraph Cosmo Platform API — Feature Subgraphs. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/feature-subgraphs
+      name: v1-feature-subgraphs
+      description: REST surface for v1-feature-subgraphs.
+      operations:
+      - method: POST
+        name: createfeaturesubgraph
+        description: WunderGraph Create a feature subgraph
+        call: cosmo-platform-feature-subgraphs.createfeaturesubgraph
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cosmo-platform-feature-subgraphs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WunderGraph Cosmo Platform API — Feature Subgraphs. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: wundergraph-create-feature-subgraph
+      description: WunderGraph Create a feature subgraph
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cosmo-platform-feature-subgraphs.createfeaturesubgraph
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

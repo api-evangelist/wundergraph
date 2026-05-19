@@ -1,0 +1,165 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WunderGraph Cosmo Platform API — Router
+  description: 'WunderGraph Cosmo Platform API — Router. 3 operations. Lead operation: WunderGraph Compose router configuration.
+    Self-contained Naftiko capability covering one Wundergraph business surface.'
+  tags:
+  - Wundergraph
+  - Router
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WUNDERGRAPH_API_KEY: WUNDERGRAPH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cosmo-platform-router
+    baseUri: https://cosmo-cp.wundergraph.com
+    description: WunderGraph Cosmo Platform API — Router business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-router-compose
+      path: /v1/router/compose
+      operations:
+      - name: composerouterconfig
+        method: POST
+        description: WunderGraph Compose router configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-router-tokens
+      path: /v1/router/tokens
+      operations:
+      - name: listroutertokens
+        method: GET
+        description: WunderGraph List router tokens
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: federatedGraphName
+          in: query
+          type: string
+          description: The name of the federated graph.
+          required: true
+        - name: namespace
+          in: query
+          type: string
+          description: The namespace of the graph.
+      - name: createroutertoken
+        method: POST
+        description: WunderGraph Create a router token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.WUNDERGRAPH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cosmo-platform-router-rest
+    port: 8080
+    description: REST adapter for WunderGraph Cosmo Platform API — Router. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/router/compose
+      name: v1-router-compose
+      description: REST surface for v1-router-compose.
+      operations:
+      - method: POST
+        name: composerouterconfig
+        description: WunderGraph Compose router configuration
+        call: cosmo-platform-router.composerouterconfig
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/router/tokens
+      name: v1-router-tokens
+      description: REST surface for v1-router-tokens.
+      operations:
+      - method: GET
+        name: listroutertokens
+        description: WunderGraph List router tokens
+        call: cosmo-platform-router.listroutertokens
+        with:
+          federatedGraphName: rest.federatedGraphName
+          namespace: rest.namespace
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createroutertoken
+        description: WunderGraph Create a router token
+        call: cosmo-platform-router.createroutertoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cosmo-platform-router-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WunderGraph Cosmo Platform API — Router. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: wundergraph-compose-router-configuration
+      description: WunderGraph Compose router configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cosmo-platform-router.composerouterconfig
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wundergraph-list-router-tokens
+      description: WunderGraph List router tokens
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cosmo-platform-router.listroutertokens
+      with:
+        federatedGraphName: tools.federatedGraphName
+        namespace: tools.namespace
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wundergraph-create-router-token
+      description: WunderGraph Create a router token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cosmo-platform-router.createroutertoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
