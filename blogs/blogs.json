@@ -5,7 +5,7 @@
       "source": "https://wundergraph.com/atom.xml",
       "feed_url": "https://wundergraph.com/atom.xml",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 55,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 56,
+  "fetched": "2026-06-27T12:03:07Z"
 }
