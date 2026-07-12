@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wundergraph-cosmo-platform-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio
+    or wgc CLI. Set as COSMO_API_KEY environment variable.
+  sources:
+  - openapi/wundergraph-cosmo-platform-openapi.yml
