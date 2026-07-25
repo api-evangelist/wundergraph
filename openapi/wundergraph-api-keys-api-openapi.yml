@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform Analytics API Keys API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://cosmo-cp.wundergraph.com
+  description: WunderGraph Cosmo Cloud Control Plane
+tags:
+- name: API Keys
+  description: Manage API keys for platform authentication.
+paths:
+  /v1/api-keys:
+    get:
+      operationId: listAPIKeys
+      summary: WunderGraph List API keys
+      description: Lists all API keys for the organization. API keys authenticate CLI and programmatic access to the Cosmo Platform API.
+      tags:
+      - API Keys
+      security:
+      - apiKey: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiKeys:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APIKey'
+    post:
+      operationId: createAPIKey
+      summary: WunderGraph Create an API key
+      description: Creates a new API key for authenticating with the Cosmo Platform API. Keys can be scoped with specific permissions.
+      tags:
+      - API Keys
+      security:
+      - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: A descriptive name for the API key.
+                expires:
+                  type: string
+                  format: date-time
+                  description: Expiration date for the API key.
+      responses:
+        '200':
+          description: API key created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiKey:
+                    type: string
+                    description: The generated API key value.
+  /v1/api-keys/{name}:
+    delete:
+      operationId: deleteAPIKey
+      summary: WunderGraph Delete an API key
+      description: Deletes an API key by name.
+      tags:
+      - API Keys
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the API key to delete.
+      responses:
+        '200':
+          description: API key deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+components:
+  schemas:
+    APIKey:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the API key.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the key was created.
+        expiresAt:
+          type: string
+          format: date-time
+          description: When the key expires.
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: When the key was last used.
+        createdBy:
+          type: string
+          description: Who created the key.
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.

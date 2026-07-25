@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform Analytics Schema Contracts API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://cosmo-cp.wundergraph.com
+  description: WunderGraph Cosmo Cloud Control Plane
+tags:
+- name: Schema Contracts
+  description: Manage schema contracts for providing filtered graph views to different consumers.
+paths:
+  /v1/schema-contracts:
+    get:
+      operationId: listSchemaContracts
+      summary: WunderGraph List schema contracts
+      description: Lists all schema contracts. Schema contracts let you provide filtered versions of your composed graph to different consumers.
+      tags:
+      - Schema Contracts
+      security:
+      - apiKey: []
+      parameters:
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: Filter by namespace name.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contracts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SchemaContract'
+    post:
+      operationId: createSchemaContract
+      summary: WunderGraph Create a schema contract
+      description: Creates a new schema contract that provides a filtered view of a federated graph based on tag exclusions.
+      tags:
+      - Schema Contracts
+      security:
+      - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - sourceGraphName
+              - routingUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the contract.
+                namespace:
+                  type: string
+                  description: The namespace for the contract.
+                sourceGraphName:
+                  type: string
+                  description: The source federated graph to create a contract from.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The routing URL for the contract graph.
+                excludeTags:
+                  type: array
+                  items:
+                    type: string
+                  description: Tags to exclude from the contract schema.
+                readme:
+                  type: string
+                  description: A readme description for the contract.
+      responses:
+        '200':
+          description: Contract created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+components:
+  schemas:
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
+    SchemaContract:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the contract.
+        name:
+          type: string
+          description: The name of the contract.
+        namespace:
+          type: string
+          description: The namespace the contract belongs to.
+        sourceGraphName:
+          type: string
+          description: The source federated graph.
+        routingUrl:
+          type: string
+          format: uri
+          description: The routing URL for the contract graph.
+        excludeTags:
+          type: array
+          items:
+            type: string
+          description: Tags excluded from the contract schema.
+        compositionStatus:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+          - PENDING
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.

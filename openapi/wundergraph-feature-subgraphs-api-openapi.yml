@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform Analytics Feature Subgraphs API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://cosmo-cp.wundergraph.com
+  description: WunderGraph Cosmo Cloud Control Plane
+tags:
+- name: Feature Subgraphs
+  description: Manage feature subgraphs for experimental feature development.
+paths:
+  /v1/feature-subgraphs:
+    post:
+      operationId: createFeatureSubgraph
+      summary: WunderGraph Create a feature subgraph
+      description: Creates a feature subgraph based on an existing subgraph for gradual and experimental feature rollout using feature flags.
+      tags:
+      - Feature Subgraphs
+      security:
+      - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - baseSubgraphName
+              properties:
+                name:
+                  type: string
+                  description: The name of the feature subgraph.
+                namespace:
+                  type: string
+                  description: The namespace for the feature subgraph.
+                baseSubgraphName:
+                  type: string
+                  description: The name of the base subgraph this feature is based on.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The routing URL for the feature subgraph.
+      responses:
+        '200':
+          description: Feature subgraph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+components:
+  schemas:
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.

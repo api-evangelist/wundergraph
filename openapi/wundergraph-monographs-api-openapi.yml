@@ -1,0 +1,250 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform Analytics Monographs API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://cosmo-cp.wundergraph.com
+  description: WunderGraph Cosmo Cloud Control Plane
+tags:
+- name: Monographs
+  description: Manage monographs - non-federated graphs limited to a single subgraph.
+paths:
+  /v1/monographs:
+    get:
+      operationId: listMonographs
+      summary: WunderGraph List monographs
+      description: Lists all monographs in the organization. A monograph is a graph with GraphQL Federation disabled, limited to a single subgraph.
+      tags:
+      - Monographs
+      security:
+      - apiKey: []
+      parameters:
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: Filter by namespace name.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  monographs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Monograph'
+    post:
+      operationId: createMonograph
+      summary: WunderGraph Create a monograph
+      description: Creates a new monograph (non-federated, single subgraph graph) in the Cosmo platform.
+      tags:
+      - Monographs
+      security:
+      - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - routingUrl
+              - graphUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the monograph.
+                namespace:
+                  type: string
+                  description: The namespace for the monograph.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The URL where the router is hosted.
+                graphUrl:
+                  type: string
+                  format: uri
+                  description: The URL of the GraphQL service.
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                  description: URL of the admission webhook.
+                readme:
+                  type: string
+                  description: A readme description for the monograph.
+      responses:
+        '200':
+          description: Monograph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/monographs/{name}:
+    put:
+      operationId: updateMonograph
+      summary: WunderGraph Update a monograph
+      description: Updates the configuration of an existing monograph.
+      tags:
+      - Monographs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the monograph to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                namespace:
+                  type: string
+                routingUrl:
+                  type: string
+                  format: uri
+                graphUrl:
+                  type: string
+                  format: uri
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                readme:
+                  type: string
+      responses:
+        '200':
+          description: Monograph updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+    delete:
+      operationId: deleteMonograph
+      summary: WunderGraph Delete a monograph
+      description: Deletes a monograph from the platform.
+      tags:
+      - Monographs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the monograph to delete.
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: The namespace of the monograph.
+      responses:
+        '200':
+          description: Monograph deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/monographs/{name}/publish:
+    post:
+      operationId: publishMonograph
+      summary: WunderGraph Publish a monograph schema
+      description: Publishes a new schema for the specified monograph.
+      tags:
+      - Monographs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the monograph to publish.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - schema
+              properties:
+                namespace:
+                  type: string
+                schema:
+                  type: string
+                  description: The GraphQL schema SDL content.
+      responses:
+        '200':
+          description: Schema published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+components:
+  schemas:
+    Monograph:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the monograph.
+        name:
+          type: string
+          description: The name of the monograph.
+        namespace:
+          type: string
+          description: The namespace the monograph belongs to.
+        routingUrl:
+          type: string
+          format: uri
+          description: The URL where the router is hosted.
+        graphUrl:
+          type: string
+          format: uri
+          description: The URL of the GraphQL service.
+        compositionStatus:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+          - PENDING
+        readme:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.

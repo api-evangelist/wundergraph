@@ -1,0 +1,400 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform Analytics Federated Graphs API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://cosmo-cp.wundergraph.com
+  description: WunderGraph Cosmo Cloud Control Plane
+tags:
+- name: Federated Graphs
+  description: Manage federated graphs composed from multiple subgraphs using label matchers.
+paths:
+  /v1/federated-graphs:
+    get:
+      operationId: listFederatedGraphs
+      summary: WunderGraph List federated graphs
+      description: Lists all federated graphs in the organization, optionally filtered by namespace. Federated graphs represent the composed supergraph made up of multiple subgraphs.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: Filter by namespace name.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+        description: Maximum number of results to return.
+      - name: offset
+        in: query
+        schema:
+          type: integer
+        description: Number of results to skip.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  graphs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FederatedGraph'
+    post:
+      operationId: createFederatedGraph
+      summary: WunderGraph Create a federated graph
+      description: Creates a new federated graph. A federated graph is composed from one or more subgraphs selected by label matchers.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - routingUrl
+              properties:
+                name:
+                  type: string
+                  description: The name of the federated graph.
+                namespace:
+                  type: string
+                  description: The namespace for the graph. Defaults to "default".
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The URL where the router is hosted.
+                labelMatchers:
+                  type: array
+                  items:
+                    type: string
+                  description: Label matchers to select subgraphs for composition (e.g., "team=backend").
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                  description: URL of the admission webhook for schema validation.
+                readme:
+                  type: string
+                  description: A readme description for the federated graph.
+      responses:
+        '200':
+          description: Federated graph created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/federated-graphs/{name}:
+    get:
+      operationId: getFederatedGraph
+      summary: WunderGraph Get a federated graph
+      description: Retrieves details of a specific federated graph by name.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph.
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FederatedGraph'
+    put:
+      operationId: updateFederatedGraph
+      summary: WunderGraph Update a federated graph
+      description: Updates the configuration of an existing federated graph, including its routing URL, label matchers, or admission webhook.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                namespace:
+                  type: string
+                  description: The namespace of the graph.
+                routingUrl:
+                  type: string
+                  format: uri
+                  description: The new routing URL.
+                labelMatchers:
+                  type: array
+                  items:
+                    type: string
+                  description: Updated label matchers for subgraph selection.
+                admissionWebhookUrl:
+                  type: string
+                  format: uri
+                  description: Updated admission webhook URL.
+                readme:
+                  type: string
+                  description: Updated readme content.
+      responses:
+        '200':
+          description: Federated graph updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+    delete:
+      operationId: deleteFederatedGraph
+      summary: WunderGraph Delete a federated graph
+      description: Deletes a federated graph and its associated configuration from the control plane.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph to delete.
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: The namespace of the graph.
+      responses:
+        '200':
+          description: Federated graph deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+  /v1/federated-graphs/{name}/fetch:
+    get:
+      operationId: fetchFederatedGraphSDL
+      summary: WunderGraph Fetch federated graph SDL
+      description: Downloads the latest valid Schema Definition Language (SDL) of a federated graph and all its subgraphs from the control plane.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph.
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sdl:
+                    type: string
+                    description: The composed GraphQL SDL of the federated graph.
+                  subgraphs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        sdl:
+                          type: string
+  /v1/federated-graphs/{name}/changelog:
+    get:
+      operationId: getFederatedGraphChangelog
+      summary: WunderGraph Get federated graph changelog
+      description: Retrieves the composition changelog for a federated graph showing schema changes over time.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph.
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: The namespace of the graph.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  changelog:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChangelogEntry'
+  /v1/federated-graphs/{name}/move:
+    post:
+      operationId: moveFederatedGraph
+      summary: WunderGraph Move a federated graph to another namespace
+      description: Moves a federated graph from one namespace to another.
+      tags:
+      - Federated Graphs
+      security:
+      - apiKey: []
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph to move.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - newNamespace
+              properties:
+                namespace:
+                  type: string
+                  description: The current namespace of the graph.
+                newNamespace:
+                  type: string
+                  description: The target namespace to move the graph to.
+      responses:
+        '200':
+          description: Federated graph moved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResponse'
+components:
+  schemas:
+    FederatedGraph:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the federated graph.
+        name:
+          type: string
+          description: The name of the federated graph.
+        namespace:
+          type: string
+          description: The namespace the graph belongs to.
+        routingUrl:
+          type: string
+          format: uri
+          description: The URL where the router is hosted.
+        labelMatchers:
+          type: array
+          items:
+            type: string
+          description: Label matchers used to select subgraphs.
+        compositionStatus:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+          - PENDING
+          description: The current composition status of the graph.
+        lastComposedAt:
+          type: string
+          format: date-time
+          description: When the graph was last successfully composed.
+        subgraphsCount:
+          type: integer
+          description: Number of subgraphs composing the federated graph.
+        readme:
+          type: string
+          description: Readme description of the graph.
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ChangelogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the changelog entry.
+        schemaVersionId:
+          type: string
+          description: The schema version associated with this change.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the change occurred.
+        changeType:
+          type: string
+          description: The type of schema change.
+        path:
+          type: string
+          description: The schema path that changed.
+        changeMessage:
+          type: string
+          description: Description of the change.
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.

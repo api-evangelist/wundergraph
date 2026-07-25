@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: WunderGraph Cosmo Platform Analytics API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  version: 1.0.0
+  contact:
+    name: WunderGraph
+    url: https://wundergraph.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://cosmo-cp.wundergraph.com
+  description: WunderGraph Cosmo Cloud Control Plane
+tags:
+- name: Analytics
+  description: Access graph analytics, metrics, and performance data.
+paths:
+  /v1/analytics:
+    get:
+      operationId: getAnalytics
+      summary: WunderGraph Get graph analytics
+      description: Retrieves analytics data for a federated graph including request metrics, latency, and error rates.
+      tags:
+      - Analytics
+      security:
+      - apiKey: []
+      parameters:
+      - name: federatedGraphName
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The name of the federated graph.
+      - name: namespace
+        in: query
+        schema:
+          type: string
+        description: The namespace of the graph.
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Start of the analytics time range.
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: End of the analytics time range.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestSeries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          type: string
+                          format: date-time
+                        totalRequests:
+                          type: integer
+                        erroredRequests:
+                          type: integer
+                  latencyMetrics:
+                    type: object
+                    properties:
+                      p50:
+                        type: number
+                      p95:
+                        type: number
+                      p99:
+                        type: number
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key for authenticating with the Cosmo Platform API. Obtain via Cosmo Studio or wgc CLI. Set as COSMO_API_KEY environment variable.
