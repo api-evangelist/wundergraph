@@ -1,50 +1,356 @@
 aid: wundergraph
 url: https://raw.githubusercontent.com/api-evangelist/wundergraph/refs/heads/main/apis.yml
 apis:
-- aid: wundergraph:cosmo-platform
-  name: WunderGraph Cosmo Platform API
+- aid: wundergraph:wundergraph-analytics-api
+  name: WunderGraph Analytics API
+  description: Access graph analytics, metrics, and performance data.
+  humanURL: https://cosmo-docs.wundergraph.com/
   tags:
   - Analytics
-  - Composition
-  - Federation
-  - GraphQL
-  - Management
-  - Schema Registry
-  humanURL: https://cosmo-docs.wundergraph.com/
   properties:
-  - url: https://cosmo-docs.wundergraph.com/
-    type: Documentation
-  - url: openapi/wundergraph-cosmo-platform-openapi.yml
-    type: OpenAPI
-  - url: json-schema/namespace.json
-    type: JSONSchema
-  - url: json-schema/federated-graph.json
-    type: JSONSchema
-  - url: json-schema/subgraph.json
-    type: JSONSchema
-  - url: json-schema/monograph.json
-    type: JSONSchema
-  - url: json-schema/schema-contract.json
-    type: JSONSchema
-  - url: json-schema/feature-flag.json
-    type: JSONSchema
-  - url: json-schema/router-token.json
-    type: JSONSchema
-  - url: json-schema/api-key.json
-    type: JSONSchema
-  - url: json-schema/changelog-entry.json
-    type: JSONSchema
-  - url: json-schema/operation-response.json
-    type: JSONSchema
-  - url: json-ld/wundergraph-context.jsonld
-    type: JSONLD
-  - url: graphql/wundergraph-graphql.md
-    type: GraphQL
-  description: >-
-    The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at
-    scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs,
-    namespaces, schema contracts, feature flags, router configurations, and API keys. The platform includes schema
-    registry, composition checks, analytics, metrics, tracing, and routing capabilities.
+  - type: OpenAPI
+    url: openapi/wundergraph-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-api-keys-api
+  name: WunderGraph API Keys API
+  description: Manage API keys for platform authentication.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-feature-flags-api
+  name: WunderGraph Feature Flags API
+  description: Manage feature flags for gradual rollout of graph changes.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Feature Flags
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-feature-flags-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-feature-subgraphs-api
+  name: WunderGraph Feature Subgraphs API
+  description: Manage feature subgraphs for experimental feature development.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Feature Subgraphs
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-feature-subgraphs-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-federated-graphs-api
+  name: WunderGraph Federated Graphs API
+  description: Manage federated graphs composed from multiple subgraphs using label matchers.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Federated Graphs
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-federated-graphs-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-monographs-api
+  name: WunderGraph Monographs API
+  description: Manage monographs - non-federated graphs limited to a single subgraph.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Monographs
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-monographs-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-namespaces-api
+  name: WunderGraph Namespaces API
+  description: Manage namespaces for organizing graphs and subgraphs.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Namespaces
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-namespaces-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-router-api
+  name: WunderGraph Router API
+  description: Manage router configuration and authentication tokens.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Router
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-router-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-schema-contracts-api
+  name: WunderGraph Schema Contracts API
+  description: Manage schema contracts for providing filtered graph views to different consumers.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Schema Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-schema-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
+- aid: wundergraph:wundergraph-subgraphs-api
+  name: WunderGraph Subgraphs API
+  description: Manage subgraphs - isolated GraphQL schemas that compose into federated graphs.
+  humanURL: https://cosmo-docs.wundergraph.com/
+  tags:
+  - Subgraphs
+  properties:
+  - type: OpenAPI
+    url: openapi/wundergraph-subgraphs-api-openapi.yml
+  - type: Documentation
+    url: https://cosmo-docs.wundergraph.com/
+  - type: JSONSchema
+    url: json-schema/namespace.json
+  - type: JSONSchema
+    url: json-schema/federated-graph.json
+  - type: JSONSchema
+    url: json-schema/subgraph.json
+  - type: JSONSchema
+    url: json-schema/monograph.json
+  - type: JSONSchema
+    url: json-schema/schema-contract.json
+  - type: JSONSchema
+    url: json-schema/feature-flag.json
+  - type: JSONSchema
+    url: json-schema/router-token.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/changelog-entry.json
+  - type: JSONSchema
+    url: json-schema/operation-response.json
+  - type: JSONLD
+    url: json-ld/wundergraph-context.jsonld
+  - type: GraphQL
+    url: graphql/wundergraph-graphql.md
 name: WunderGraph
 tags:
 - Federation
@@ -52,9 +358,24 @@ tags:
 - Management
 - Schema Registry
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wundergraph.png
 access: 3rd-Party
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/wundergraph/overview
 - type: AgenticAccess
   url: agentic-access/wundergraph-agentic-access.yml
 - type: DomainSecurity
