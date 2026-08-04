@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "cc33d465-6a40-4826-a522-a3bc9fa7d8b2",
+    "name": "WunderGraph Cosmo Platform Analytics Namespaces API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:43.000Z",
+    "updatedAt": "2026-07-28T03:35:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc33d465-6a40-4826-a522-a3bc9fa7d8b2"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "namespaces",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "rename",
+                  "item": [
+                    {
+                      "name": "WunderGraph Rename a namespace",
+                      "id": "32a2558d-ade3-46ef-ac87-da614d9d500a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"newName\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/namespaces/:name/rename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "namespaces",
+                            ":name",
+                            "rename"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6c42c56e-100c-4755-b895-9c410ce8aae1",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The current name of the namespace."
+                            }
+                          ]
+                        },
+                        "description": "Renames an existing namespace."
+                      },
+                      "response": [
+                        {
+                          "id": "bbc41e02-92cc-4f70-bf7b-53bc6043ff7e",
+                          "name": "Namespace renamed successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"newName\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/namespaces/:name/rename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "namespaces",
+                                ":name",
+                                "rename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:35:44.000Z",
+                          "updatedAt": "2026-07-28T03:35:44.000Z",
+                          "uid": "35240-bbc41e02-92cc-4f70-bf7b-53bc6043ff7e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:44.000Z",
+                      "updatedAt": "2026-07-28T03:35:44.000Z",
+                      "uid": "35240-32a2558d-ade3-46ef-ac87-da614d9d500a"
+                    }
+                  ],
+                  "id": "b024f13b-1b09-4eb5-976b-a8fa201962c5",
+                  "createdAt": "2026-07-28T03:35:43.000Z",
+                  "updatedAt": "2026-07-28T03:35:43.000Z",
+                  "uid": "35240-b024f13b-1b09-4eb5-976b-a8fa201962c5"
+                },
+                {
+                  "name": "WunderGraph Delete a namespace",
+                  "id": "919e0ba0-1e1c-4494-bd20-7e426a9c72a1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/namespaces/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "namespaces",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0c78d2b0-6616-4630-a5a9-4db38e67fecc",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the namespace to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a namespace and all associated resources including federated graphs and subgraphs."
+                  },
+                  "response": [
+                    {
+                      "id": "4ea0566f-1cb4-4464-9f27-8354dbcccfec",
+                      "name": "Namespace deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/namespaces/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "namespaces",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:44.000Z",
+                      "updatedAt": "2026-07-28T03:35:44.000Z",
+                      "uid": "35240-4ea0566f-1cb4-4464-9f27-8354dbcccfec"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:44.000Z",
+                  "updatedAt": "2026-07-28T03:35:44.000Z",
+                  "uid": "35240-919e0ba0-1e1c-4494-bd20-7e426a9c72a1"
+                }
+              ],
+              "id": "524451b1-b430-4925-b17d-9fc1c94da691",
+              "createdAt": "2026-07-28T03:35:43.000Z",
+              "updatedAt": "2026-07-28T03:35:43.000Z",
+              "uid": "35240-524451b1-b430-4925-b17d-9fc1c94da691"
+            },
+            {
+              "name": "WunderGraph List namespaces",
+              "id": "10d7c5b8-88a3-4f16-beac-0f35ad43200d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/namespaces",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "namespaces"
+                  ]
+                },
+                "description": "Lists all namespaces within the organization. Namespaces provide logical isolation for federated graphs, subgraphs, and other resources."
+              },
+              "response": [
+                {
+                  "id": "06a33c07-4bcc-422d-9037-9b92adfa1194",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/namespaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "namespaces"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"namespaces\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:44.000Z",
+                  "updatedAt": "2026-07-28T03:35:44.000Z",
+                  "uid": "35240-06a33c07-4bcc-422d-9037-9b92adfa1194"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:44.000Z",
+              "updatedAt": "2026-07-28T03:35:44.000Z",
+              "uid": "35240-10d7c5b8-88a3-4f16-beac-0f35ad43200d"
+            },
+            {
+              "name": "WunderGraph Create a namespace",
+              "id": "4d9eeffb-f808-4a8f-bcd4-c98cc0a4f206",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/namespaces",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "namespaces"
+                  ]
+                },
+                "description": "Creates a new namespace within the organization for organizing federated graphs and subgraphs."
+              },
+              "response": [
+                {
+                  "id": "4b3cdd8d-cde0-46a9-9414-f4713cb33307",
+                  "name": "Namespace created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/namespaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "namespaces"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:44.000Z",
+                  "updatedAt": "2026-07-28T03:35:44.000Z",
+                  "uid": "35240-4b3cdd8d-cde0-46a9-9414-f4713cb33307"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:44.000Z",
+              "updatedAt": "2026-07-28T03:35:44.000Z",
+              "uid": "35240-4d9eeffb-f808-4a8f-bcd4-c98cc0a4f206"
+            }
+          ],
+          "id": "b6c2ef55-99aa-450b-a33f-0267037cda9e",
+          "createdAt": "2026-07-28T03:35:43.000Z",
+          "updatedAt": "2026-07-28T03:35:43.000Z",
+          "uid": "35240-b6c2ef55-99aa-450b-a33f-0267037cda9e"
+        }
+      ],
+      "id": "8595dee3-87af-4254-8a8b-b14a4e104649",
+      "createdAt": "2026-07-28T03:35:43.000Z",
+      "updatedAt": "2026-07-28T03:35:43.000Z",
+      "uid": "35240-8595dee3-87af-4254-8a8b-b14a4e104649"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "provider": "wundergraph",
+  "sources": [
+    "wundergraph-analytics-api-openapi.yml",
+    "wundergraph-api-keys-api-openapi.yml",
+    "wundergraph-feature-flags-api-openapi.yml",
+    "wundergraph-feature-subgraphs-api-openapi.yml",
+    "wundergraph-federated-graphs-api-openapi.yml",
+    "wundergraph-monographs-api-openapi.yml",
+    "wundergraph-namespaces-api-openapi.yml",
+    "wundergraph-router-api-openapi.yml",
+    "wundergraph-schema-contracts-api-openapi.yml",
+    "wundergraph-subgraphs-api-openapi.yml"
+  ],
+  "outputs": [
+    "wundergraph-analytics-api-openapi.yml",
+    "wundergraph-api-keys-api-openapi.yml",
+    "wundergraph-feature-flags-api-openapi.yml",
+    "wundergraph-feature-subgraphs-api-openapi.yml",
+    "wundergraph-federated-graphs-api-openapi.yml",
+    "wundergraph-monographs-api-openapi.yml",
+    "wundergraph-namespaces-api-openapi.yml",
+    "wundergraph-router-api-openapi.yml",
+    "wundergraph-schema-contracts-api-openapi.yml",
+    "wundergraph-subgraphs-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,270 @@
+{
+  "info": {
+    "_postman_id": "7f6a2357-5627-4b4e-884f-0927e3525e60",
+    "name": "WunderGraph Cosmo Platform Analytics Schema Contracts API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:47.000Z",
+    "updatedAt": "2026-07-28T03:35:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7f6a2357-5627-4b4e-884f-0927e3525e60"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "schema-contracts",
+          "item": [
+            {
+              "name": "WunderGraph List schema contracts",
+              "id": "61f3af27-52cf-489e-a156-11946c57fde9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/schema-contracts?namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "schema-contracts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by namespace name.",
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists all schema contracts. Schema contracts let you provide filtered versions of your composed graph to different consumers."
+              },
+              "response": [
+                {
+                  "id": "a2d5673e-1dfc-472f-87e5-fb1db55d82e5",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/schema-contracts?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "schema-contracts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by namespace name.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"contracts\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"sourceGraphName\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"excludeTags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"compositionStatus\": \"SUCCESS\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"sourceGraphName\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"excludeTags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"compositionStatus\": \"FAILURE\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-a2d5673e-1dfc-472f-87e5-fb1db55d82e5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-61f3af27-52cf-489e-a156-11946c57fde9"
+            },
+            {
+              "name": "WunderGraph Create a schema contract",
+              "id": "00398739-6e1e-4462-b8fe-cff55188a5e8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceGraphName\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"readme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/schema-contracts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "schema-contracts"
+                  ]
+                },
+                "description": "Creates a new schema contract that provides a filtered view of a federated graph based on tag exclusions."
+              },
+              "response": [
+                {
+                  "id": "20dbfdfe-b2b0-4687-8312-786c3acdc542",
+                  "name": "Contract created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"sourceGraphName\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"excludeTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/schema-contracts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "schema-contracts"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-20dbfdfe-b2b0-4687-8312-786c3acdc542"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-00398739-6e1e-4462-b8fe-cff55188a5e8"
+            }
+          ],
+          "id": "15ab389c-d6fc-4c32-9fb8-8d05c9037e9d",
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-15ab389c-d6fc-4c32-9fb8-8d05c9037e9d"
+        }
+      ],
+      "id": "c0074bf1-249a-4d9e-a555-64be796dccff",
+      "createdAt": "2026-07-28T03:35:47.000Z",
+      "updatedAt": "2026-07-28T03:35:47.000Z",
+      "uid": "35240-c0074bf1-249a-4d9e-a555-64be796dccff"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

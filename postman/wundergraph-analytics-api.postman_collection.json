@@ -1,0 +1,177 @@
+{
+  "info": {
+    "_postman_id": "932b6f0a-bb56-47bd-9e72-929481d57a7f",
+    "name": "WunderGraph Cosmo Platform Analytics API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:33.000Z",
+    "updatedAt": "2026-07-28T03:35:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-932b6f0a-bb56-47bd-9e72-929481d57a7f"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "analytics",
+          "item": [
+            {
+              "name": "WunderGraph Get graph analytics",
+              "id": "a7ee1ec0-9ddd-49c2-8086-e16dafad5e31",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/analytics?federatedGraphName=<string>&namespace=<string>&startDate=<dateTime>&endDate=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "analytics"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The name of the federated graph.",
+                      "key": "federatedGraphName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The namespace of the graph.",
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start of the analytics time range.",
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "End of the analytics time range.",
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                },
+                "description": "Retrieves analytics data for a federated graph including request metrics, latency, and error rates."
+              },
+              "response": [
+                {
+                  "id": "97d4eec0-f8f5-48f4-9d9b-2d6cfd33dce8",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/analytics?federatedGraphName=<string>&namespace=<string>&startDate=<dateTime>&endDate=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "analytics"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The name of the federated graph.",
+                          "key": "federatedGraphName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The namespace of the graph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the analytics time range.",
+                          "key": "startDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the analytics time range.",
+                          "key": "endDate",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"requestSeries\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"totalRequests\": \"<integer>\",\n      \"erroredRequests\": \"<integer>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"totalRequests\": \"<integer>\",\n      \"erroredRequests\": \"<integer>\"\n    }\n  ],\n  \"latencyMetrics\": {\n    \"p50\": \"<number>\",\n    \"p95\": \"<number>\",\n    \"p99\": \"<number>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:35:33.000Z",
+                  "updatedAt": "2026-07-28T03:35:33.000Z",
+                  "uid": "35240-97d4eec0-f8f5-48f4-9d9b-2d6cfd33dce8"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:33.000Z",
+              "updatedAt": "2026-07-28T03:35:33.000Z",
+              "uid": "35240-a7ee1ec0-9ddd-49c2-8086-e16dafad5e31"
+            }
+          ],
+          "id": "7fe1183a-98a0-4581-91e4-5d0de7328836",
+          "createdAt": "2026-07-28T03:35:33.000Z",
+          "updatedAt": "2026-07-28T03:35:33.000Z",
+          "uid": "35240-7fe1183a-98a0-4581-91e4-5d0de7328836"
+        }
+      ],
+      "id": "6cac2859-c048-4e30-a47f-a6a2fd2988d7",
+      "createdAt": "2026-07-28T03:35:33.000Z",
+      "updatedAt": "2026-07-28T03:35:33.000Z",
+      "uid": "35240-6cac2859-c048-4e30-a47f-a6a2fd2988d7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

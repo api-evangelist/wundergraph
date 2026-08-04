@@ -1,0 +1,161 @@
+{
+  "info": {
+    "_postman_id": "68e71b2f-9441-451e-93ee-1b8c1f7eb69a",
+    "name": "WunderGraph Cosmo Platform Analytics Feature Subgraphs API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:40.000Z",
+    "updatedAt": "2026-07-28T03:35:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-68e71b2f-9441-451e-93ee-1b8c1f7eb69a"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "feature-subgraphs",
+          "item": [
+            {
+              "name": "WunderGraph Create a feature subgraph",
+              "id": "fcaba099-81f9-47e1-bd4a-7e30aa076678",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"baseSubgraphName\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/feature-subgraphs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "feature-subgraphs"
+                  ]
+                },
+                "description": "Creates a feature subgraph based on an existing subgraph for gradual and experimental feature rollout using feature flags."
+              },
+              "response": [
+                {
+                  "id": "7c6d709f-c788-4aec-9c9f-f9c1fb091696",
+                  "name": "Feature subgraph created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"baseSubgraphName\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/feature-subgraphs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "feature-subgraphs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:40.000Z",
+                  "updatedAt": "2026-07-28T03:35:40.000Z",
+                  "uid": "35240-7c6d709f-c788-4aec-9c9f-f9c1fb091696"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:40.000Z",
+              "updatedAt": "2026-07-28T03:35:40.000Z",
+              "uid": "35240-fcaba099-81f9-47e1-bd4a-7e30aa076678"
+            }
+          ],
+          "id": "fc2c6b55-1936-44ed-ba75-43195ecb019a",
+          "createdAt": "2026-07-28T03:35:40.000Z",
+          "updatedAt": "2026-07-28T03:35:40.000Z",
+          "uid": "35240-fc2c6b55-1936-44ed-ba75-43195ecb019a"
+        }
+      ],
+      "id": "3ab36df5-3458-46af-8b20-55a49641d92f",
+      "createdAt": "2026-07-28T03:35:40.000Z",
+      "updatedAt": "2026-07-28T03:35:40.000Z",
+      "uid": "35240-3ab36df5-3458-46af-8b20-55a49641d92f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

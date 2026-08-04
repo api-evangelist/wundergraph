@@ -1,0 +1,1104 @@
+{
+  "info": {
+    "_postman_id": "17bbbe05-e657-4eb9-b435-fa9da774ac82",
+    "name": "WunderGraph Cosmo Platform Analytics Federated Graphs API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:41.000Z",
+    "updatedAt": "2026-07-28T03:35:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-17bbbe05-e657-4eb9-b435-fa9da774ac82"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "federated-graphs",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "fetch",
+                  "item": [
+                    {
+                      "name": "WunderGraph Fetch federated graph SDL",
+                      "id": "3037d847-5d6e-487f-bebb-4d13ea49cbec",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/federated-graphs/:name/fetch?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "federated-graphs",
+                            ":name",
+                            "fetch"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the graph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "329ca836-c22a-46a0-a9e4-9351f4a73b05",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the federated graph."
+                            }
+                          ]
+                        },
+                        "description": "Downloads the latest valid Schema Definition Language (SDL) of a federated graph and all its subgraphs from the control plane."
+                      },
+                      "response": [
+                        {
+                          "id": "15d83266-c6a2-42b3-bbdc-ccf2877ee320",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/federated-graphs/:name/fetch?namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "federated-graphs",
+                                ":name",
+                                "fetch"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The namespace of the graph.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"sdl\": \"<string>\",\n  \"subgraphs\": [\n    {\n      \"name\": \"<string>\",\n      \"sdl\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"sdl\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:35:41.000Z",
+                          "updatedAt": "2026-07-28T03:35:41.000Z",
+                          "uid": "35240-15d83266-c6a2-42b3-bbdc-ccf2877ee320"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:41.000Z",
+                      "updatedAt": "2026-07-28T03:35:41.000Z",
+                      "uid": "35240-3037d847-5d6e-487f-bebb-4d13ea49cbec"
+                    }
+                  ],
+                  "id": "58c6be82-452e-4305-b841-6952456afd90",
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-58c6be82-452e-4305-b841-6952456afd90"
+                },
+                {
+                  "name": "changelog",
+                  "item": [
+                    {
+                      "name": "WunderGraph Get federated graph changelog",
+                      "id": "30f8b367-ecdd-42ab-8c4c-6db9dcfd8512",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/federated-graphs/:name/changelog?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "federated-graphs",
+                            ":name",
+                            "changelog"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the graph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ea121339-f965-48ec-b1cb-4df5f46b271c",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the federated graph."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the composition changelog for a federated graph showing schema changes over time."
+                      },
+                      "response": [
+                        {
+                          "id": "c5293e51-86de-4a7c-afd9-36699e8c87fc",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/federated-graphs/:name/changelog?namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "federated-graphs",
+                                ":name",
+                                "changelog"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The namespace of the graph.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"changelog\": [\n    {\n      \"id\": \"<string>\",\n      \"schemaVersionId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"changeType\": \"<string>\",\n      \"path\": \"<string>\",\n      \"changeMessage\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"schemaVersionId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"changeType\": \"<string>\",\n      \"path\": \"<string>\",\n      \"changeMessage\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:35:41.000Z",
+                          "updatedAt": "2026-07-28T03:35:41.000Z",
+                          "uid": "35240-c5293e51-86de-4a7c-afd9-36699e8c87fc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:41.000Z",
+                      "updatedAt": "2026-07-28T03:35:41.000Z",
+                      "uid": "35240-30f8b367-ecdd-42ab-8c4c-6db9dcfd8512"
+                    }
+                  ],
+                  "id": "b90a2c42-15b8-46ab-9854-2a6c4b9ff6b6",
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-b90a2c42-15b8-46ab-9854-2a6c4b9ff6b6"
+                },
+                {
+                  "name": "move",
+                  "item": [
+                    {
+                      "name": "WunderGraph Move a federated graph to another namespace",
+                      "id": "90b0c2ba-f8f9-4229-83e9-da221c736491",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"newNamespace\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/federated-graphs/:name/move",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "federated-graphs",
+                            ":name",
+                            "move"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3a9aa743-627d-4ac1-ab2e-3469ec04a697",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the federated graph to move."
+                            }
+                          ]
+                        },
+                        "description": "Moves a federated graph from one namespace to another."
+                      },
+                      "response": [
+                        {
+                          "id": "a3874dfe-c00f-4d88-a76e-85bfff992152",
+                          "name": "Federated graph moved successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"newNamespace\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/federated-graphs/:name/move",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "federated-graphs",
+                                ":name",
+                                "move"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:35:41.000Z",
+                          "updatedAt": "2026-07-28T03:35:41.000Z",
+                          "uid": "35240-a3874dfe-c00f-4d88-a76e-85bfff992152"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:41.000Z",
+                      "updatedAt": "2026-07-28T03:35:41.000Z",
+                      "uid": "35240-90b0c2ba-f8f9-4229-83e9-da221c736491"
+                    }
+                  ],
+                  "id": "f1ef6bb5-8687-4524-85d8-9640b6035b04",
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-f1ef6bb5-8687-4524-85d8-9640b6035b04"
+                },
+                {
+                  "name": "WunderGraph Get a federated graph",
+                  "id": "d51927ba-33e6-46ad-abe9-b16a5d90a94f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/federated-graphs/:name?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "federated-graphs",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "The namespace of the graph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "287e0378-bab3-47e2-9521-7e1c7695b7f0",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the federated graph."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves details of a specific federated graph by name."
+                  },
+                  "response": [
+                    {
+                      "id": "687b20f0-bd39-4502-862c-6ad87277ab47",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/federated-graphs/:name?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "federated-graphs",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the graph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"labelMatchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"compositionStatus\": \"FAILURE\",\n  \"lastComposedAt\": \"<dateTime>\",\n  \"subgraphsCount\": \"<integer>\",\n  \"readme\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:35:41.000Z",
+                      "updatedAt": "2026-07-28T03:35:41.000Z",
+                      "uid": "35240-687b20f0-bd39-4502-862c-6ad87277ab47"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-d51927ba-33e6-46ad-abe9-b16a5d90a94f"
+                },
+                {
+                  "name": "WunderGraph Update a federated graph",
+                  "id": "a8495455-d643-4e7c-bd1e-419a11c094d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"labelMatchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/federated-graphs/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "federated-graphs",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f6329f98-bbfe-4f21-8c8d-0759f5fb29f7",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the federated graph to update."
+                        }
+                      ]
+                    },
+                    "description": "Updates the configuration of an existing federated graph, including its routing URL, label matchers, or admission webhook."
+                  },
+                  "response": [
+                    {
+                      "id": "5e9518b1-9e62-4dad-9eb6-29c9ea74821e",
+                      "name": "Federated graph updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"labelMatchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/federated-graphs/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "federated-graphs",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:41.000Z",
+                      "updatedAt": "2026-07-28T03:35:41.000Z",
+                      "uid": "35240-5e9518b1-9e62-4dad-9eb6-29c9ea74821e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-a8495455-d643-4e7c-bd1e-419a11c094d9"
+                },
+                {
+                  "name": "WunderGraph Delete a federated graph",
+                  "id": "8861e602-0dbe-493b-999a-d0c08b491f0a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/federated-graphs/:name?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "federated-graphs",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "The namespace of the graph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "78c95da5-1444-4d3a-84a5-3f2213ae37d9",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the federated graph to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a federated graph and its associated configuration from the control plane."
+                  },
+                  "response": [
+                    {
+                      "id": "61e812e2-4860-4135-a603-e756b7f68fc7",
+                      "name": "Federated graph deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/federated-graphs/:name?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "federated-graphs",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the graph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:41.000Z",
+                      "updatedAt": "2026-07-28T03:35:41.000Z",
+                      "uid": "35240-61e812e2-4860-4135-a603-e756b7f68fc7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-8861e602-0dbe-493b-999a-d0c08b491f0a"
+                }
+              ],
+              "id": "cc716055-6e0d-4cc7-950f-517f3ee8a205",
+              "createdAt": "2026-07-28T03:35:41.000Z",
+              "updatedAt": "2026-07-28T03:35:41.000Z",
+              "uid": "35240-cc716055-6e0d-4cc7-950f-517f3ee8a205"
+            },
+            {
+              "name": "WunderGraph List federated graphs",
+              "id": "840c0416-d61f-46fc-854e-213533b27998",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/federated-graphs?namespace=<string>&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "federated-graphs"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by namespace name.",
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results to skip.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Lists all federated graphs in the organization, optionally filtered by namespace. Federated graphs represent the composed supergraph made up of multiple subgraphs."
+              },
+              "response": [
+                {
+                  "id": "20a3d400-c935-456b-8f7c-3cc4ba08505d",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/federated-graphs?namespace=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "federated-graphs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by namespace name.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"graphs\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"labelMatchers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"compositionStatus\": \"FAILURE\",\n      \"lastComposedAt\": \"<dateTime>\",\n      \"subgraphsCount\": \"<integer>\",\n      \"readme\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"labelMatchers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"compositionStatus\": \"PENDING\",\n      \"lastComposedAt\": \"<dateTime>\",\n      \"subgraphsCount\": \"<integer>\",\n      \"readme\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-20a3d400-c935-456b-8f7c-3cc4ba08505d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:41.000Z",
+              "updatedAt": "2026-07-28T03:35:41.000Z",
+              "uid": "35240-840c0416-d61f-46fc-854e-213533b27998"
+            },
+            {
+              "name": "WunderGraph Create a federated graph",
+              "id": "f7264b26-3ba5-4836-9292-92cefdfb9abb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"labelMatchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/federated-graphs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "federated-graphs"
+                  ]
+                },
+                "description": "Creates a new federated graph. A federated graph is composed from one or more subgraphs selected by label matchers."
+              },
+              "response": [
+                {
+                  "id": "34df5d93-7cc6-44c1-a7d6-6515f734b608",
+                  "name": "Federated graph created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"labelMatchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/federated-graphs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "federated-graphs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:41.000Z",
+                  "updatedAt": "2026-07-28T03:35:41.000Z",
+                  "uid": "35240-34df5d93-7cc6-44c1-a7d6-6515f734b608"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:41.000Z",
+              "updatedAt": "2026-07-28T03:35:41.000Z",
+              "uid": "35240-f7264b26-3ba5-4836-9292-92cefdfb9abb"
+            }
+          ],
+          "id": "604c2db4-5dbc-48fe-b8ea-071f5f0c5cae",
+          "createdAt": "2026-07-28T03:35:41.000Z",
+          "updatedAt": "2026-07-28T03:35:41.000Z",
+          "uid": "35240-604c2db4-5dbc-48fe-b8ea-071f5f0c5cae"
+        }
+      ],
+      "id": "0ce2ad6d-8307-4e3b-88c8-b240a562be7a",
+      "createdAt": "2026-07-28T03:35:41.000Z",
+      "updatedAt": "2026-07-28T03:35:41.000Z",
+      "uid": "35240-0ce2ad6d-8307-4e3b-88c8-b240a562be7a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

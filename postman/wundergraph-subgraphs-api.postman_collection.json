@@ -1,0 +1,1267 @@
+{
+  "info": {
+    "_postman_id": "f7bff763-a96f-45d1-b4cc-ed32c29df360",
+    "name": "WunderGraph Cosmo Platform Analytics Subgraphs API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:48.000Z",
+    "updatedAt": "2026-07-28T03:35:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f7bff763-a96f-45d1-b4cc-ed32c29df360"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "subgraphs",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "publish",
+                  "item": [
+                    {
+                      "name": "WunderGraph Publish a subgraph schema",
+                      "id": "31f5fa15-a01e-4100-8239-6f299acdce23",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schema\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name/publish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name",
+                            "publish"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f339609d-cd8f-40f2-967f-32653f6bbded",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the subgraph to publish."
+                            }
+                          ]
+                        },
+                        "description": "Publishes a new schema for the specified subgraph. This triggers composition checks and updates the federated graphs that include this subgraph."
+                      },
+                      "response": [
+                        {
+                          "id": "c3d6473d-f198-4d45-a855-cb45d5985da8",
+                          "name": "Schema published successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"schema\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/subgraphs/:name/publish",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "subgraphs",
+                                ":name",
+                                "publish"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"compositionErrors\": [\n    {\n      \"message\": \"<string>\",\n      \"federatedGraphName\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"federatedGraphName\": \"<string>\"\n    }\n  ],\n  \"hasChanged\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T03:35:48.000Z",
+                          "updatedAt": "2026-07-28T03:35:48.000Z",
+                          "uid": "35240-c3d6473d-f198-4d45-a855-cb45d5985da8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-31f5fa15-a01e-4100-8239-6f299acdce23"
+                    }
+                  ],
+                  "id": "69673d72-a725-406b-bec3-786cccbc005f",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-69673d72-a725-406b-bec3-786cccbc005f"
+                },
+                {
+                  "name": "check",
+                  "item": [
+                    {
+                      "name": "WunderGraph Check a subgraph schema",
+                      "id": "efa7554b-9696-473c-af10-f6f97627c160",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schema\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name/check",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name",
+                            "check"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8902b6a4-dc3c-4208-8247-4026c7632616",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the subgraph to check."
+                            }
+                          ]
+                        },
+                        "description": "Checks a subgraph schema for breaking changes and composition errors across all connected federated graphs without publishing. Used for CI/CD validation."
+                      },
+                      "response": [
+                        {
+                          "id": "957a1543-6da2-4930-815d-8eaf64e996da",
+                          "name": "Check completed",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"schema\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/subgraphs/:name/check",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "subgraphs",
+                                ":name",
+                                "check"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"breakingChanges\": [\n    {\n      \"changeType\": \"<string>\",\n      \"message\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"changeType\": \"<string>\",\n      \"message\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"compositionErrors\": [\n    {\n      \"message\": \"<string>\",\n      \"federatedGraphName\": \"<string>\"\n    },\n    {\n      \"message\": \"<string>\",\n      \"federatedGraphName\": \"<string>\"\n    }\n  ],\n  \"nonBreakingChanges\": [\n    {\n      \"changeType\": \"<string>\",\n      \"message\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"changeType\": \"<string>\",\n      \"message\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:35:48.000Z",
+                          "updatedAt": "2026-07-28T03:35:48.000Z",
+                          "uid": "35240-957a1543-6da2-4930-815d-8eaf64e996da"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-efa7554b-9696-473c-af10-f6f97627c160"
+                    }
+                  ],
+                  "id": "8d357513-c100-404f-8395-dbfe2d386afb",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-8d357513-c100-404f-8395-dbfe2d386afb"
+                },
+                {
+                  "name": "fetch",
+                  "item": [
+                    {
+                      "name": "WunderGraph Fetch subgraph SDL",
+                      "id": "a9c1bdbf-8f00-4f07-8202-33f84a83cbce",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name/fetch?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name",
+                            "fetch"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the subgraph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e94b3ef1-0776-43b9-9909-216b93b7cf29",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the subgraph."
+                            }
+                          ]
+                        },
+                        "description": "Downloads the latest valid Schema Definition Language (SDL) of a specific subgraph."
+                      },
+                      "response": [
+                        {
+                          "id": "2523d3ff-e8c3-48cb-a606-676bed1c5732",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/subgraphs/:name/fetch?namespace=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "subgraphs",
+                                ":name",
+                                "fetch"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The namespace of the subgraph.",
+                                  "key": "namespace",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"sdl\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:35:48.000Z",
+                          "updatedAt": "2026-07-28T03:35:48.000Z",
+                          "uid": "35240-2523d3ff-e8c3-48cb-a606-676bed1c5732"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-a9c1bdbf-8f00-4f07-8202-33f84a83cbce"
+                    }
+                  ],
+                  "id": "3d52a94e-f7a0-4c4e-b491-bd986ab70b9b",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-3d52a94e-f7a0-4c4e-b491-bd986ab70b9b"
+                },
+                {
+                  "name": "move",
+                  "item": [
+                    {
+                      "name": "WunderGraph Move a subgraph to another namespace",
+                      "id": "9f8b3728-edfd-4a52-b690-a9be23a6c7b8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"newNamespace\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name/move",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name",
+                            "move"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3ec1a691-c744-4c8c-848b-e6198bc697a2",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the subgraph to move."
+                            }
+                          ]
+                        },
+                        "description": "Moves a subgraph from one namespace to another."
+                      },
+                      "response": [
+                        {
+                          "id": "0dc101db-d526-4cb4-9f8c-fd395da06874",
+                          "name": "Subgraph moved successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"newNamespace\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/subgraphs/:name/move",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "subgraphs",
+                                ":name",
+                                "move"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:35:48.000Z",
+                          "updatedAt": "2026-07-28T03:35:48.000Z",
+                          "uid": "35240-0dc101db-d526-4cb4-9f8c-fd395da06874"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-9f8b3728-edfd-4a52-b690-a9be23a6c7b8"
+                    }
+                  ],
+                  "id": "8b05452e-6126-4659-9bc0-d264dc4c8b79",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-8b05452e-6126-4659-9bc0-d264dc4c8b79"
+                },
+                {
+                  "name": "WunderGraph Get a subgraph",
+                  "id": "8b83a00c-04e9-44d1-8c38-6db4738007ae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/subgraphs/:name?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "subgraphs",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "The namespace of the subgraph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b3a5f52b-9ff9-40d0-970e-4c6554fa7887",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the subgraph."
+                        }
+                      ]
+                    },
+                    "description": "Retrieves details of a specific subgraph by name."
+                  },
+                  "response": [
+                    {
+                      "id": "0bfa2148-8ceb-46d1-84d3-5c8628c4ea94",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the subgraph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"subscriptionUrl\": \"<uri>\",\n  \"subscriptionProtocol\": \"sse\",\n  \"lastPublishedAt\": \"<dateTime>\",\n  \"readme\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-0bfa2148-8ceb-46d1-84d3-5c8628c4ea94"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-8b83a00c-04e9-44d1-8c38-6db4738007ae"
+                },
+                {
+                  "name": "WunderGraph Update a subgraph",
+                  "id": "c12fc1be-e18a-45de-b88b-99e9e63a783c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"subscriptionUrl\": \"<uri>\",\n  \"subscriptionProtocol\": \"sse_post\",\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/subgraphs/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "subgraphs",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f5dc50e1-79c8-4765-a878-e595b64dd292",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the subgraph to update."
+                        }
+                      ]
+                    },
+                    "description": "Updates the configuration of an existing subgraph, such as its routing URL, labels, or subscription settings."
+                  },
+                  "response": [
+                    {
+                      "id": "616bfd2f-ac63-4aed-9cbb-00c8a630dc93",
+                      "name": "Subgraph updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"subscriptionUrl\": \"<uri>\",\n  \"subscriptionProtocol\": \"sse_post\",\n  \"readme\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-616bfd2f-ac63-4aed-9cbb-00c8a630dc93"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-c12fc1be-e18a-45de-b88b-99e9e63a783c"
+                },
+                {
+                  "name": "WunderGraph Delete a subgraph",
+                  "id": "09ba8606-7366-4e4c-885f-ae4611029ba8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/subgraphs/:name?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "subgraphs",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "The namespace of the subgraph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7ca658c7-a45a-431e-a530-51a87d8c1d9a",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the subgraph to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a subgraph from the platform. This will trigger recomposition of any federated graphs that included this subgraph."
+                  },
+                  "response": [
+                    {
+                      "id": "d41b8e46-b801-4093-b548-7b2937126b05",
+                      "name": "Subgraph deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/subgraphs/:name?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "subgraphs",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the subgraph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-d41b8e46-b801-4093-b548-7b2937126b05"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-09ba8606-7366-4e4c-885f-ae4611029ba8"
+                }
+              ],
+              "id": "ac3f9192-ad3d-47be-8e36-4ee4c9f1aca3",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-ac3f9192-ad3d-47be-8e36-4ee4c9f1aca3"
+            },
+            {
+              "name": "WunderGraph List subgraphs",
+              "id": "c064b0f6-806c-420d-ac16-fe07f2230096",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/subgraphs?namespace=<string>&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "subgraphs"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by namespace name.",
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of results to skip.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Lists all subgraphs in the organization, optionally filtered by namespace. Subgraphs are isolated GraphQL schemas that compose into federated graphs."
+              },
+              "response": [
+                {
+                  "id": "9c60d6cf-d079-482f-ade4-f5ab0ff8a541",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/subgraphs?namespace=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "subgraphs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by namespace name.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"subgraphs\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"labels\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"subscriptionUrl\": \"<uri>\",\n      \"subscriptionProtocol\": \"ws\",\n      \"lastPublishedAt\": \"<dateTime>\",\n      \"readme\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"labels\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"subscriptionUrl\": \"<uri>\",\n      \"subscriptionProtocol\": \"sse_post\",\n      \"lastPublishedAt\": \"<dateTime>\",\n      \"readme\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-9c60d6cf-d079-482f-ade4-f5ab0ff8a541"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-c064b0f6-806c-420d-ac16-fe07f2230096"
+            },
+            {
+              "name": "WunderGraph Create a subgraph",
+              "id": "825feac7-1b8e-4fe9-9658-163f6d0c7483",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"subscriptionUrl\": \"<uri>\",\n  \"subscriptionProtocol\": \"ws\",\n  \"readme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/subgraphs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "subgraphs"
+                  ]
+                },
+                "description": "Creates a new subgraph within the Cosmo platform. Subgraphs are isolated GraphQL schemas that can be independently deployed and managed, providing modularity and scalability to your GraphQL APIs."
+              },
+              "response": [
+                {
+                  "id": "29bf9d7a-ebe7-4c67-b986-b7db12bee466",
+                  "name": "Subgraph created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"subscriptionUrl\": \"<uri>\",\n  \"subscriptionProtocol\": \"ws\",\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/subgraphs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "subgraphs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-29bf9d7a-ebe7-4c67-b986-b7db12bee466"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-825feac7-1b8e-4fe9-9658-163f6d0c7483"
+            }
+          ],
+          "id": "495c46e3-15e9-4cee-8014-e929b9ae4b8a",
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-495c46e3-15e9-4cee-8014-e929b9ae4b8a"
+        }
+      ],
+      "id": "24a8076a-fefb-4a96-8ca3-bbd7edc444a6",
+      "createdAt": "2026-07-28T03:35:48.000Z",
+      "updatedAt": "2026-07-28T03:35:48.000Z",
+      "uid": "35240-24a8076a-fefb-4a96-8ca3-bbd7edc444a6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

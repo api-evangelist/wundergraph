@@ -351,12 +351,39 @@ apis:
     url: json-ld/wundergraph-context.jsonld
   - type: GraphQL
     url: graphql/wundergraph-graphql.md
+- aid: wundergraph:graphql-api
+  name: WunderGraph Cloud GraphQL API
+  description: 'The WunderGraph Cosmo GraphQL API provides full lifecycle management of federated
+
+    GraphQL APIs, including schema registry operations, composition checks, analytics
+
+    queries, subgraph management, and routing configuration through a unified
+
+    GraphQL interface backed by the Cosmo Control Plane.
+
+    '
+  tags:
+  - GraphQL
+  - Federation
+  - API Management
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://cosmo-docs.wundergraph.com/
+  baseURL: https://cosmo-cp.wundergraph.com
+  properties:
+  - url: https://cosmo-docs.wundergraph.com/
+    type: Documentation
+  - url: graphql/wundergraph-cloud-graphql.md
+    type: GraphQL
 name: WunderGraph
 tags:
 - Federation
 - GraphQL
 - Management
 - Schema Registry
+- API Gateway
+- Observability
+- Agents
+- Developer Tools
 kind: contract
 accessModel:
   pricing: freemium
@@ -483,20 +510,34 @@ common:
   type: Blog
   description: 'null'
 - name: MCP Server
-  url: https://github.com/wundergraph/mcp-go
+  url: mcp/wundergraph-mcp.yml
   type: MCPServer
 - name: Agent Skills
   url: https://github.com/wundergraph/graphql-federation-skill
   type: AgentSkills
 - type: LlmsText
   url: https://cosmo-docs.wundergraph.com/llms.txt
+- type: Protobuf
+  url: grpc/wundergraph-platform.proto
+- type: gRPC
+  url: grpc/wundergraph-protobuf.yml
+- type: DomainSecurity
+  url: security/wundergraph-cloud-domain-security.yml
+- url: plans/wundergraph-cloud-plans.md
+  type: Plans
+- url: rate-limits/wundergraph-cloud-rate-limits.md
+  type: RateLimits
+- url: finops/wundergraph-cloud-finops.md
+  type: FinOps
 created: '2025-06-05T00:00:00.000Z'
-modified: '2026-05-19'
-position: Consuming
-description: >-
-  Full Lifecycle API Management for (Federated) GraphQL. Schema Registry, composition checks, analytics, metrics,
-  tracing and routing. Deploy 100% on-prem or use our Managed Service. Apache 2.0 licensed, no vendor-lock.
+modified: '2026-08-03'
+position: Providing
+description: Full Lifecycle API Management for (Federated) GraphQL. Schema Registry, composition checks,
+  analytics, metrics, tracing and routing. Deploy 100% on-prem or use our Managed Service. Apache 2.0
+  licensed, no vendor-lock.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-specificationVersion: '0.19'
+specificationVersion: 0.21
+x-merged-from:
+- wundergraph-cloud

@@ -1,4 +1,29 @@
 openapi: 3.1.0
+x-authored-by: API Evangelist
+x-modeled-from: documentation
+x-provenance:
+  method: modeled
+  authored_by: API Evangelist
+  modeled_from: https://cosmo-docs.wundergraph.com/
+  provider_published: false
+  note: >-
+    Modeled by API Evangelist from WunderGraph's public Cosmo documentation. The
+    provider does not publish a REST OpenAPI. The real control-plane interface is
+    Connect-RPC, defined in WunderGraph's own platform.proto — see grpc/ for the
+    verbatim first-party contract, which is authoritative where this document and
+    the proto disagree.
+  verified: '2026-08-03'
+  evidence:
+    - url: https://cosmo-cp.wundergraph.com/openapi.json
+      status: 404
+      note: no provider-published OpenAPI at the control-plane host
+    - url: https://cosmo-cp.wundergraph.com/v1/analytics
+      status: 404
+      note: REST path modeled in this document does not resolve
+    - url: https://cosmo-cp.wundergraph.com/wg.cosmo.platform.v1.PlatformService/GetFederatedGraphs
+      status: 200
+      method: POST
+      note: the surface that does exist — Connect-RPC, not REST
 info:
   title: WunderGraph Cosmo Platform Analytics Router API
   description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.

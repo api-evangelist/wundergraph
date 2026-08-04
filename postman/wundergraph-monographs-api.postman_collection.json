@@ -1,0 +1,690 @@
+{
+  "info": {
+    "_postman_id": "fccb9056-2ff8-4c7f-8320-6120c26c228a",
+    "name": "WunderGraph Cosmo Platform Analytics Monographs API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:42.000Z",
+    "updatedAt": "2026-07-28T03:35:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fccb9056-2ff8-4c7f-8320-6120c26c228a"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "monographs",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "publish",
+                  "item": [
+                    {
+                      "name": "WunderGraph Publish a monograph schema",
+                      "id": "7f1edab5-6501-47c8-b124-a958e0805c7a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"schema\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monographs/:name/publish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monographs",
+                            ":name",
+                            "publish"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4e68e13f-37ac-4a3f-9f00-e9e4fe393689",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) The name of the monograph to publish."
+                            }
+                          ]
+                        },
+                        "description": "Publishes a new schema for the specified monograph."
+                      },
+                      "response": [
+                        {
+                          "id": "11d60c26-bd56-43b0-ae54-b69773674fc1",
+                          "name": "Schema published successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"schema\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monographs/:name/publish",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monographs",
+                                ":name",
+                                "publish"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:35:42.000Z",
+                          "updatedAt": "2026-07-28T03:35:42.000Z",
+                          "uid": "35240-11d60c26-bd56-43b0-ae54-b69773674fc1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:42.000Z",
+                      "updatedAt": "2026-07-28T03:35:42.000Z",
+                      "uid": "35240-7f1edab5-6501-47c8-b124-a958e0805c7a"
+                    }
+                  ],
+                  "id": "5913bdf7-b205-4ac6-9e17-4241eed00a06",
+                  "createdAt": "2026-07-28T03:35:42.000Z",
+                  "updatedAt": "2026-07-28T03:35:42.000Z",
+                  "uid": "35240-5913bdf7-b205-4ac6-9e17-4241eed00a06"
+                },
+                {
+                  "name": "WunderGraph Update a monograph",
+                  "id": "a98ae046-2536-47ca-9044-96eef0f1020f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"graphUrl\": \"<uri>\",\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monographs/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monographs",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4e139dc0-da65-4c16-b514-e3720038eb77",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the monograph to update."
+                        }
+                      ]
+                    },
+                    "description": "Updates the configuration of an existing monograph."
+                  },
+                  "response": [
+                    {
+                      "id": "f02a1bc4-bfeb-4824-bd3c-31bc2d197e16",
+                      "name": "Monograph updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"graphUrl\": \"<uri>\",\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monographs/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monographs",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:42.000Z",
+                      "updatedAt": "2026-07-28T03:35:42.000Z",
+                      "uid": "35240-f02a1bc4-bfeb-4824-bd3c-31bc2d197e16"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:42.000Z",
+                  "updatedAt": "2026-07-28T03:35:42.000Z",
+                  "uid": "35240-a98ae046-2536-47ca-9044-96eef0f1020f"
+                },
+                {
+                  "name": "WunderGraph Delete a monograph",
+                  "id": "687fff31-32d8-4b31-b7d8-d643c744a24a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monographs/:name?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monographs",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "The namespace of the monograph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c7520049-d7d6-4b8f-95f0-ec4d4ccb730b",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the monograph to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a monograph from the platform."
+                  },
+                  "response": [
+                    {
+                      "id": "176f0165-afbc-412f-bc53-d349a5189b79",
+                      "name": "Monograph deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monographs/:name?namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monographs",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "The namespace of the monograph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:42.000Z",
+                      "updatedAt": "2026-07-28T03:35:42.000Z",
+                      "uid": "35240-176f0165-afbc-412f-bc53-d349a5189b79"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:42.000Z",
+                  "updatedAt": "2026-07-28T03:35:42.000Z",
+                  "uid": "35240-687fff31-32d8-4b31-b7d8-d643c744a24a"
+                }
+              ],
+              "id": "699f721e-af93-4176-9d96-62e0f7e81c6b",
+              "createdAt": "2026-07-28T03:35:42.000Z",
+              "updatedAt": "2026-07-28T03:35:42.000Z",
+              "uid": "35240-699f721e-af93-4176-9d96-62e0f7e81c6b"
+            },
+            {
+              "name": "WunderGraph List monographs",
+              "id": "19d128ca-53db-445c-963e-f90f15d2610c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/monographs?namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "monographs"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by namespace name.",
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists all monographs in the organization. A monograph is a graph with GraphQL Federation disabled, limited to a single subgraph."
+              },
+              "response": [
+                {
+                  "id": "72bbcb61-1e4c-43e1-bc79-e1982bdac62f",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monographs?namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monographs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by namespace name.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"monographs\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"graphUrl\": \"<uri>\",\n      \"compositionStatus\": \"PENDING\",\n      \"readme\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"routingUrl\": \"<uri>\",\n      \"graphUrl\": \"<uri>\",\n      \"compositionStatus\": \"FAILURE\",\n      \"readme\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:42.000Z",
+                  "updatedAt": "2026-07-28T03:35:42.000Z",
+                  "uid": "35240-72bbcb61-1e4c-43e1-bc79-e1982bdac62f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:42.000Z",
+              "updatedAt": "2026-07-28T03:35:42.000Z",
+              "uid": "35240-19d128ca-53db-445c-963e-f90f15d2610c"
+            },
+            {
+              "name": "WunderGraph Create a monograph",
+              "id": "3a675817-eefc-42d3-9d62-381c3cd6fa0d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"graphUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/monographs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "monographs"
+                  ]
+                },
+                "description": "Creates a new monograph (non-federated, single subgraph graph) in the Cosmo platform."
+              },
+              "response": [
+                {
+                  "id": "8f04c08c-e183-4423-ad15-d426a94a195f",
+                  "name": "Monograph created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"routingUrl\": \"<uri>\",\n  \"graphUrl\": \"<uri>\",\n  \"namespace\": \"<string>\",\n  \"admissionWebhookUrl\": \"<uri>\",\n  \"readme\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monographs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monographs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:42.000Z",
+                  "updatedAt": "2026-07-28T03:35:42.000Z",
+                  "uid": "35240-8f04c08c-e183-4423-ad15-d426a94a195f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:42.000Z",
+              "updatedAt": "2026-07-28T03:35:42.000Z",
+              "uid": "35240-3a675817-eefc-42d3-9d62-381c3cd6fa0d"
+            }
+          ],
+          "id": "e34bc6c7-be25-4aff-b33f-fde36a895533",
+          "createdAt": "2026-07-28T03:35:42.000Z",
+          "updatedAt": "2026-07-28T03:35:42.000Z",
+          "uid": "35240-e34bc6c7-be25-4aff-b33f-fde36a895533"
+        }
+      ],
+      "id": "0ae15b8a-6592-42e1-a09e-8b5c2f475f37",
+      "createdAt": "2026-07-28T03:35:42.000Z",
+      "updatedAt": "2026-07-28T03:35:42.000Z",
+      "uid": "35240-0ae15b8a-6592-42e1-a09e-8b5c2f475f37"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

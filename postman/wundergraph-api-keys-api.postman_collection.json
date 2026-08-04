@@ -1,0 +1,375 @@
+{
+  "info": {
+    "_postman_id": "9af22e1f-40ef-4ce2-84ef-5e2ace171f98",
+    "name": "WunderGraph Cosmo Platform Analytics API Keys API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:38.000Z",
+    "updatedAt": "2026-07-28T03:35:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9af22e1f-40ef-4ce2-84ef-5e2ace171f98"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "api-keys",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "WunderGraph Delete an API key",
+                  "id": "86cb8a91-f0f4-4cca-9905-52686b9380bb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/api-keys/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "api-keys",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "21335a9f-9f18-4071-bd32-3d9fdff47439",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the API key to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes an API key by name."
+                  },
+                  "response": [
+                    {
+                      "id": "8cfbf845-104e-43e9-89e9-89144a2ac8a1",
+                      "name": "API key deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/api-keys/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "api-keys",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:39.000Z",
+                      "updatedAt": "2026-07-28T03:35:39.000Z",
+                      "uid": "35240-8cfbf845-104e-43e9-89e9-89144a2ac8a1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:39.000Z",
+                  "updatedAt": "2026-07-28T03:35:39.000Z",
+                  "uid": "35240-86cb8a91-f0f4-4cca-9905-52686b9380bb"
+                }
+              ],
+              "id": "46e554d9-997d-4c7a-8fae-6328e9e21420",
+              "createdAt": "2026-07-28T03:35:39.000Z",
+              "updatedAt": "2026-07-28T03:35:39.000Z",
+              "uid": "35240-46e554d9-997d-4c7a-8fae-6328e9e21420"
+            },
+            {
+              "name": "WunderGraph List API keys",
+              "id": "4f20acfe-adab-4032-a635-e814846a4d28",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/api-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "api-keys"
+                  ]
+                },
+                "description": "Lists all API keys for the organization. API keys authenticate CLI and programmatic access to the Cosmo Platform API."
+              },
+              "response": [
+                {
+                  "id": "e4dda252-02b3-4eff-9906-e218f2f4de31",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/api-keys",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "api-keys"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"apiKeys\": [\n    {\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"lastUsedAt\": \"<dateTime>\",\n      \"createdBy\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"expiresAt\": \"<dateTime>\",\n      \"lastUsedAt\": \"<dateTime>\",\n      \"createdBy\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:39.000Z",
+                  "updatedAt": "2026-07-28T03:35:39.000Z",
+                  "uid": "35240-e4dda252-02b3-4eff-9906-e218f2f4de31"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:39.000Z",
+              "updatedAt": "2026-07-28T03:35:39.000Z",
+              "uid": "35240-4f20acfe-adab-4032-a635-e814846a4d28"
+            },
+            {
+              "name": "WunderGraph Create an API key",
+              "id": "02f8ffaf-6b98-4fa2-8c3d-3db67dccbc1b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expires\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/api-keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "api-keys"
+                  ]
+                },
+                "description": "Creates a new API key for authenticating with the Cosmo Platform API. Keys can be scoped with specific permissions."
+              },
+              "response": [
+                {
+                  "id": "0f7eb46d-90f6-4422-8d43-fb4c7b7c7480",
+                  "name": "API key created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"expires\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/api-keys",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "api-keys"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"apiKey\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:39.000Z",
+                  "updatedAt": "2026-07-28T03:35:39.000Z",
+                  "uid": "35240-0f7eb46d-90f6-4422-8d43-fb4c7b7c7480"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:39.000Z",
+              "updatedAt": "2026-07-28T03:35:39.000Z",
+              "uid": "35240-02f8ffaf-6b98-4fa2-8c3d-3db67dccbc1b"
+            }
+          ],
+          "id": "8873a46b-c952-4c6b-a753-38a6d99e05d4",
+          "createdAt": "2026-07-28T03:35:39.000Z",
+          "updatedAt": "2026-07-28T03:35:39.000Z",
+          "uid": "35240-8873a46b-c952-4c6b-a753-38a6d99e05d4"
+        }
+      ],
+      "id": "23b7f6a8-dc09-441e-87f9-eea2e48865eb",
+      "createdAt": "2026-07-28T03:35:39.000Z",
+      "updatedAt": "2026-07-28T03:35:39.000Z",
+      "uid": "35240-23b7f6a8-dc09-441e-87f9-eea2e48865eb"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

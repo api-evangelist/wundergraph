@@ -1,0 +1,427 @@
+{
+  "info": {
+    "_postman_id": "aae37187-1609-4a37-8ee6-163af798eee1",
+    "name": "WunderGraph Cosmo Platform Analytics Router API",
+    "description": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:46.000Z",
+    "updatedAt": "2026-07-28T03:35:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aae37187-1609-4a37-8ee6-163af798eee1"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "router",
+          "item": [
+            {
+              "name": "compose",
+              "item": [
+                {
+                  "name": "WunderGraph Compose router configuration",
+                  "id": "bf8ecdff-f537-4432-a7c6-a242aab1b322",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"federatedGraphName\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/router/compose",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "router",
+                        "compose"
+                      ]
+                    },
+                    "description": "Generates a router execution configuration for a federated graph. The router configuration is used by the Cosmo Router to serve the composed federated graph."
+                  },
+                  "response": [
+                    {
+                      "id": "3efb6c27-8c1d-4a84-ba53-a3b1895436ce",
+                      "name": "Router configuration generated",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"federatedGraphName\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/router/compose",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "router",
+                            "compose"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"config\": {}\n}",
+                      "createdAt": "2026-07-28T03:35:46.000Z",
+                      "updatedAt": "2026-07-28T03:35:46.000Z",
+                      "uid": "35240-3efb6c27-8c1d-4a84-ba53-a3b1895436ce"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:46.000Z",
+                  "updatedAt": "2026-07-28T03:35:46.000Z",
+                  "uid": "35240-bf8ecdff-f537-4432-a7c6-a242aab1b322"
+                }
+              ],
+              "id": "5da64473-e676-4df6-96d7-0899a7d5dce1",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-5da64473-e676-4df6-96d7-0899a7d5dce1"
+            },
+            {
+              "name": "tokens",
+              "item": [
+                {
+                  "name": "WunderGraph List router tokens",
+                  "id": "200cfe59-41f1-4384-a6bd-ddb30c2770e5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/router/tokens?federatedGraphName=<string>&namespace=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "router",
+                        "tokens"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The name of the federated graph.",
+                          "key": "federatedGraphName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The namespace of the graph.",
+                          "key": "namespace",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Lists all router tokens for a federated graph. Router tokens are used to authenticate Cosmo Router instances with the control plane."
+                  },
+                  "response": [
+                    {
+                      "id": "9360389a-4480-4a8c-a569-143450b7a309",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/router/tokens?federatedGraphName=<string>&namespace=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "router",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The name of the federated graph.",
+                              "key": "federatedGraphName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The namespace of the graph.",
+                              "key": "namespace",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tokens\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"lastUsedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"lastUsedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:35:46.000Z",
+                      "updatedAt": "2026-07-28T03:35:46.000Z",
+                      "uid": "35240-9360389a-4480-4a8c-a569-143450b7a309"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:46.000Z",
+                  "updatedAt": "2026-07-28T03:35:46.000Z",
+                  "uid": "35240-200cfe59-41f1-4384-a6bd-ddb30c2770e5"
+                },
+                {
+                  "name": "WunderGraph Create a router token",
+                  "id": "3fd74c50-8aba-48ce-ab34-06b421983523",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"federatedGraphName\": \"<string>\",\n  \"tokenName\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/router/tokens",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "router",
+                        "tokens"
+                      ]
+                    },
+                    "description": "Creates a new router token for authenticating a Cosmo Router instance with the control plane."
+                  },
+                  "response": [
+                    {
+                      "id": "3c1073c8-5720-4a21-b551-d643e686364f",
+                      "name": "Token created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"federatedGraphName\": \"<string>\",\n  \"tokenName\": \"<string>\",\n  \"namespace\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/router/tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "router",
+                            "tokens"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"token\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:46.000Z",
+                      "updatedAt": "2026-07-28T03:35:46.000Z",
+                      "uid": "35240-3c1073c8-5720-4a21-b551-d643e686364f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:46.000Z",
+                  "updatedAt": "2026-07-28T03:35:46.000Z",
+                  "uid": "35240-3fd74c50-8aba-48ce-ab34-06b421983523"
+                }
+              ],
+              "id": "14d7e131-016d-405b-9e95-9c8b5b73f0a2",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-14d7e131-016d-405b-9e95-9c8b5b73f0a2"
+            }
+          ],
+          "id": "14424a62-19b4-44e8-af16-8667834ec803",
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-14424a62-19b4-44e8-af16-8667834ec803"
+        }
+      ],
+      "id": "94df3b28-37d7-4de8-ade9-29e566bb13cf",
+      "createdAt": "2026-07-28T03:35:46.000Z",
+      "updatedAt": "2026-07-28T03:35:46.000Z",
+      "uid": "35240-94df3b28-37d7-4de8-ade9-29e566bb13cf"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cosmo-cp.wundergraph.com"
+    }
+  ]
+}

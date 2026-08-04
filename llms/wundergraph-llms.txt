@@ -1,0 +1,344 @@
+# WunderGraph
+
+## Docs
+
+- [Architecture](https://cosmo-docs.wundergraph.com/architecture.md): High-level architecture of the Cosmo Platform
+- [API Keys](https://cosmo-docs.wundergraph.com/cli/api-keys.md): API Keys are required to perform any of the **wgc** CLI commands. To create an API key, follow the steps shown [here](/studio/api-keys).
+- [Auth](https://cosmo-docs.wundergraph.com/cli/auth.md)
+- [Login](https://cosmo-docs.wundergraph.com/cli/auth/login.md): Login a user into the Cosmo platform. Supports browser-based authentication.
+- [Logout](https://cosmo-docs.wundergraph.com/cli/auth/logout.md): Logout a user from the Cosmo platform.
+- [Whoami](https://cosmo-docs.wundergraph.com/cli/auth/whoami.md): Displays the identity currently authenticated and in use.
+- [Clients](https://cosmo-docs.wundergraph.com/cli/clients.md): Manage registered GraphQL clients for persisted operations
+- [Delete](https://cosmo-docs.wundergraph.com/cli/clients/delete.md): Delete a registered GraphQL client from a federated graph or monograph
+- [List](https://cosmo-docs.wundergraph.com/cli/clients/list.md): List registered GraphQL clients of a federated graph or monograph
+- [Demo](https://cosmo-docs.wundergraph.com/cli/demo.md): Run the interactive Cosmo demo that creates a local federated graph onboarding setup.
+- [Essentials](https://cosmo-docs.wundergraph.com/cli/essentials.md): Please read through this to have a better understanding of the nuances that take place when executing commands which we will cover in the upcoming pages.
+- [Feature Flags](https://cosmo-docs.wundergraph.com/cli/feature-flags.md): An overview of feature-flag (alias "ff") commands.
+- [Create Feature Flag](https://cosmo-docs.wundergraph.com/cli/feature-flags/create-feature-flag.md): How to create a feature flag.
+- [Delete Feature Flag](https://cosmo-docs.wundergraph.com/cli/feature-flags/delete-feature-flag.md): How to delete a feature flag
+- [Disable Feature Flag](https://cosmo-docs.wundergraph.com/cli/feature-flags/disable-feature-flag.md): How to disable a feature flag.
+- [Enable Feature Flag](https://cosmo-docs.wundergraph.com/cli/feature-flags/enable-feature-flag.md): How to enable a feature flag.
+- [Update Feature Flag](https://cosmo-docs.wundergraph.com/cli/feature-flags/update-feature-flag.md): How to update a feature flag.
+- [Feature Subgraph](https://cosmo-docs.wundergraph.com/cli/feature-subgraph.md): An overview of feature-subgraph (alias "fs") commands.
+- [Create Feature Subgraph](https://cosmo-docs.wundergraph.com/cli/feature-subgraph/create-feature-subgraph.md): How to create a feature subgraph.
+- [Delete Feature Subgraph](https://cosmo-docs.wundergraph.com/cli/feature-subgraph/delete-feature-subgraph.md): How to delete a feature subgraph
+- [Publish Feature Subgraph](https://cosmo-docs.wundergraph.com/cli/feature-subgraph/publish-feature-subgraph.md): How to publish a feature subgraph.
+- [Update Feature Subgraph](https://cosmo-docs.wundergraph.com/cli/feature-subgraph/update-feature-subgraph.md): How to update a feature subgraph
+- [Federated Graph](https://cosmo-docs.wundergraph.com/cli/federated-graph.md): A federated graph refers to a single, unified data graph that is composed of multiple subgraphs.
+- [Changelog](https://cosmo-docs.wundergraph.com/cli/federated-graph/changelog.md): Retrieves the changelog for a federated graph
+- [Check](https://cosmo-docs.wundergraph.com/cli/federated-graph/check.md): Checks for composition errors and presents a list of subgraphs that constitute the new federated graph.
+- [Create](https://cosmo-docs.wundergraph.com/cli/federated-graph/create.md): Creates a federated graph on the control plane.
+- [Delete](https://cosmo-docs.wundergraph.com/cli/federated-graph/delete.md): Deletes a federated graph on the control plane.
+- [Fetch](https://cosmo-docs.wundergraph.com/cli/federated-graph/fetch.md): Fetches the latest valid SDL of a federated graph and all its subgraphs and the latest valid router config of a federated graph.
+- [Fetch-Schema](https://cosmo-docs.wundergraph.com/cli/federated-graph/fetch-schema.md): Fetches the latest valid SDL of a federated graph. The output can be piped to a file. This is primarily used for debugging purposes
+- [List](https://cosmo-docs.wundergraph.com/cli/federated-graph/list.md): Lists all the federated graphs.
+- [Move](https://cosmo-docs.wundergraph.com/cli/federated-graph/move.md)
+- [Update](https://cosmo-docs.wundergraph.com/cli/federated-graph/update.md): Updates a federated graph on the control plane.
+- [Version](https://cosmo-docs.wundergraph.com/cli/federated-graph/version.md)
+- [Get](https://cosmo-docs.wundergraph.com/cli/federated-graph/version/get.md): Retrieves and displays the router compatibility version that has been set for a specific federated graph.
+- [Set](https://cosmo-docs.wundergraph.com/cli/federated-graph/version/set.md): Sets the router compatibility version for a federated graph.
+- [gRPC Services](https://cosmo-docs.wundergraph.com/cli/grpc-service.md): Commands for working with gRPC services for the Cosmo Router
+- [Create](https://cosmo-docs.wundergraph.com/cli/grpc-service/create.md): Creates a federated gRPC subgraph on the control plane.
+- [Delete](https://cosmo-docs.wundergraph.com/cli/grpc-service/delete.md): Deletes a gRPC subgraph on the control plane. The gRPC subgraph will be deleted from all federated graphs.
+- [Generate](https://cosmo-docs.wundergraph.com/cli/grpc-service/generate.md): Generate a protobuf definition for a gRPC service from a GraphQL schema
+- [Init](https://cosmo-docs.wundergraph.com/cli/grpc-service/init.md): Scaffold a new gRPC service project from a template
+- [List Templates](https://cosmo-docs.wundergraph.com/cli/grpc-service/list-templates.md): List all available gRPC service templates for the init command.
+- [Publish](https://cosmo-docs.wundergraph.com/cli/grpc-service/publish.md): Publishes a gRPC subgraph on the control plane. If the gRPC subgraph doesn't exist, it will be created.
+- [Cosmo CLI](https://cosmo-docs.wundergraph.com/cli/intro.md): The cosmo CLI tool: wgc. Used to manage the cosmo platform e.g. pushing schema, checking schemas, creating new projects, managing users, etc. It interacts with the control plane.
+- [Cosmo MCP Server](https://cosmo-docs.wundergraph.com/cli/mcp.md): The Cosmo MCP Server allows developers to integrate Cosmo into their modern LLM/AI supported IDEs.
+- [Monograph](https://cosmo-docs.wundergraph.com/cli/monograph.md): A monograph refers to a graph with GraphQL Federation disabled and is limited to a single subgraph.
+- [Changelog](https://cosmo-docs.wundergraph.com/cli/monograph/changelog.md): Retrieves the changelog for a monograph
+- [Check](https://cosmo-docs.wundergraph.com/cli/monograph/check.md): Checks for breaking changes and composition errors in the proposed schema for the monograph.
+- [Create](https://cosmo-docs.wundergraph.com/cli/monograph/create.md): Creates a monograph on the control plane.
+- [Delete](https://cosmo-docs.wundergraph.com/cli/monograph/delete.md): Deletes a monograph on the control plane.
+- [Fetch Schema](https://cosmo-docs.wundergraph.com/cli/monograph/fetch.md): Fetches the latest valid SDL of a monograph. The output can be piped to a file. This is primarily used for debugging purposes
+- [List](https://cosmo-docs.wundergraph.com/cli/monograph/list.md): Lists all the monographs.
+- [Migrate](https://cosmo-docs.wundergraph.com/cli/monograph/migrate.md): Converts the monograph into a federated graph. Once done you can update label matchers and labels to compose with more graphs in your organization.
+- [Move](https://cosmo-docs.wundergraph.com/cli/monograph/move.md): Moves the monograph from one namespace to another.
+- [Publish](https://cosmo-docs.wundergraph.com/cli/monograph/publish.md): Publishes a monograph on the control plane.
+- [Update](https://cosmo-docs.wundergraph.com/cli/monograph/update.md): Updates monograph metadata like URL, subscription configuration and more on the control plane.
+- [Version](https://cosmo-docs.wundergraph.com/cli/monograph/version.md)
+- [Get](https://cosmo-docs.wundergraph.com/cli/monograph/version/get.md): Retrieves and displays the router compatibility version that has been set for a specific monograph.
+- [Set](https://cosmo-docs.wundergraph.com/cli/monograph/version/set.md): Set the router compatibility version for a specific monograph.
+- [Namespace](https://cosmo-docs.wundergraph.com/cli/namespace.md): Commands to manage namespaces within the organization
+- [Create](https://cosmo-docs.wundergraph.com/cli/namespace/create.md): Creates a namespace for the organization on the control plane
+- [Delete](https://cosmo-docs.wundergraph.com/cli/namespace/delete.md): Allows you to delete a namespace
+- [List](https://cosmo-docs.wundergraph.com/cli/namespace/list.md): List all namespaces within the organization
+- [Rename](https://cosmo-docs.wundergraph.com/cli/namespace/rename.md): Rename an existing namespace within the organization
+- [Operations](https://cosmo-docs.wundergraph.com/cli/operations.md): Manipulate registered operations
+- [Push](https://cosmo-docs.wundergraph.com/cli/operations/push.md): Push persisted operations to your routers
+- [Proposal](https://cosmo-docs.wundergraph.com/cli/proposal.md): Manage proposals of federated graph
+- [Create](https://cosmo-docs.wundergraph.com/cli/proposal/create.md): Creates a proposal for a federated graph.
+- [Update](https://cosmo-docs.wundergraph.com/cli/proposal/update.md): Updates an existing proposal for a federated graph.
+- [Router](https://cosmo-docs.wundergraph.com/cli/router.md)
+- [Cache](https://cosmo-docs.wundergraph.com/cli/router/cache.md)
+- [Push](https://cosmo-docs.wundergraph.com/cli/router/cache/push.md)
+- [Compatibility Version](https://cosmo-docs.wundergraph.com/cli/router/compatibility-version.md): The `compatibility-version` commands relate to a router's compatibility version.
+- [List](https://cosmo-docs.wundergraph.com/cli/router/compatibility-version/list.md): Lists all supported router compatibility versions.
+- [Compose](https://cosmo-docs.wundergraph.com/cli/router/compose.md): Compose generates the router execution config locally from your subgraphs. The config can be used to start your router with a pre-built router config.
+- [Download Binary](https://cosmo-docs.wundergraph.com/cli/router/download-binary.md): Download-binary directly downloads the latest router executable of the appropriate architecture for your system.
+- [Fetch](https://cosmo-docs.wundergraph.com/cli/router/fetch.md): Fetches the latest valid router execution config of a federated graph.
+- [Plugin](https://cosmo-docs.wundergraph.com/cli/router/plugin.md): Commands for working with plugins for the Cosmo Router
+- [Build](https://cosmo-docs.wundergraph.com/cli/router/plugin/build.md): Build a gRPC router plugin
+- [Create](https://cosmo-docs.wundergraph.com/cli/router/plugin/create.md): Creates a federated plugin subgraph on the control plane.
+- [Delete](https://cosmo-docs.wundergraph.com/cli/router/plugin/delete.md): Deletes a plugin subgraph on the control plane. The plugin subgraph will be deleted from all federated graphs.
+- [Generate](https://cosmo-docs.wundergraph.com/cli/router/plugin/generate.md): Generate proto and gRPC code for a router plugin
+- [Init](https://cosmo-docs.wundergraph.com/cli/router/plugin/init.md): Scaffold a new gRPC router plugin
+- [Publish](https://cosmo-docs.wundergraph.com/cli/router/plugin/publish.md): Publishes a plugin subgraph on the control plane. If the plugin subgraph doesn't exist, it will be created and the Docker image will be built and pushed to the registry.
+- [Test](https://cosmo-docs.wundergraph.com/cli/router/plugin/test.md): Run tests for a gRPC router plugin
+- [Token](https://cosmo-docs.wundergraph.com/cli/router/token.md)
+- [Create](https://cosmo-docs.wundergraph.com/cli/router/token/create.md): Creates a token scoped to a federated graph. The token permits the router to communicate with the platform and to export metrics to the collectors.
+- [Delete](https://cosmo-docs.wundergraph.com/cli/router/token/delete.md): Deletes a token of a federated graph.
+- [List](https://cosmo-docs.wundergraph.com/cli/router/token/list.md): Lists router tokens of a federated graph. Only shows metadata not the actual token.
+- [Schema Contracts](https://cosmo-docs.wundergraph.com/cli/schema-contracts.md): Schema contracts helps you provide filtered out versions of your composed graph to different customers.
+- [Create](https://cosmo-docs.wundergraph.com/cli/schema-contracts/create.md): Creates a contract from a federated graph or monograph.
+- [Delete, List, Fetch And More](https://cosmo-docs.wundergraph.com/cli/schema-contracts/delete-list-fetch-and-more.md)
+- [Update](https://cosmo-docs.wundergraph.com/cli/schema-contracts/update.md): This command updates the tag filters for the contract. To update other aspects of the contract graph please use the federated-graph or monograph update commands.
+- [Subgraph](https://cosmo-docs.wundergraph.com/cli/subgraph.md): Subgraphs are the building blocks of a federated graph. Each subgraph in a Federated GraphQL Architecture is responsible for defining its own part of the schema and handling the corresponding queries.
+- [Batch Publish](https://cosmo-docs.wundergraph.com/cli/subgraph/batch-publish.md): Publishes the schemas of multiple existing subgraphs in a single request using a config file.
+- [Check](https://cosmo-docs.wundergraph.com/cli/subgraph/check.md): Checks for breaking changes and composition errors for all the connected federated graphs.
+- [Create](https://cosmo-docs.wundergraph.com/cli/subgraph/create.md): Creates a federated subgraph on the control plane.
+- [Delete](https://cosmo-docs.wundergraph.com/cli/subgraph/delete.md): Deletes a subgraph on the control plane. The subgraph will be deleted from all federated graphs.
+- [Fetch](https://cosmo-docs.wundergraph.com/cli/subgraph/fetch.md): Fetches the latest published SDL of a subgraph. If the federated graph is specified, the latest successfully composed version of the subgraph will be fetched.
+- [Fix](https://cosmo-docs.wundergraph.com/cli/subgraph/fix.md): Checks for composition errors across all connected federated graphs and tries to fix them through OpenAI integration.
+- [Introspect](https://cosmo-docs.wundergraph.com/cli/subgraph/introspect.md): Introspects a subgraph.
+- [Link](https://cosmo-docs.wundergraph.com/cli/subgraph/link.md): Links a subgraph to another subgraph on the control plane for schema validation.
+- [List](https://cosmo-docs.wundergraph.com/cli/subgraph/list.md): Lists all the subgraphs.
+- [Move](https://cosmo-docs.wundergraph.com/cli/subgraph/move.md): Move a subgraph into a different namespace
+- [Publish](https://cosmo-docs.wundergraph.com/cli/subgraph/publish.md): Publishes a subgraph on the control plane. Optionally, you can publish and create a subgraph in one step.
+- [Unlink](https://cosmo-docs.wundergraph.com/cli/subgraph/unlink.md): Unlinks a subgraph from another subgraph on the control plane.
+- [Update](https://cosmo-docs.wundergraph.com/cli/subgraph/update.md): Updates subgraph metadata like URL, labels on the control plane.
+- [Cache Warmer](https://cosmo-docs.wundergraph.com/concepts/cache-warmer.md): The Cache Warmer is an optimization feature designed to enhance GraphQL Federation performance by precomputing query plans and storing them in the cache. This proactive caching mechanism reduces latency spikes caused by cold starts and ensures that high-traffic applications can handle demand surges…
+- [Feature Flags](https://cosmo-docs.wundergraph.com/concepts/feature-flags.md): An overview of feature subgraphs, feature flags, and implementing your first feature flag.
+- [Namespaces](https://cosmo-docs.wundergraph.com/concepts/namespaces.md): Namespaces allow you to group and/or isolate different instances of the same federated graph.
+- [Proposals](https://cosmo-docs.wundergraph.com/concepts/proposals.md): Proposals allow you to introduce changes to your federated graph in a structured way.
+- [Router Compatibility Versions](https://cosmo-docs.wundergraph.com/concepts/router-compatibility-versions.md): This page provides an overview on router compatibility versions.
+- [Schema Contracts](https://cosmo-docs.wundergraph.com/concepts/schema-contracts.md): Empower yourself as a developer by leveraging the simplicity and efficiency of WunderGraph Cosmo Schema Contracts. Schema Contracts allow you to build versatile, multi-audience graphs, simplifying development and ensuring the maintainability of your graph.
+- [Consume gRPC](https://cosmo-docs.wundergraph.com/connect-rpc/consume-via-grpc.md): Interact with your API using high-performance gRPC clients and standard tooling like grpcurl.
+- [Consume REST / OpenAPI](https://cosmo-docs.wundergraph.com/connect-rpc/consume-via-rest-openapi.md): Interact with your API using standard HTTP/JSON requests, suitable for standard clients like cURL, Postman, or browsers.
+- [Consume SDKs](https://cosmo-docs.wundergraph.com/connect-rpc/consume-via-sdks.md): Learn how to install and use the pre-generated, type-safe client libraries for TypeScript and Go
+- [Overview](https://cosmo-docs.wundergraph.com/connect-rpc/overview.md): Transform GraphQL operations into OpenAPI specifications and type-safe SDKs
+- [Configure Router](https://cosmo-docs.wundergraph.com/connect-rpc/produce-configure-router.md): Enable the ConnectRPC server in the Cosmo Router to serve your typed API endpoints.
+- [Define Contracts](https://cosmo-docs.wundergraph.com/connect-rpc/produce-define-contracts.md): Create the API surface using Trusted Documents and generate Protocol Buffer definitions.
+- [Generate & Distribute SDKs](https://cosmo-docs.wundergraph.com/connect-rpc/produce-generate-distribute-sdks.md): Configure Buf to automatically generate and distribute type-safe TypeScript, Go, and OpenAPI artifacts from your API contracts as part of your CI/CD workflow.
+- [gRPC Services](https://cosmo-docs.wundergraph.com/connect/grpc-services.md): Extend your federated graph with independently deployed gRPC services, defined by a simple GraphQL schema contract.
+- [Overview](https://cosmo-docs.wundergraph.com/connect/overview.md): Federate Without Boundaries: Integrate Any Backend Into Your Supergraph
+- [Router Plugins](https://cosmo-docs.wundergraph.com/connect/plugins.md): Lightweight extensions that run alongside the router as local processes for quick integrations
+- [Configuration](https://cosmo-docs.wundergraph.com/control-plane/configuration.md): Here you can set all available environment variables of the Control Plane.
+- [Cosmo Control Plane](https://cosmo-docs.wundergraph.com/control-plane/intro.md): The Control Plane forms the heart of the Cosmo platform and comprises two core elements: the Platform API and the Node API. The Platform API is utilized by the Cosmo CLI tool and Studio for platform management. On the other hand, the Node API facilitates fleet-specific operations, carried out by the…
+- [Webhooks](https://cosmo-docs.wundergraph.com/control-plane/webhooks.md): Documentation for webhooks
+- [Cosmo Cloud](https://cosmo-docs.wundergraph.com/deployments-and-hosting/cosmo-cloud.md): Cosmo Cloud is a fully managed service designed to operate all critical components of the Cosmo Platform in the most efficient manner, leaving you only responsible for running your routers.
+- [Docker](https://cosmo-docs.wundergraph.com/deployments-and-hosting/docker.md): You can easily run the Cosmo stack using docker-compose.
+- [Cosmo](https://cosmo-docs.wundergraph.com/deployments-and-hosting/intro.md): One of the key distinctions between WunderGraph Cosmo and other platforms, such as Apollo GraphOS, is the capability to manage and deploy the entire platform as a self-hosted version. In this scenario, you are responsible for maintaining the stack, and you gain full data sovereignty.
+- [Kubernetes](https://cosmo-docs.wundergraph.com/deployments-and-hosting/kubernetes.md): Kubernetes is an open-source container orchestration platform designed to automate the deployment, scaling, and management of application containers.
+- [Helm Chart](https://cosmo-docs.wundergraph.com/deployments-and-hosting/kubernetes/helm-chart.md): Navigating the stars with the Cosmo Helm Chart. This chart is a collection of sub-charts that make up the Cosmo Platform. You can deploy it both locally and in production.
+- [Cosmo Platform](https://cosmo-docs.wundergraph.com/deployments-and-hosting/kubernetes/helm-chart/cosmo-platform.md): The following instructions help you to install the Cosmo platform through our official Umbrella Chart on Kubernetes.
+- [Router](https://cosmo-docs.wundergraph.com/deployments-and-hosting/kubernetes/helm-chart/router.md): The following instructions help you install the Router Chart on Kubernetes.
+- [Release Management](https://cosmo-docs.wundergraph.com/deployments-and-hosting/release-management.md): How to get the latest release and stay up-to-date.
+- [Terraform](https://cosmo-docs.wundergraph.com/deployments-and-hosting/terraform.md): Terraform allows the provisioning of infrastructure in a declarative way. You can use Terraform to deploy to multiple platforms.
+- [AWS Fargate](https://cosmo-docs.wundergraph.com/deployments-and-hosting/terraform/aws-fargate.md): Use our official terraform module to deploy the Router to AWS Fargate.
+- [Enterprise](https://cosmo-docs.wundergraph.com/enterprise.md): Learn more about why Cosmo is the ideal GraphQL Federation solution for Enterprise
+- [Composition Errors](https://cosmo-docs.wundergraph.com/federation/composition-errors.md)
+- [@authenticated](https://cosmo-docs.wundergraph.com/federation/directives/authenticated.md): The @authenticated directive declares a GraphQL definition to require the agent (person, service, or device) to be authenticated. Lack of authentication will yield an authorization error.
+- [@composeDirective](https://cosmo-docs.wundergraph.com/federation/directives/composeddirective.md): @composeDirective is a federation V2-only directive. Examples and usages are outlined herein.
+- [@connect__fieldResolver](https://cosmo-docs.wundergraph.com/federation/directives/connect__fieldresolver.md): The @connect__fieldResolver directive turns a field into a dedicated gRPC RPC call with explicit parent context.
+- [@deprecated](https://cosmo-docs.wundergraph.com/federation/directives/deprecated.md): The @deprecated directive marks fields, arguments, input fields, and enum values as deprecated in the schema.
+- [@external](https://cosmo-docs.wundergraph.com/federation/directives/external.md): The @external directive declares that a field is not independently resolvable by the current subgraph, making it available for use with @requires and @provides.
+- [@key](https://cosmo-docs.wundergraph.com/federation/directives/key.md): The @key directive designates an object type as a federation entity and specifies the fields that uniquely identify it across subgraphs.
+- [@link](https://cosmo-docs.wundergraph.com/federation/directives/link.md): @link is a federation V2-only directive. Examples and usages are outlined herein.
+- [@openfed configureDescription](https://cosmo-docs.wundergraph.com/federation/directives/openfed__configuredescription.md): The @openfed__configureDescription directive allows granular control over descriptions. It is not considered to be a V2-only directive.
+- [@openfed requireFetchReasons](https://cosmo-docs.wundergraph.com/federation/directives/openfed__requirefetchreasons.md): The @openfed__requireFetchReasons directive enables fetch reason propagation to subgraphs for debugging and observability.
+- [@openfed subscriptionFilter](https://cosmo-docs.wundergraph.com/federation/directives/openfed__subscriptionfilter.md): @openfed__subscriptionFilter is an Open Federation directive used to filter subscription events based on filter predicates.
+- [@provides](https://cosmo-docs.wundergraph.com/federation/directives/provides.md): The @provides directive declares that a subgraph can resolve specific external entity fields at a particular schema path, reducing cross-subgraph fetches.
+- [@requires](https://cosmo-docs.wundergraph.com/federation/directives/requires.md): The @requires directive declares that an entity field's resolver depends on fields from another subgraph, which the router must fetch first.
+- [@requiresScopes](https://cosmo-docs.wundergraph.com/federation/directives/requiresscopes.md): The @requiresScopes directive declares a GraphQL definition to require the agent (person, service, or device) to possess certain permissions. Lack of permissions will yield an authorization error.
+- [@shareable](https://cosmo-docs.wundergraph.com/federation/directives/shareable.md): @shareable is a federation V2-only directive. Examples and usages are outlined herein.
+- [@specifiedBy](https://cosmo-docs.wundergraph.com/federation/directives/specifiedby.md): The @specifiedBy directive links a custom scalar type to a human-readable specification of its format.
+- [Event-Driven Federated Subscriptions](https://cosmo-docs.wundergraph.com/federation/event-driven-federated-subscriptions.md)
+- [Composition Rules](https://cosmo-docs.wundergraph.com/federation/event-driven-federated-subscriptions/composition-rules.md): The Event-Driven Graph (or EDG) is an 'abstract' subgraph, so it must not define any resolvers. EDGs are also subject to special compositional rules.
+- [Kafka](https://cosmo-docs.wundergraph.com/federation/event-driven-federated-subscriptions/kafka.md)
+- [NATS](https://cosmo-docs.wundergraph.com/federation/event-driven-federated-subscriptions/nats.md)
+- [Redis](https://cosmo-docs.wundergraph.com/federation/event-driven-federated-subscriptions/redis.md)
+- [Federation Compatibility Matrix](https://cosmo-docs.wundergraph.com/federation/federation-compatibility-matrix.md): The following list gives you an Overview of the compatibility between Cosmo and other Federation Implementations.
+- [Directives Reference](https://cosmo-docs.wundergraph.com/federation/federation-directives-index.md): An index of directives supported by WunderGraph Cosmo.
+- [Cosmo Cloud Onboarding](https://cosmo-docs.wundergraph.com/getting-started/cosmo-cloud-onboarding.md): Learn how to deploy your first federated graph and integrate it with your Cosmo Router.
+- [Switch from Apollo to Cosmo](https://cosmo-docs.wundergraph.com/getting-started/switch-from-apollo-to-cosmo.md)
+- [WunderGraph Cosmo](https://cosmo-docs.wundergraph.com/overview.md): WunderGraph Cosmo is the Full Lifecycle GraphQL API Management Solution to manage Federated Graphs at scale. Composition checks, routing, analytics, and distributed tracing all in one platform.
+- [Access Logs](https://cosmo-docs.wundergraph.com/router/access-logs.md): Configuring Access Logs for Enhanced Traffic Monitoring.
+- [Advanced Data Privacy](https://cosmo-docs.wundergraph.com/router/advanced-data-privacy.md)
+- [Advanced Request Tracing (ART)](https://cosmo-docs.wundergraph.com/router/advanced-request-tracing-art.md): This section is about Advanced Request Tracing (ART) and how you can leverage it to debug execution plans and understand exactly how the Router resolves a request.
+- [Authentication & Authorization](https://cosmo-docs.wundergraph.com/router/authentication-and-authorization.md): Set up authentication and authorization for incoming requests
+- [Compliance and Data Management](https://cosmo-docs.wundergraph.com/router/compliance-and-data-management.md): Get an overview about what data the router collects and its purposes. Learn to adjust configurations to ensure stringent data privacy management.
+- [Router Configuration](https://cosmo-docs.wundergraph.com/router/configuration.md): Router Configuration Reference
+- [Configuration Design](https://cosmo-docs.wundergraph.com/router/configuration/config-design.md): Designing and structuring configuration files
+- [Template Expressions](https://cosmo-docs.wundergraph.com/router/configuration/template-expressions.md): Using Template Expressions for Request and Configuration Control
+- [Cosmo Streams (EDFS)](https://cosmo-docs.wundergraph.com/router/cosmo-streams.md): Cosmo Streams (formally known as EDFS) combines the power of GraphQL Federation and Event-Driven Architecture to update a user GraphQL Subscription after an event occurs in your system.
+- [Custom Modules](https://cosmo-docs.wundergraph.com/router/cosmo-streams/custom-modules.md): Customize Streams behavior with powerful handlers for subscription lifecycle, event processing, and data transformation.
+- [BeforeEventsDispatch Handler](https://cosmo-docs.wundergraph.com/router/cosmo-streams/custom-modules/before-events-dispatch.md): A Cosmo Streams Custom Module, which lets you customize a batch of events received from a message provider once, before it is dispatched to any subscriber
+- [OnPublishEvents Handler](https://cosmo-docs.wundergraph.com/router/cosmo-streams/custom-modules/on-publish-event.md): A Cosmo Streams Custom Module, which lets you customize events before they are sent to message providers
+- [OnReceiveEvents Handler](https://cosmo-docs.wundergraph.com/router/cosmo-streams/custom-modules/on-receive-event.md): A Cosmo Streams Custom Module, which lets you customize events received from a message provider before being passed to subscribers
+- [SubscriptionOnCreate Handler](https://cosmo-docs.wundergraph.com/router/cosmo-streams/custom-modules/subscription-on-create.md): A Cosmo Streams Custom Module that lets you modify the subscription event configuration before the subscription is registered
+- [SubscriptionOnStart Handler](https://cosmo-docs.wundergraph.com/router/cosmo-streams/custom-modules/subscription-on-start.md): A Cosmo Streams Custom Module, which lets you customize subscription initialization behavior
+- [Kafka](https://cosmo-docs.wundergraph.com/router/cosmo-streams/kafka.md)
+- [NATS](https://cosmo-docs.wundergraph.com/router/cosmo-streams/nats.md): NATS event provider support for Cosmo Streams
+- [Stream And Consumer Configuration](https://cosmo-docs.wundergraph.com/router/cosmo-streams/nats/stream-and-consumer-configuration.md): Configuring a stream and consumer for a NATS provider.
+- [Redis](https://cosmo-docs.wundergraph.com/router/cosmo-streams/redis.md)
+- [Overview](https://cosmo-docs.wundergraph.com/router/custom-modules.md): Customize your router by writing just a few lines of Go code and compiling it with a single command. Eliminate the complexities associated with writing scripts and use the existing Go ecosystem.
+- [Migration: Request Deduplication](https://cosmo-docs.wundergraph.com/router/custom-modules-migration.md): Migration guide for custom modules using EnginePreOriginHandler (OnOriginRequest) to adapt to the new request deduplication behavior.
+- [Deployment](https://cosmo-docs.wundergraph.com/router/deployment.md): Learn how to deploy and start the Router in Production.
+- [Config Hot Reload](https://cosmo-docs.wundergraph.com/router/deployment/config-hot-reload.md): Config Hot-Reload allows updating a running router without interrupting existing client traffic.
+- [Development](https://cosmo-docs.wundergraph.com/router/development.md): The Cosmo router contains functionality intended to be used to assist the development of the router and/or subgraphs that are connected through the router. Most of these features should not be enabled for production, since they could impact performance in negative ways.
+- [Debugging](https://cosmo-docs.wundergraph.com/router/development/debugging.md): The router can be debugged and tested in multiple ways.
+- [Development Mode](https://cosmo-docs.wundergraph.com/router/development/development-mode.md): The 'Dev Mode' in a router is a specialized configuration preset designed to optimize the local development process. By activating Dev Mode, developers can access a streamlined set of features that significantly enhance the efficiency and comfort of the development experience, while simplifying the…
+- [Download & Install](https://cosmo-docs.wundergraph.com/router/download-and-install.md): Learn how to download and install the router
+- [Feature Flags](https://cosmo-docs.wundergraph.com/router/feature-flags.md): Route traffic through alternate subgraphs by toggling feature flags per request.
+- [File Upload](https://cosmo-docs.wundergraph.com/router/file-upload.md): Upload files through the router using GraphQL multipart request.
+- [Overview](https://cosmo-docs.wundergraph.com/router/gRPC/concepts.md): Core concepts for gRPC integration in Cosmo Router
+- [Field Resolvers](https://cosmo-docs.wundergraph.com/router/gRPC/field-resolvers.md): Custom field resolution in gRPC integration for GraphQL Federation
+- [GraphQL Support](https://cosmo-docs.wundergraph.com/router/gRPC/graphql-support.md): Supported features and known limitations for gRPC integration in Cosmo Router
+- [gRPC Services](https://cosmo-docs.wundergraph.com/router/gRPC/grpc-services.md): Deploy gRPC services independently for distributed GraphQL Federation.
+- [Plugins](https://cosmo-docs.wundergraph.com/router/gRPC/plugins.md): Local router plugins for high-performance GraphQL Federation with simplified deployment
+- [Debugging](https://cosmo-docs.wundergraph.com/router/gRPC/plugins/debugging.md): Debug router plugins using various IDEs and tools
+- [HTTP Client](https://cosmo-docs.wundergraph.com/router/gRPC/plugins/go-plugin/http-client.md): A developer-friendly HTTP client package for the Cosmo Router Plugin
+- [Logging](https://cosmo-docs.wundergraph.com/router/gRPC/plugins/go-plugin/logging.md): Enable and configure logging in gRPC plugins
+- [Go Plugins](https://cosmo-docs.wundergraph.com/router/gRPC/plugins/go-plugin/overview.md): Golang Router Plugins
+- [Telemetry](https://cosmo-docs.wundergraph.com/router/gRPC/plugins/go-plugin/telemetry.md): Utilize the router plugin telemetry tracing feature for automatic built in tracing.
+- [TypeScript Plugins](https://cosmo-docs.wundergraph.com/router/gRPC/plugins/ts-plugin/overview.md): TypeScript Router Plugins
+- [@requires](https://cosmo-docs.wundergraph.com/router/gRPC/requires.md): Using the @requires federation directive with Cosmo Connect to resolve entity fields that depend on data from other subgraphs.
+- [Cosmo Router](https://cosmo-docs.wundergraph.com/router/intro.md): Cosmo Router is an Apache 2.0 licensed Router compatible with GraphQL Federation v1 & v2. The Router is implemented in Golang with a focus on performance and maintainability.
+- [MCP Gateway](https://cosmo-docs.wundergraph.com/router/mcp.md): Connect AI models to your GraphQL APIs using the Model Context Protocol.
+- [Configuration](https://cosmo-docs.wundergraph.com/router/mcp/configuration.md): Complete reference for all MCP Gateway configuration options, including session handling, storage providers, and environment variables.
+- [IDE & AI Tool Setup](https://cosmo-docs.wundergraph.com/router/mcp/ide-setup.md): Connect AI tools to your MCP Gateway. Includes header forwarding for authentication and tracing.
+- [OAuth Configuration Reference](https://cosmo-docs.wundergraph.com/router/mcp/oauth/configuration.md): Complete reference for all MCP OAuth configuration options, JWKS settings, environment variables, error responses, and RFC 9728 metadata.
+- [Overview](https://cosmo-docs.wundergraph.com/router/mcp/oauth/overview.md): Understand how OAuth 2.1 authorization works in the MCP server, including token validation, scope enforcement, and integration with identity providers.
+- [OAuth Quickstart](https://cosmo-docs.wundergraph.com/router/mcp/oauth/quickstart.md): Add OAuth 2.1 authorization to your MCP server in minutes. Step-by-step setup with JWKS configuration and verification.
+- [Scope Enforcement](https://cosmo-docs.wundergraph.com/router/mcp/oauth/scopes.md): How the MCP server enforces OAuth scopes at multiple levels, from connection to per-tool authorization, using an additive model with step-up token upgrades.
+- [Quickstart](https://cosmo-docs.wundergraph.com/router/mcp/quickstart.md): Get the Cosmo Router MCP Gateway running in 5 minutes. Create your first GraphQL operation and connect an AI tool.
+- [Tools](https://cosmo-docs.wundergraph.com/router/mcp/tools.md): How to define, describe, and organize the tools the MCP server exposes to AI models.
+- [Metrics & Monitoring](https://cosmo-docs.wundergraph.com/router/metrics-and-monitoring.md): The router offers built-in support for [OTEL](https://opentelemetry.io/) and [Prometheus](https://prometheus.io/). OTEL data is exported through exporters. For reference please take a look at the [OpenTelemetry](/router/metrics-and-monitoring#open-telemetry) section.
+- [Exemplars](https://cosmo-docs.wundergraph.com/router/metrics-and-monitoring/exemplars.md): Link aggregated metrics back to the traces that produced them by recording OpenTelemetry exemplars.
+- [Grafana](https://cosmo-docs.wundergraph.com/router/metrics-and-monitoring/grafana.md): Using Grafana with your Cosmo Router allows you to track metrics such as network traffic, cache status, and system performance, all in real-time. This enhanced visibility helps in quickly identifying anomalies, diagnosing issues, and optimizing network efficiency.
+- [Prometheus Metric Reference](https://cosmo-docs.wundergraph.com/router/metrics-and-monitoring/prometheus-metric-reference.md): Overview of Prometheus metrics with explanations, queries, use cases, and error detection details
+- [Span Error Status & Error Metrics](https://cosmo-docs.wundergraph.com/router/metrics-and-monitoring/span-error-status.md): Understand when the router marks spans as ERROR and how errors are reflected in metrics
+- [Open Telemetry](https://cosmo-docs.wundergraph.com/router/open-telemetry.md): Use OpenTelemetry with traces and metrics
+- [Custom Attributes](https://cosmo-docs.wundergraph.com/router/open-telemetry/custom-attributes.md): We provide default attributes for every metric and span, but it's often necessary to add extra context. To achieve this, we support both static and dynamic values based on headers.
+- [Dynatrace](https://cosmo-docs.wundergraph.com/router/open-telemetry/dynatrace.md): Export OpenTelemetry traces and metrics to Dynatrace and Cosmo Cloud.
+- [Prometheus OTLP Ingestion](https://cosmo-docs.wundergraph.com/router/open-telemetry/prometheus-otlp-ingestion.md): OTLP ingestion in Prometheus
+- [Setup OpenTelemetry Collector](https://cosmo-docs.wundergraph.com/router/open-telemetry/setup-opentelemetry-collector.md): In this section we will be taking a look on how to setup and configure your own collector to export metrics to cosmo cloud.
+- [Performance Debugging](https://cosmo-docs.wundergraph.com/router/performance-debugging.md): Use tracing with Cosmo Studio to analyze the performance of your GraphQL request and to pinpoint bottlenecks during the query planning or execution phase.
+- [Persisted Queries](https://cosmo-docs.wundergraph.com/router/persisted-queries.md): The router supports two distinct features, both dealing with persisted queries.
+- [Automatic Persisted Queries (APQ)](https://cosmo-docs.wundergraph.com/router/persisted-queries/automatic-persisted-queries-apq.md)
+- [Persisted Operations](https://cosmo-docs.wundergraph.com/router/persisted-queries/persisted-operations.md): Persisted operations, also known as trusted documents, allow you to register trusted operations in the router
+- [Profiling](https://cosmo-docs.wundergraph.com/router/profiling.md): Optimize Go applications using the built-in pprof package for CPU, memory, and goroutine profiling to identify bottlenecks and improve performance.
+- [Proxy Capabilities](https://cosmo-docs.wundergraph.com/router/proxy-capabilities.md): When working in a federated architecture the need to propagate / orchestrate client data is common. We provide several ways to simplify the work with it.
+- [Adjusting Cache Control](https://cosmo-docs.wundergraph.com/router/proxy-capabilities/adjusting-cache-control.md): Caching requests and responses is a critical ability. The router enables very detailed control of the cache control policy for the whole graph, as well as subgraphs
+- [Forward Client Extensions](https://cosmo-docs.wundergraph.com/router/proxy-capabilities/forward-client-extensions.md): Forward Client Extensions allow you to share arbitrary data between clients and subgraphs. For subscriptions, it is the only method for sharing init-session data.
+- [Override Subgraph Config](https://cosmo-docs.wundergraph.com/router/proxy-capabilities/override-subgraph-config.md)
+- [Router Response Header Operations](https://cosmo-docs.wundergraph.com/router/proxy-capabilities/router-response-header-operations.md): Set custom response headers at the router level that apply to the final response sent to clients.
+- [Subgraph Request Headers Operations](https://cosmo-docs.wundergraph.com/router/proxy-capabilities/subgraph-request-header-operations.md): The router allows users to operate on the request headers.
+- [Subgraph Response Header Operations](https://cosmo-docs.wundergraph.com/router/proxy-capabilities/subgraph-response-header-operations.md): Similar to request headers, we also allow for operations to be run on the headers of the router responses
+- [Query Batching](https://cosmo-docs.wundergraph.com/router/query-batching.md): Learn how to use GraphQL query batching in the router.
+- [Query Plan](https://cosmo-docs.wundergraph.com/router/query-plan.md): The router allows you to request the query plan and you can view the same in the playground
+- [Batch Generate Query Plans](https://cosmo-docs.wundergraph.com/router/query-plan/batch-generate-query-plans.md): You can generate query plans using the ./router query-plan command
+- [Relaxed Field Selection Merging Nullability](https://cosmo-docs.wundergraph.com/router/relaxed-field-selection-merging-nullability.md): Allow fields with differing nullability across union member types in federated graphs.
+- [Request Deduplication](https://cosmo-docs.wundergraph.com/router/request-deduplication.md): How the Cosmo Router deduplicates identical concurrent requests to improve performance.
+- [Security](https://cosmo-docs.wundergraph.com/router/security.md): Security is prioritized at WunderGraph. Cosmo is the go-to GraphQL solution for enterprises. To further harden our architecture, we've built several security features we will elaborate on the next pages.
+- [Config Validation & Signing](https://cosmo-docs.wundergraph.com/router/security/config-validation-and-signing.md): The router configuration, updatable via CDN or file, employs a "Config Validation & Signing" feature to safeguard against tampering through external validation and signing.
+- [Cost Control](https://cosmo-docs.wundergraph.com/router/security/cost-control.md): Protect the API from expensive operations by estimating query complexity before execution using @cost and @listSize directives
+- [Hardening Guide](https://cosmo-docs.wundergraph.com/router/security/hardening-guide.md): The router is a complex component with many levels of customization. Understanding the correct production configuration can be quite overwhelming. This guide provides tips on avoiding the most common pitfalls. For a complete and certified review, please seek consultancy.
+- [TLS](https://cosmo-docs.wundergraph.com/router/security/tls.md): The Router supports TLS and mTLS for secure communication with your clients and infrastructure components like load-balancer.
+- [Validate Inline Arguments](https://cosmo-docs.wundergraph.com/router/security/validate-inline-arguments.md): Detect, and optionally reject, operations that pass argument values inline instead of through variables.
+- [Storage Providers](https://cosmo-docs.wundergraph.com/router/storage-providers.md): To maintain control over your data and ensure high performance, utilize different storage providers to store router artifacts on Amazon S3, while still using our Cosmo Managed offering.
+- [String Literals for Enums](https://cosmo-docs.wundergraph.com/router/string-literals-for-enums.md): Accept string literals for enum values as an opt-in deviation from the GraphQL specification.
+- [Subgraph Error Propagation](https://cosmo-docs.wundergraph.com/router/subgraph-data-propagation/subgraph-error-propagation.md): Learn more on how you can configure propagating errors from Subgraphs to the client.
+- [Subgraph Extension Propagation](https://cosmo-docs.wundergraph.com/router/subgraph-data-propagation/subgraph-extension-propagation.md): Forward the extensions object returned by subgraphs to the client response, with control over which fields are propagated and how conflicts between subgraphs are resolved.
+- [Subscriptions](https://cosmo-docs.wundergraph.com/router/subscriptions.md): Enable Real-time capabilities for your client applications.
+- [Migration: Subscriptions Overhaul](https://cosmo-docs.wundergraph.com/router/subscriptions-migration.md): Migration guide for the subscriptions overhaul. Covers the three behavioral changes and the engine WebSocket configuration renames.
+- [Multipart HTTP Requests](https://cosmo-docs.wundergraph.com/router/subscriptions/multipart-http-requests.md): Multipart HTTP Protocol is a method for delivering incremental responses over HTTP. It allows you to receive subscription responses in clearly defined chunks, keeping an open connection throughout.
+- [Subscriptions Configuration](https://cosmo-docs.wundergraph.com/router/subscriptions/router-configuration-for-subscriptions.md): This section explains how you can configure Subscriptions both for local development and using Cosmo Studio.
+- [Server Sent Events (SSE)](https://cosmo-docs.wundergraph.com/router/subscriptions/server-sent-events-sse.md): Server-Sent Events (SSE) are best for unidirectional communication where the server continuously sends data to the client, like live updates or notifications.
+- [Websocket Subprotocols](https://cosmo-docs.wundergraph.com/router/subscriptions/websocket-subprotocols.md): This section explains how you can configure Websocket subprotocols both for local development and using Cosmo Studio.
+- [Traffic Shaping](https://cosmo-docs.wundergraph.com/router/traffic-shaping.md): Take Control of Router Traffic Management to increase reliability between the client and router and between the router and subgraphs.
+- [Circuit Breaker](https://cosmo-docs.wundergraph.com/router/traffic-shaping/circuit-breaker.md): Configure circuit breakers to protect your subgraphs from cascading failures.
+- [Retry](https://cosmo-docs.wundergraph.com/router/traffic-shaping/retry.md): Configure retries to increase reliability.
+- [Timeout](https://cosmo-docs.wundergraph.com/router/traffic-shaping/timeout.md): Configure subgraph timeouts according to your needs.
+- [Upgrading The Router](https://cosmo-docs.wundergraph.com/router/upgrading-the-router.md): The WunderGraph Team is constantly improving and adding features to the router. This page discusses how to upgrade the router so that you can benefit from these changes.
+- [Security & Compliance](https://cosmo-docs.wundergraph.com/security-and-compliance.md): Cosmo, with SOC 2 Type II certification and enterprise-grade access controls, ensures security, privacy, and compliance by design.
+- [Self Hosting](https://cosmo-docs.wundergraph.com/self-hosted.md): Learn more about how to self-host Cosmo on your own Infra using Docker, Kubernetes, VMs, or Bare Metal.
+- [Alerts And Notifications](https://cosmo-docs.wundergraph.com/studio/alerts-and-notifications.md): Get notified about schema changes to your federated graphs through webhooks or slack integration
+- [Slack Integration](https://cosmo-docs.wundergraph.com/studio/alerts-and-notifications/slack-integration.md): You can set up slack integration for your organization to get notified when the subscribed events occur.
+- [Webhooks](https://cosmo-docs.wundergraph.com/studio/alerts-and-notifications/webhooks.md): You can setup multiple webhooks for your organization that subscribe to events.
+- [Analytics](https://cosmo-docs.wundergraph.com/studio/analytics.md): This page provides you with a detailed breakdown of requests made to your federated graph. It's equipped with grouping, filtering and date range features to enable you to analyze your data.
+- [Client Identification](https://cosmo-docs.wundergraph.com/studio/analytics/client-identification.md): Enrich your clients with the proper client name and version to distingush them in the analytics.
+- [Distributed Tracing](https://cosmo-docs.wundergraph.com/studio/analytics/distributed-tracing.md): This page shows the path taken by the request through your federated graph and the operation content.
+- [Metrics](https://cosmo-docs.wundergraph.com/studio/analytics/metrics.md): Metrics give a general overview of the performance of your federated graph. From here you can zoom in on specific time ranges and filter metrics by operation name, client name, and version.
+- [Schema Field Usage](https://cosmo-docs.wundergraph.com/studio/analytics/schema-field-usage.md): Evolve your schema by making decisions based on how every field is used by different clients and operations
+- [Traces](https://cosmo-docs.wundergraph.com/studio/analytics/traces.md): Lists all the requests made to your router. For each request, it shows the relevant details, such as the operation performed, the client who made the request, and any error message
+- [API Keys](https://cosmo-docs.wundergraph.com/studio/api-keys.md): This page enables the management of API tokens for automation purposes, such as CI/CD or local CLI usage.
+- [API Key Permissions](https://cosmo-docs.wundergraph.com/studio/api-keys/api-key-permissions.md): Configure the permissions of your api keys
+- [API Key Resources](https://cosmo-docs.wundergraph.com/studio/api-keys/api-key-resources.md): Configure the resources accessible to your API keys.
+- [Audit Log](https://cosmo-docs.wundergraph.com/studio/audit-log.md): Understand the activities conducted by users throughout your entire organization, whether performed directly or via API keys.
+- [Changelog](https://cosmo-docs.wundergraph.com/studio/changelog.md): This page provides you with a detailed history of all schema changes made to your federated graph, including both additions and deletions.
+- [Cluster Management](https://cosmo-docs.wundergraph.com/studio/cluster-management.md): Router Cluster Management allows you to monitor and track your active routers via automated metrics instrumentation.
+- [Compositions](https://cosmo-docs.wundergraph.com/studio/compositions.md): Comprehensive records detailing every instance of a subgraph publication.
+- [Cosmo AI](https://cosmo-docs.wundergraph.com/studio/cosmo-ai.md): Cosmo AI is currently in Open Beta.
+- [Graph Access Control](https://cosmo-docs.wundergraph.com/studio/graph-access-control.md): Utilizing resource-based access control enables (RBAC) for graphs ensuring that machines or users can access and manipulate only specific federated- and sub-graphs.
+- [Graph Pruning](https://cosmo-docs.wundergraph.com/studio/graph-pruning.md): **Graph Pruning Linter** helps manage the cleanliness and efficiency of your GraphQL schema by running various checks on the schema. When enabled, the lint check will be performed on every [check](https://cosmo-docs.wundergraph.com/cli/subgraph/check) operation of that namespace.
+- [Groups](https://cosmo-docs.wundergraph.com/studio/groups.md): Manage who can access the resources of your organization.
+- [Group Rules](https://cosmo-docs.wundergraph.com/studio/groups/group-rules.md): Configure the resources accessible to your groups.
+- [Cosmo Studio](https://cosmo-docs.wundergraph.com/studio/intro.md): Studio is your copilot to execute and maintain GraphQL Federated Architectures.
+- [Invitations](https://cosmo-docs.wundergraph.com/studio/invitations.md): Organization admins can invite members to their organizations. Once you have been invited, all your invitations can be viewed on the invitations page on Cosmo.
+- [Linter Rules](https://cosmo-docs.wundergraph.com/studio/lint-policy/linter-rules.md)
+- [Migrate from Apollo](https://cosmo-docs.wundergraph.com/studio/migrate-from-apollo.md): Migrate from Apollo GraphOS to WunderGraph Cosmo with a single click
+- [Namespace Login Methods](https://cosmo-docs.wundergraph.com/studio/namespace-login-methods.md): Restrict which login methods can access each namespace, so that different environments are reachable only through the identity providers you choose.
+- [Operations](https://cosmo-docs.wundergraph.com/studio/operations.md): Comprehensive view into your operations. Monitor and analyze your operations with detailed metrics and insights.
+- [Organization Login Methods](https://cosmo-docs.wundergraph.com/studio/organization-login-methods.md): Restrict which login methods can be used to access your organization.
+- [Overrides](https://cosmo-docs.wundergraph.com/studio/overrides.md): Override the result of operation checks for breaking changes that affect individual operations that you deem safe. Overrides are active across all graphs in a namespace.
+- [Overview Page](https://cosmo-docs.wundergraph.com/studio/overview-page.md): This page provides top level information about your federated graph at a glance.
+- [Playground++](https://cosmo-docs.wundergraph.com/studio/playground.md): Enhanced GraphiQL with Advanced Request Tracing to test and optimize your queries
+- [Custom Scripts](https://cosmo-docs.wundergraph.com/studio/playground/custom-scripts.md): Run scripts before or after executing operations in the playground for authentication, validation and other workflows
+- [Sharing Playground Sessions](https://cosmo-docs.wundergraph.com/studio/playground/shared-playground-state.md): You can now share your Cosmo Playground session with others using a single URL. This feature enables easier collaboration and debugging across your team — no need to copy and paste queries or configurations manually.
+- [Policies](https://cosmo-docs.wundergraph.com/studio/policies.md): Enforce conventions and best practices through the lint policy.
+- [RBAC](https://cosmo-docs.wundergraph.com/studio/rbac.md): Role-based access control allows you to limit access to resources based on a user's role.
+- [File Structure](https://cosmo-docs.wundergraph.com/studio/sce/file-content.md): Definition of the Subgraph Check extension payload structure.
+- [Handler example](https://cosmo-docs.wundergraph.com/studio/sce/handler-example.md): Implementing a simple handler for Subgraph Check Extensions.
+- [Request Payload Structure](https://cosmo-docs.wundergraph.com/studio/sce/request-payload-structure.md): Definition of the request payload structure for Subgraph Check Extension.
+- [Response Payload Structure](https://cosmo-docs.wundergraph.com/studio/sce/response-structure.md): Definition of the response payload structure for Subgraph Check Extension.
+- [Schema Checks](https://cosmo-docs.wundergraph.com/studio/schema-checks.md): Validate schema changes before deploying them to production. Ship breaking changes safely through operation checks.
+- [Schema Contracts](https://cosmo-docs.wundergraph.com/studio/schema-contracts.md): Schema Contracts enable you to build a multi-purpose, multi-audience graph, which can be split into subsets for different use cases. This simplifies development and keeps your graph maintainable.
+- [Schema Explorer](https://cosmo-docs.wundergraph.com/studio/schema-explorer.md): An interactive explorer to navigate though your federated graph schema. It has built in search and usage tracking for every type in your schema
+- [Schema Registry](https://cosmo-docs.wundergraph.com/studio/schema-registry.md): This page presents the current state of your federated graph's schema and the schema of all its subgraphs.
+- [SCIM](https://cosmo-docs.wundergraph.com/studio/scim.md): Provision and manage users in your workspace with the System for Cross-domain Identity Management (SCIM) standard.
+- [Okta](https://cosmo-docs.wundergraph.com/studio/scim/okta.md): Configure SCIM with Okta.
+- [Okta (OIN version)](https://cosmo-docs.wundergraph.com/studio/scim/okta-oin-version.md): Configure SCIM with Okta using the app from OIN.
+- [Sessions](https://cosmo-docs.wundergraph.com/studio/sessions.md): This page provides information on how the organization member sessions are handled in Cosmo Studio.
+- [SSO](https://cosmo-docs.wundergraph.com/studio/sso.md): Connect your organization's Identity Provider, such as Okta, Auth0, or Keycloak, with Cosmo to seamlessly inherit user authentication and access control, ensuring a secure and unified experience.
+- [Auth0](https://cosmo-docs.wundergraph.com/studio/sso/auth0.md): Setting up SSO with Auth0
+- [Keycloak](https://cosmo-docs.wundergraph.com/studio/sso/keycloak.md): Setting up SSO with Keycloak
+- [Microsoft Entra](https://cosmo-docs.wundergraph.com/studio/sso/microsoft-entra.md): Setting up SSO with Microsoft Entra
+- [Okta](https://cosmo-docs.wundergraph.com/studio/sso/okta.md): Setting up SSO with Okta
+- [Graph Documentation](https://cosmo-docs.wundergraph.com/studio/studio.md): Upload a markdown file to your federated- and sub-graphs to share on-boarding or common information with your organization.
+- [Subgraph Check Extensions](https://cosmo-docs.wundergraph.com/studio/subgraph-check-extensions.md): Validate schema changes before deploying them to production on your own premises.
+- [Tutorial](https://cosmo-docs.wundergraph.com/tutorial.md)
+- [Composing Graphs](https://cosmo-docs.wundergraph.com/tutorial/composing-graphs.md): How to compose a federated graph with WunderGraph Schema Composition, a TypeScript composition library.
+- [Deploy GraphQL Federation with Confidence](https://cosmo-docs.wundergraph.com/tutorial/deploy-federated-graphql-with-confidence.md): Complete tutorial to deploying federated GraphQL - from schema validation and basic deployments to advanced canary strategies and production monitoring.
+- [From Zero to Federation in 5 Steps using Cosmo](https://cosmo-docs.wundergraph.com/tutorial/from-zero-to-federation-in-5-steps-using-cosmo.md): This tutorial offers a hands-on introduction to Cosmo using a sample demo repository. You'll set up the demo subgraphs and Cosmo Router locally, allowing you to start querying right away.
+- [Gradual and Experimental Feature Rollout with Feature Flags](https://cosmo-docs.wundergraph.com/tutorial/gradual-and-experimental-feature-rollout-with-feature-flags.md): An example of how feature flags could be used to release an experimental feature to a subset of a federated graph's consumers.
+- [Deploy Your First gRPC Service](https://cosmo-docs.wundergraph.com/tutorial/grpc-service-quickstart.md): This tutorial will walk you through the process of integrating a gRPC service into your router using Cosmo CLI templates.
+- [Mastering Local Development for GraphQL Federation](https://cosmo-docs.wundergraph.com/tutorial/mastering-local-development-for-graphql-federation.md): A Step-by-Step Guide to Running and Enhancing Your Federated Graph for Rapid Development.
+- [OTEL Instrumentation on Subgraphs](https://cosmo-docs.wundergraph.com/tutorial/otel-instrumentation-on-subgraphs.md): How to setup OTEL instrumentation on subgraphs.
+- [PR Based Workflow for Federation](https://cosmo-docs.wundergraph.com/tutorial/pr-based-workflow-for-federation.md): Let us go over how to use the subgraph check command in CI to prevent breaking changes in production. Use our GitHub app to seamlessly approve breaking changes in the Cosmo Studio.
+- [Supergraph Previews for every Pull Request](https://cosmo-docs.wundergraph.com/tutorial/supergraph-previews-for-every-pull-request.md): Setup github actions for supergraph previews.
+- [Using Apollo Router / Gateway with Cosmo OSS Schema Registry](https://cosmo-docs.wundergraph.com/tutorial/using-apollo-router-gateway-with-cosmo-oss-schema-registry.md): The easiest way to migrate away from Apollo GraphOS
+- [Deploy Your First Router Plugin](https://cosmo-docs.wundergraph.com/tutorial/using-grpc-plugins.md): Learn how to use gRPC plugins with Cosmo Cloud & Cosmo Router
+- [Using Persisted Operations with Federated GraphQL](https://cosmo-docs.wundergraph.com/tutorial/using-persisted-operations.md): Learn how to leverage Persisted Operations / Persisted Queries / Trusted Documents with Cosmo & Cosmo Router
+
+## OpenAPI Specs
+
+- [openapi](https://cosmo-docs.wundergraph.com/api-reference/openapi.json)
+
+## Optional
+
+- [Platform Status](https://status.wundergraph.com/)
+- [GitHub](https://github.com/wundergraph/cosmo)
+- [Blog](https://wundergraph.com/blog)

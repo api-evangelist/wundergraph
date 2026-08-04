@@ -1,0 +1,40 @@
+generated: '2026-08-03'
+method: searched
+status: published
+source: https://github.com/wundergraph/cosmo/tree/main/proto
+provider_published: true
+description: >-
+  WunderGraph's own Protobuf definitions for the Cosmo control plane, harvested
+  verbatim from their public repository. This is the authoritative contract for
+  the platform: the control plane speaks Connect-RPC over these services, not
+  REST. Where the modeled OpenAPI documents in openapi/ disagree with these
+  files, these files are correct.
+verified: '2026-08-03'
+evidence:
+  - url: https://raw.githubusercontent.com/wundergraph/cosmo/main/proto/wg/cosmo/platform/v1/platform.proto
+    status: 200
+  - url: https://cosmo-cp.wundergraph.com/wg.cosmo.platform.v1.PlatformService/GetFederatedGraphs
+    status: 200
+    method: POST
+    note: live Connect-RPC endpoint confirming the proto describes the deployed surface
+services:
+  - file: wundergraph-platform.proto
+    package: wg.cosmo.platform.v1
+    service: PlatformService
+    rpcs: 194
+    messages: 476
+    description: Federated graphs, subgraphs, namespaces, schema contracts, feature flags, router config, API keys, analytics.
+  - file: wundergraph-node.proto
+    package: wg.cosmo.node.v1
+    description: Router/node configuration surface.
+  - file: wundergraph-common.proto
+    package: wg.cosmo.common
+    description: Shared request/response envelopes.
+  - file: wundergraph-events.proto
+    package: wg.cosmo.notifications
+    description: Notification and webhook event definitions.
+transport:
+  protocol: Connect-RPC
+  base_url: https://cosmo-cp.wundergraph.com
+  http_json: true
+  note: Connect-RPC supports HTTP/JSON, so each RPC is callable as POST /<package>.<Service>/<Method>.
