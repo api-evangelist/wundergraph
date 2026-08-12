@@ -372,8 +372,6 @@ apis:
   properties:
   - url: https://cosmo-docs.wundergraph.com/
     type: Documentation
-  - url: graphql/wundergraph-cloud-graphql.md
-    type: GraphQL
 name: WunderGraph
 tags:
 - Federation
