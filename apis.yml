@@ -399,6 +399,15 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wundergraph.png
 access: 3rd-Party
 common:
+- type: StatusPage
+  name: WunderGraph Status
+  url: https://status.wundergraph.com/
+- type: ChangeLog
+  name: WunderGraph Cosmo Changelog
+  url: https://github.com/wundergraph/cosmo/releases
+- type: Webhooks
+  name: WunderGraph Cosmo Webhooks
+  url: https://cosmo-docs.wundergraph.com/control-plane/webhooks
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/wundergraph/overview
 - type: AgenticAccess
@@ -503,10 +512,21 @@ common:
   name: Talk to GraphQL Federation Experts - WunderGraph
   type: Support
   description: 'null'
-- url: https://wundergraph.com/blog
-  name: Blog - WunderGraph
-  type: Blog
-  description: 'null'
+- type: Documentation
+  name: WunderGraph Cosmo Documentation
+  url: https://cosmo-docs.wundergraph.com/overview
+- type: GettingStarted
+  name: WunderGraph Cosmo Cloud Onboarding
+  url: https://cosmo-docs.wundergraph.com/getting-started/cosmo-cloud-onboarding
+- type: TermsOfService
+  name: WunderGraph Cosmo Managed Service Terms of Use
+  url: https://wundergraph.com/cosmo-managed-service-terms
+- type: GitHubRepository
+  name: WunderGraph Cosmo
+  url: https://github.com/wundergraph/cosmo
+- type: Examples
+  name: WunderGraph Cosmo Federation Demos
+  url: https://github.com/wundergraph/cosmo-federation-demos
 - name: MCP Server
   url: mcp/wundergraph-mcp.yml
   type: MCPServer
@@ -527,8 +547,10 @@ common:
   type: RateLimits
 - url: finops/wundergraph-cloud-finops.md
   type: FinOps
+- url: https://cosmo-docs.wundergraph.com/connect-rpc/produce-generate-distribute-sdks
+  type: SDK
 created: '2025-06-05T00:00:00.000Z'
-modified: '2026-08-03'
+modified: '2026-08-14'
 position: Providing
 description: Full Lifecycle API Management for (Federated) GraphQL. Schema Registry, composition checks,
   analytics, metrics, tracing and routing. Deploy 100% on-prem or use our Managed Service. Apache 2.0
