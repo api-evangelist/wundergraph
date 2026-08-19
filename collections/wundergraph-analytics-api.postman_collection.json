@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "97a5a5a0-bf46-4c5e-bc63-644154265e58",
+      "name": "Analytics",
+      "description": {
+        "content": "Access graph analytics, metrics, and performance data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4fe5fc24-3fa5-4199-a31b-ff9497af8557",
+          "name": "WunderGraph Get graph analytics",
+          "request": {
+            "name": "WunderGraph Get graph analytics",
+            "description": {
+              "content": "Retrieves analytics data for a federated graph including request metrics, latency, and error rates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "analytics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "federatedGraphName",
+                  "value": "<string>",
+                  "description": "(Required) The name of the federated graph."
+                },
+                {
+                  "disabled": false,
+                  "key": "namespace",
+                  "value": "<string>",
+                  "description": "The namespace of the graph."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Start of the analytics time range."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "End of the analytics time range."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8ec4795a-08f1-4a78-9208-f3d2abf97619",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "analytics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "federatedGraphName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestSeries\": [\n    {\n      \"timestamp\": \"1966-11-16T18:01:37.140Z\",\n      \"totalRequests\": 1645,\n      \"erroredRequests\": 3260\n    },\n    {\n      \"timestamp\": \"1959-07-18T06:16:00.838Z\",\n      \"totalRequests\": 9801,\n      \"erroredRequests\": 8725\n    }\n  ],\n  \"latencyMetrics\": {\n    \"p50\": 9673.437414854126,\n    \"p95\": 6991.300216532312,\n    \"p99\": 9234.939403375269\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cosmo-cp.wundergraph.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c946aac3-444b-4904-92c4-fd39a64c873f",
+    "name": "WunderGraph Cosmo Platform Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+      "type": "text/plain"
+    }
+  }
+}

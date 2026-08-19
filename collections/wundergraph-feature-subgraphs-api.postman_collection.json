@@ -1,0 +1,149 @@
+{
+  "item": [
+    {
+      "id": "182cb788-3c14-42f7-90a8-da2f089e55a6",
+      "name": "Feature Subgraphs",
+      "description": {
+        "content": "Manage feature subgraphs for experimental feature development.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "13d40a2d-f768-44fd-a549-93e16c2979f9",
+          "name": "WunderGraph Create a feature subgraph",
+          "request": {
+            "name": "WunderGraph Create a feature subgraph",
+            "description": {
+              "content": "Creates a feature subgraph based on an existing subgraph for gradual and experimental feature rollout using feature flags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "feature-subgraphs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"baseSubgraphName\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "438b2a33-9b6a-49a4-8bee-231b4b13f499",
+              "name": "Feature subgraph created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "feature-subgraphs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"baseSubgraphName\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"routingUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cosmo-cp.wundergraph.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b3ac2957-52a8-4b5c-b8ac-e0fbce6d7ffd",
+    "name": "WunderGraph Cosmo Platform Analytics Feature Subgraphs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+      "type": "text/plain"
+    }
+  }
+}

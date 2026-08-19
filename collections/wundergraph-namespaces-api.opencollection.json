@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WunderGraph Cosmo Platform Analytics Namespaces API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Namespaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WunderGraph List namespaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cosmo-cp.wundergraph.com/v1/namespaces",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all namespaces within the organization. Namespaces provide logical isolation for federated graphs, subgraphs, and other resources."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Create a namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/namespaces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new namespace within the organization for organizing federated graphs and subgraphs."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Delete a namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cosmo-cp.wundergraph.com/v1/namespaces/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the namespace to delete."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a namespace and all associated resources including federated graphs and subgraphs."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Rename a namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/namespaces/:name/rename",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The current name of the namespace."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Renames an existing namespace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

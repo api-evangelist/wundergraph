@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WunderGraph Cosmo Platform Analytics API Keys API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WunderGraph List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cosmo-cp.wundergraph.com/v1/api-keys",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all API keys for the organization. API keys authenticate CLI and programmatic access to the Cosmo Platform API."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Create an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/api-keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new API key for authenticating with the Cosmo Platform API. Keys can be scoped with specific permissions."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Delete an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cosmo-cp.wundergraph.com/v1/api-keys/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the API key to delete."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes an API key by name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

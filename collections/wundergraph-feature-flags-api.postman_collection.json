@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "5382723b-e626-40cd-9216-0f047aa491b7",
+      "name": "Feature Flags",
+      "description": {
+        "content": "Manage feature flags for gradual rollout of graph changes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da7f5d62-6be6-48ea-b2ce-1ef8ae94b489",
+          "name": "WunderGraph List feature flags",
+          "request": {
+            "name": "WunderGraph List feature flags",
+            "description": {
+              "content": "Lists all feature flags in the organization for managing gradual rollout of graph changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "feature-flags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "namespace",
+                  "value": "<string>",
+                  "description": "Filter by namespace name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e549485-9f2e-4e95-b5ca-3ac06679a8d9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "feature-flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"featureFlags\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"isEnabled\": true,\n      \"featureSubgraphNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"labels\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"createdAt\": \"1992-05-26T00:15:21.115Z\",\n      \"updatedAt\": \"1983-01-03T08:46:45.042Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"isEnabled\": true,\n      \"featureSubgraphNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"labels\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"createdAt\": \"1998-08-02T20:18:42.441Z\",\n      \"updatedAt\": \"1964-06-19T05:19:53.736Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ff091f1-aaf6-4486-9939-475f2e382da8",
+          "name": "WunderGraph Create a feature flag",
+          "request": {
+            "name": "WunderGraph Create a feature flag",
+            "description": {
+              "content": "Creates a new feature flag for enabling gradual rollout of feature subgraphs to federated graphs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "feature-flags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"featureSubgraphNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"namespace\": \"<string>\",\n  \"isEnabled\": \"<boolean>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1dfec236-b998-4547-badc-9ba5c535a2c8",
+              "name": "Feature flag created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "feature-flags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"featureSubgraphNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"namespace\": \"<string>\",\n  \"isEnabled\": \"<boolean>\",\n  \"labels\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cosmo-cp.wundergraph.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a0423c56-ec9a-4eec-b15b-b904a5bf80d6",
+    "name": "WunderGraph Cosmo Platform Analytics Feature Flags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.\n\nContact Support:\n Name: WunderGraph",
+      "type": "text/plain"
+    }
+  }
+}

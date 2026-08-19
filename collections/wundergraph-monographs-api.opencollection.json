@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WunderGraph Cosmo Platform Analytics Monographs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monographs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WunderGraph List monographs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cosmo-cp.wundergraph.com/v1/monographs",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by namespace name."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all monographs in the organization. A monograph is a graph with GraphQL Federation disabled, limited to a single subgraph."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Create a monograph",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/monographs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new monograph (non-federated, single subgraph graph) in the Cosmo platform."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Update a monograph",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cosmo-cp.wundergraph.com/v1/monographs/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the monograph to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates the configuration of an existing monograph."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Delete a monograph",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cosmo-cp.wundergraph.com/v1/monographs/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the monograph to delete."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "The namespace of the monograph."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a monograph from the platform."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Publish a monograph schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/monographs/:name/publish",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the monograph to publish."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publishes a new schema for the specified monograph."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

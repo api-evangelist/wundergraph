@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WunderGraph Cosmo Platform Analytics Feature Flags API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feature Flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WunderGraph List feature flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cosmo-cp.wundergraph.com/v1/feature-flags",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "Filter by namespace name."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Lists all feature flags in the organization for managing gradual rollout of graph changes."
+        },
+        {
+          "info": {
+            "name": "WunderGraph Create a feature flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/feature-flags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new feature flag for enabling gradual rollout of feature subgraphs to federated graphs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

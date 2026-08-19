@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WunderGraph Cosmo Platform Analytics API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WunderGraph Get graph analytics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cosmo-cp.wundergraph.com/v1/analytics",
+            "params": [
+              {
+                "name": "federatedGraphName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the federated graph."
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "The namespace of the graph."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start of the analytics time range."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End of the analytics time range."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves analytics data for a federated graph including request metrics, latency, and error rates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WunderGraph Cosmo Platform Analytics Feature Subgraphs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feature Subgraphs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WunderGraph Create a feature subgraph",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cosmo-cp.wundergraph.com/v1/feature-subgraphs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a feature subgraph based on an existing subgraph for gradual and experimental feature rollout using feature flags."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

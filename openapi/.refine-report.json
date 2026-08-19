@@ -27,6 +27,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "wundergraph-analytics-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-api-keys-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-feature-flags-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-feature-subgraphs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-federated-graphs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-monographs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-namespaces-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-router-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-schema-contracts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "wundergraph-subgraphs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

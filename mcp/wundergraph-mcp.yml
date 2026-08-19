@@ -3,58 +3,55 @@ method: searched
 status: published
 provider_published: true
 source: https://cosmo-docs.wundergraph.com/llms.txt
-description: >-
-  WunderGraph ships MCP as a first-class product surface, in two distinct forms:
-  a Cosmo MCP Server that puts the Cosmo control plane into an AI-enabled IDE,
-  and an MCP Gateway built into the Cosmo Router that exposes a customer's own
-  GraphQL API to AI models as MCP tools. Both are documented, self-hosted
-  products rather than a single vendor-hosted endpoint, so there is no public
-  URL to probe — the artifact records the capability, not a callable host.
+description: 'WunderGraph ships MCP as a first-class product surface, in two distinct forms: a Cosmo MCP
+  Server that puts the Cosmo control plane into an AI-enabled IDE, and an MCP Gateway built into the Cosmo
+  Router that exposes a customer''s own GraphQL API to AI models as MCP tools. Both are documented, self-hosted
+  products rather than a single vendor-hosted endpoint, so there is no public URL to probe — the artifact
+  records the capability, not a callable host.'
 verified: '2026-08-03'
 servers:
-  - name: cosmo-mcp-server
-    kind: cli
-    transport: stdio
-    deployment: self-hosted
-    docs: https://cosmo-docs.wundergraph.com/cli/mcp
-    description: >-
-      Integrates Cosmo into LLM/AI-supported IDEs, exposing the developer's
-      federated graph, subgraphs and schema operations to a coding agent.
-  - name: cosmo-router-mcp-gateway
-    kind: gateway
-    transport: http
-    deployment: self-hosted
-    docs: https://cosmo-docs.wundergraph.com/router/mcp
-    description: >-
-      Turns a customer's federated GraphQL API into MCP tools, with tools defined
-      from named GraphQL operations rather than generated per endpoint.
-    authorization:
-      protocol: OAuth 2.1
-      docs: https://cosmo-docs.wundergraph.com/router/mcp/oauth/overview
-      jwks: true
-      scope_enforcement: >-
-        Additive model, enforced at connection level and per-tool, with step-up
-        token upgrades.
-      protected_resource_metadata: RFC 9728
-      scopes_docs: https://cosmo-docs.wundergraph.com/router/mcp/oauth/scopes
-tooling_model: >-
-  Tools are authored from named GraphQL operations, so each tool inherits a real
-  input schema from the GraphQL type system rather than a guessed one.
+- name: cosmo-mcp-server
+  kind: cli
+  transport: stdio
+  deployment: self-hosted
+  docs: https://cosmo-docs.wundergraph.com/cli/mcp
+  description: Integrates Cosmo into LLM/AI-supported IDEs, exposing the developer's federated graph,
+    subgraphs and schema operations to a coding agent.
+- name: cosmo-router-mcp-gateway
+  kind: gateway
+  transport: http
+  deployment: self-hosted
+  docs: https://cosmo-docs.wundergraph.com/router/mcp
+  description: Turns a customer's federated GraphQL API into MCP tools, with tools defined from named
+    GraphQL operations rather than generated per endpoint.
+  authorization:
+    protocol: OAuth 2.1
+    docs: https://cosmo-docs.wundergraph.com/router/mcp/oauth/overview
+    jwks: true
+    scope_enforcement: Additive model, enforced at connection level and per-tool, with step-up token upgrades.
+    protected_resource_metadata: RFC 9728
+    scopes_docs: https://cosmo-docs.wundergraph.com/router/mcp/oauth/scopes
+tooling_model: Tools are authored from named GraphQL operations, so each tool inherits a real input schema
+  from the GraphQL type system rather than a guessed one.
 tools_docs: https://cosmo-docs.wundergraph.com/router/mcp/tools
 libraries:
-  - name: mcp-go
-    url: https://github.com/wundergraph/mcp-go
-    description: Go implementation of the Model Context Protocol.
-    note: >-
-      A library, not a hosted server. The apis.yml MCPServer pointer previously
-      resolved here alone, which overstated it as a running MCP server.
+- name: mcp-go
+  url: https://github.com/wundergraph/mcp-go
+  description: Go implementation of the Model Context Protocol.
+  note: A library, not a hosted server. The apis.yml MCPServer pointer previously resolved here alone,
+    which overstated it as a running MCP server.
 evidence:
-  - url: https://cosmo-docs.wundergraph.com/llms.txt
-    status: 200
-    note: provider-published llms.txt enumerating the MCP surface below
-  - url: https://cosmo-docs.wundergraph.com/router/mcp.md
-    status: 200
-  - url: https://cosmo-docs.wundergraph.com/router/mcp/oauth/configuration.md
-    status: 200
-  - url: https://github.com/wundergraph/mcp-go
-    status: 200
+- url: https://cosmo-docs.wundergraph.com/llms.txt
+  status: 200
+  note: provider-published llms.txt enumerating the MCP surface below
+- url: https://cosmo-docs.wundergraph.com/router/mcp.md
+  status: 200
+- url: https://cosmo-docs.wundergraph.com/router/mcp/oauth/configuration.md
+  status: 200
+- url: https://github.com/wundergraph/mcp-go
+  status: 200
+deployment:
+  mode: unclear
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
