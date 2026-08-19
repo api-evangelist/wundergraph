@@ -558,6 +558,6 @@ description: Full Lifecycle API Management for (Federated) GraphQL. Schema Regis
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-specificationVersion: 0.21
+specificationVersion: '0.23'
 x-merged-from:
 - wundergraph-cloud
