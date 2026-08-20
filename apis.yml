@@ -41,6 +41,8 @@ apis:
   description: Manage API keys for platform authentication.
   humanURL: https://cosmo-docs.wundergraph.com/
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
