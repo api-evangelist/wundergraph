@@ -414,6 +414,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wundergraph.png
 access: 3rd-Party
 common:
+- type: License
+  name: Apache-2.0
+  url: https://github.com/wundergraph/cosmo/blob/main/LICENSE
 - type: StatusPage
   name: WunderGraph Status
   url: https://status.wundergraph.com/
