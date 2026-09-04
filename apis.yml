@@ -405,11 +405,12 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wundergraph.png
 access: 3rd-Party
@@ -569,7 +570,7 @@ common:
   type: SDK
 created: '2025-06-05T00:00:00.000Z'
 modified: '2026-08-14'
-position: Providing
+position: Producing
 description: Full Lifecycle API Management for (Federated) GraphQL. Schema Registry, composition checks,
   analytics, metrics, tracing and routing. Deploy 100% on-prem or use our Managed Service. Apache 2.0
   licensed, no vendor-lock.
