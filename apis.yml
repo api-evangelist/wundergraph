@@ -323,6 +323,8 @@ apis:
   description: Manage subgraphs - isolated GraphQL schemas that compose into federated graphs.
   humanURL: https://cosmo-docs.wundergraph.com/
   tags:
+  - Subgraph
+  tags_raw:
   - Subgraphs
   properties:
   - type: OpenAPI
