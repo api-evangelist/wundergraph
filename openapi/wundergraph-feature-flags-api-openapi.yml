@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: WunderGraph Cosmo Platform Analytics Feature Flags API
-  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale. It powers the Cosmo CLI (wgc) and Cosmo Studio, enabling management of federated graphs, subgraphs, namespaces, schema contracts, feature flags, router configurations, and API keys. The API uses Connect-RPC protocol with HTTP/JSON support. Cosmo is the open-source alternative to Apollo GraphOS for full lifecycle GraphQL federation management including schema registry, composition checks, analytics, metrics, tracing, and routing.
+  title: WunderGraph Cosmo Platform Feature Flags API
+  description: The WunderGraph Cosmo Platform API provides programmatic access to manage federated GraphQL architectures at scale.
   version: 1.0.0
   contact:
     name: WunderGraph
@@ -94,15 +94,6 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
 components:
   schemas:
-    OperationResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the operation was successful.
-        message:
-          type: string
-          description: A human-readable response message.
     FeatureFlag:
       type: object
       properties:
@@ -138,6 +129,15 @@ components:
         updatedAt:
           type: string
           format: date-time
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
   securitySchemes:
     apiKey:
       type: apiKey

@@ -1,20 +1,11 @@
 {
   "provider": "wundergraph",
   "sources": [
-    "wundergraph-analytics-api-openapi.yml",
-    "wundergraph-api-keys-api-openapi.yml",
-    "wundergraph-feature-flags-api-openapi.yml",
-    "wundergraph-feature-subgraphs-api-openapi.yml",
-    "wundergraph-federated-graphs-api-openapi.yml",
-    "wundergraph-monographs-api-openapi.yml",
-    "wundergraph-namespaces-api-openapi.yml",
-    "wundergraph-router-api-openapi.yml",
-    "wundergraph-schema-contracts-api-openapi.yml",
-    "wundergraph-subgraphs-api-openapi.yml"
+    "_ae-authored/wundergraph-cosmo-platform-openapi.yml"
   ],
   "outputs": [
-    "wundergraph-analytics-api-openapi.yml",
     "wundergraph-api-keys-api-openapi.yml",
+    "wundergraph-analytics-api-openapi.yml",
     "wundergraph-feature-flags-api-openapi.yml",
     "wundergraph-feature-subgraphs-api-openapi.yml",
     "wundergraph-federated-graphs-api-openapi.yml",
@@ -28,17 +19,20 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "wundergraph-analytics-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-api-keys-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-feature-flags-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-feature-subgraphs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-federated-graphs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-monographs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-namespaces-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-router-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-schema-contracts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "wundergraph-subgraphs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wundergraph-cosmo-platform-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "wundergraph-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-feature-flags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-feature-subgraphs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-federated-graphs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-monographs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-namespaces-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-router-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-schema-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wundergraph-subgraphs-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
