@@ -97,6 +97,15 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
 components:
   schemas:
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
     APIKey:
       type: object
       properties:
@@ -118,15 +127,6 @@ components:
         createdBy:
           type: string
           description: Who created the key.
-    OperationResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the operation was successful.
-        message:
-          type: string
-          description: A human-readable response message.
   securitySchemes:
     apiKey:
       type: apiKey

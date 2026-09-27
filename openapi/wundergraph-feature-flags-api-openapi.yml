@@ -94,6 +94,15 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
 components:
   schemas:
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
     FeatureFlag:
       type: object
       properties:
@@ -129,15 +138,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    OperationResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the operation was successful.
-        message:
-          type: string
-          description: A human-readable response message.
   securitySchemes:
     apiKey:
       type: apiKey

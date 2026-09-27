@@ -317,6 +317,15 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
 components:
   schemas:
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
     FederatedGraph:
       type: object
       properties:
@@ -361,15 +370,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    OperationResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the operation was successful.
-        message:
-          type: string
-          description: A human-readable response message.
     ChangelogEntry:
       type: object
       properties:
