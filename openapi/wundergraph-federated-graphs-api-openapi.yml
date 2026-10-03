@@ -317,6 +317,28 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
 components:
   schemas:
+    ChangelogEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the changelog entry.
+        schemaVersionId:
+          type: string
+          description: The schema version associated with this change.
+        createdAt:
+          type: string
+          format: date-time
+          description: When the change occurred.
+        changeType:
+          type: string
+          description: The type of schema change.
+        path:
+          type: string
+          description: The schema path that changed.
+        changeMessage:
+          type: string
+          description: Description of the change.
     OperationResponse:
       type: object
       properties:
@@ -370,28 +392,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    ChangelogEntry:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the changelog entry.
-        schemaVersionId:
-          type: string
-          description: The schema version associated with this change.
-        createdAt:
-          type: string
-          format: date-time
-          description: When the change occurred.
-        changeType:
-          type: string
-          description: The type of schema change.
-        path:
-          type: string
-          description: The schema path that changed.
-        changeMessage:
-          type: string
-          description: Description of the change.
   securitySchemes:
     apiKey:
       type: apiKey
