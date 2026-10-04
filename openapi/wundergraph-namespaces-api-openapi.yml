@@ -124,15 +124,6 @@ paths:
                 $ref: '#/components/schemas/OperationResponse'
 components:
   schemas:
-    OperationResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the operation was successful.
-        message:
-          type: string
-          description: A human-readable response message.
     Namespace:
       type: object
       properties:
@@ -146,6 +137,15 @@ components:
           type: string
           format: date-time
           description: When the namespace was created.
+    OperationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful.
+        message:
+          type: string
+          description: A human-readable response message.
   securitySchemes:
     apiKey:
       type: apiKey
