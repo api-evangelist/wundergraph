@@ -8,6 +8,11 @@ checked:
 - https://officialskills.sh/sitemap.xml
 - https://skillsmp.com/sitemap.xml
 - https://www.skills.sh/sitemap.xml
+- https://github.com/graphql-kit/graphql-apis
+- https://github.com/graphql/graphql.github.io/tree/source/src/code
+- https://graphql.landscape2.io/data/full.json
+- https://graphql.org/community/tools-and-libraries/
+- https://graphql.org/foundation/members/
 source:
 - okta/integrations/okta-integration-edges.yml
 edges:
@@ -66,3 +71,56 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
+- partner_name: GraphQL Foundation (members)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://graphql.org/foundation/members/
+  category: GraphQL standards body membership
+  partner_tier: general
+  contract_reference:
+    register: GraphQL Foundation members (graphql.org/foundation/members; graphql.landscape2.io/data/full.json)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-foundation-member
+    registered_name: WunderGraph, Inc.
+    register_id: graphql-foundation-member--general--wundergraph-inc-member
+    matched_domain: wundergraph.com
+    matched_by: domain
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-graphql-ecosystem.py
+  first_seen: '2026-10-21'
+- partner_name: GraphQL.org tools and libraries
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://graphql.org/community/tools-and-libraries/
+  category: GraphQL tooling listing
+  contract_reference:
+    register: GraphQL.org tools and libraries (graphql.org/community/tools-and-libraries; github.com/graphql/graphql.github.io
+      src/code)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-org-listed-vendor
+    registered_name: WunderGraph Cosmo
+    register_id: src/code/tools/wundergraph/gateways-supergraphs/wundergraph.md
+    matched_domain: wundergraph.com
+    matched_by: domain
+    listed_products:
+    - product_type: 'tools: gateways-supergraphs'
+      entries:
+      - WunderGraph Cosmo
+    signal_note: 'participation only: a reviewed listing on graphql.org, not a conformance certification; listed
+      products (one per section) are context, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-graphql-ecosystem.py
+  first_seen: '2026-10-21'

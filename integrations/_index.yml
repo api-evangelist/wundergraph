@@ -37,3 +37,55 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: wundergraph-graphql-foundation-members
+  label: GraphQL Foundation (members)
+  partner_name: GraphQL Foundation (members)
+  category: GraphQL standards body membership
+  type: register
+  channel: standard-directory
+  evidence: https://graphql.org/foundation/members/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GraphQL Foundation members (graphql.org/foundation/members; graphql.landscape2.io/data/full.json)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-foundation-member
+    registered_name: WunderGraph, Inc.
+    register_id: graphql-foundation-member--general--wundergraph-inc-member
+    matched_domain: wundergraph.com
+    matched_by: domain
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
+- slug: wundergraph-graphql-org-tools-and-libraries
+  label: GraphQL.org tools and libraries
+  partner_name: GraphQL.org tools and libraries
+  category: GraphQL tooling listing
+  type: register
+  channel: standard-directory
+  evidence: https://graphql.org/community/tools-and-libraries/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GraphQL.org tools and libraries (graphql.org/community/tools-and-libraries; github.com/graphql/graphql.github.io
+      src/code)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-org-listed-vendor
+    registered_name: WunderGraph Cosmo
+    register_id: src/code/tools/wundergraph/gateways-supergraphs/wundergraph.md
+    matched_domain: wundergraph.com
+    matched_by: domain
+    listed_products:
+    - product_type: 'tools: gateways-supergraphs'
+      entries:
+      - WunderGraph Cosmo
+    signal_note: 'participation only: a reviewed listing on graphql.org, not a conformance certification; listed
+      products (one per section) are context, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
