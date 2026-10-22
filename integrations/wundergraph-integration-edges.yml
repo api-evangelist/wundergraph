@@ -13,34 +13,10 @@ checked:
 - https://graphql.landscape2.io/data/full.json
 - https://graphql.org/community/tools-and-libraries/
 - https://graphql.org/foundation/members/
+- artifact-hub/integrations/artifact-hub-integration-edges.yml
 source:
 - okta/integrations/okta-integration-edges.yml
 edges:
-- partner_name: Okta (own)
-  partner: okta
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.okta.com/integrations/wundergraphcosmo/
-  mirror_of: okta/integrations/okta-integration-edges.yml
-  apps:
-  - Wundergraph Cosmo
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Lifecycle Management
-  badges:
-  - OKTA_VERIFIED
-  features:
-  - CREATE
-  - DEACTIVATE
-  - SWA
-  - SYNC_PASSWORD
-  - UPDATE
 - partner_name: SkillsMP (skillsmp.com)
   partner: null
   partner_match: register
@@ -124,3 +100,48 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-graphql-ecosystem.py
   first_seen: '2026-10-21'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/wundergraphcosmo/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Wundergraph Cosmo
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Lifecycle Management
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - SWA
+  - SYNC_PASSWORD
+  - UPDATE
+- partner_name: Artifact Hub (artifact-hub)
+  partner: artifact-hub
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: artifact-hub
+  evidence: https://artifacthub.io/packages/search?repo=cosmo-platform
+  mirror_of: artifact-hub/integrations/artifact-hub-integration-edges.yml
+  apps:
+  - cosmo
+  - router
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Artifact Hub listing (Helm chart)
+  badges:
+  - 'Verified publisher (Artifact Hub verified publisher: repository ownership proven)'
